@@ -59,6 +59,7 @@ def head(title, template, current=""):
 <head>
 <meta charset="UTF-8">
 <meta name="robots" content="noindex, nofollow">
+<script type="text/javascript" src="https://www.bugherd.com/sidebarv2.js?apikey=urqa1bezzmybdhdmbsptcg" async="true"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title} wireframe</title>
 <link rel="stylesheet" href="wireframe.css">
