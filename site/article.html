@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog post wireframe</title>
+<link rel="stylesheet" href="wireframe.css">
+<link rel="stylesheet" href="advent.css">
+</head>
+<body>
+<script>try{if(location.hash==="#clean"||localStorage.getItem("advent-wf-mode")==="clean")document.body.classList.add("clean");}catch(e){}</script>
+<div class="page">
+  <div class="wfbar">
+    <div class="wf-left"><strong>Advent Games × Enterprise</strong>
+      <select class="wf-pages" aria-label="Wireframe page" onchange="location.href=this.value"><option value="index.html">Home</option><option value="meganav.html">Navigation + drawers</option><option value="collection.html">Board Games</option><option value="collection-preorders.html">Preorders</option><option value="collection-rpg.html">RPG</option><option value="collection-accessories.html">Accessories</option><option value="brands.html">Brands</option><option value="brand.html">Brand</option><option value="search.html">Search</option><option value="product.html">Product</option><option value="product-preorder.html">Product: expansion example</option><option value="product-rpg.html">Product: RPG example</option><option value="product-accessory.html">Product: accessory example</option><option value="cart.html">Cart</option><option value="account.html">Account</option><option value="wishlist.html">Wishlist</option><option value="about.html">About + Contact</option><option value="help.html">Help</option><option value="blog.html">Blog</option><option value="article.html" selected>Blog post</option><option value="data-map.html">DATA MAP</option></select></div>
+    <div class="wf-right">
+      <div class="legend"><span class="vol">Enterprise section</span><span class="vol tweak">native + tweak</span><span class="vol custom">custom / app</span><span class="mf">namespace.key</span><span class="mf new">proposed field</span></div>
+      
+      <div class="wf-toggle" role="group" aria-label="View mode"><button type="button" data-mode="notes" aria-pressed="true">Annotated</button><button type="button" data-mode="clean" aria-pressed="false">Clean</button></div>
+    </div>
+  </div>
+
+  <!-- ============ HEADER GROUP (same on every page) ============ -->
+  <div class="sec tg" style="padding:0;">
+    <div style="padding:10px 40px 0;"><div class="sec-head" style="margin-bottom:6px;"><span class="vol">Announcement bar</span> <span class="lbl">site message left · utility links right</span></div></div>
+    <div class="row small" style="justify-content:space-between;background:#f2f2f2;padding:7px 40px;font-size:12px;">
+      <span>Flat rate shipping $10 Sydney Metro, Gosford &amp; Wollongong · $15 rest of Australia · Free over $300</span>
+      <span class="row" style="gap:16px;"><a href="help.html">Help &amp; FAQ</a><a href="account.html">Track my order</a><a href="brands.html">Brands A-Z</a></span>
+    </div>
+    <div style="padding:14px 40px 0;"><div class="sec-head" style="margin-bottom:8px;"><span class="vol">Header</span> <span class="lbl">sticky · search with category dropdown · mega menu</span></div></div>
+    <div class="row" style="align-items:center;justify-content:space-between;padding:4px 40px 12px;gap:24px;">
+      <a href="index.html"><div class="img" style="width:150px;height:44px;">Logo</div></a>
+      <a href="search.html" style="flex:1;display:flex;"><div class="field" style="width:120px;border-right:none;border-radius:4px 0 0 4px;">All ▾</div><div class="field" style="flex:1;border-radius:0 4px 4px 0;">Search 11,000+ games, publishers, designers...</div></a>
+      <div class="row small" style="gap:16px;align-items:center;"><a href="account.html">Account</a><a href="wishlist.html">♡ Wishlist</a><a href="cart.html"><strong>Cart (2)</strong></a></div>
+    </div>
+    <div class="row small nav" style="gap:22px;padding:10px 40px;border-top:1px solid var(--line);justify-content:space-between;">
+      <div class="row" style="gap:22px;flex-wrap:wrap;"><a href="meganav.html#preorders">Preorders ▾</a><a href="meganav.html#arrived">Just Arrived ▾</a><a href="meganav.html#board">Board Games ▾</a><a href="meganav.html#rpg">Roleplaying ▾</a><a href="meganav.html#acc">Accessories ▾</a><a href="meganav.html#sale">Sale</a><a href="brands.html">Brands</a></div>
+      <div class="row" style="gap:16px;color:#777;"><a href="help.html">Shipping &amp; pickup</a><a href="about.html">About</a></div>
+    </div>
+    <div style="padding:10px 40px 0;border-top:1px solid var(--line);"><div class="sec-head" style="margin-bottom:6px;"><span class="vol">Icons with text</span> <span class="lbl">header group trust strip · editable</span></div></div>
+    <div class="grid g4 small center" style="padding:6px 40px 14px;color:#555;">
+      <span>▢ Free shipping over $300</span><span>▢ Australia-wide via AusPost</span><span>▢ Friendly, local service</span><span>▢ Secure checkout + PayPal</span>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-head"><span class="vol">Article (main article)</span> <span class="lbl">article.json · Enterprise main article, no changes</span></div>
+    <div class="center" style="max-width:820px;margin:0 auto;"><p class="small" style="font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:10.5px;">Reviews</p><h1 style="margin-top:6px;">Five great two-player games under $50</h1><p class="small muted" style="margin-top:8px;">21 Sep 2026</p></div>
+    <div class="img" style="height:380px;margin-top:20px;">Hero image (full width)</div>
+    <div style="max-width:620px;margin:24px auto 0;">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p><h3 style="margin-top:18px;">1. Sky Team</h3><p class="muted" style="margin-top:6px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus. <a href="product.html" style="text-decoration:underline;">Shop Sky Team</a></p>
+      <div class="img" style="height:200px;margin-top:14px;">Inline image</div>
+      <h3 style="margin-top:18px;">2. Jaipur</h3><p class="muted" style="margin-top:6px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus. <a href="product.html" style="text-decoration:underline;">Shop Jaipur</a></p>
+      <div class="row small" style="justify-content:space-between;margin-top:26px;padding-top:12px;border-top:1px solid var(--line);"><span>Share: X · Facebook · Pinterest</span><span>‹ Previous &nbsp; · &nbsp; 4 minute read &nbsp; · &nbsp; Next ›</span></div></div>
+    <div class="anno"><strong>Enterprise main article, as is.</strong> Tag, centred title and date, full-width hero image, then a narrow reading column. Share links, previous / next and an automatic read time at the end. Products are linked inline from the body text, which needs nothing built. The author line is a theme setting (shown or hidden).</div>
+  </div>
+  <div class="sec">
+    <div class="sec-head"><span class="vol tweak">Featured collection</span> <span class="lbl">optional · shoppable post</span></div>
+    <h2>Games in this article</h2><div style="margin-top:12px;"><div class="grid g4"><a class="pc" href="product.html"><div class="img">Box art</div><span class="heart">♡</span>
+      <div class="vendor">Le Scorpion Masqué</div><div class="title">Sky Team</div><div class="bggl"><span>2023</span><span class="rb"><svg width="11" height="11" aria-hidden="true" style="vertical-align:-0.18em;flex-shrink:0;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M239.18,97.26A16.38,16.38,0,0,0,224.92,86l-59-4.76L143.14,26.15a16.36,16.36,0,0,0-30.27,0L90.11,81.23,31.08,86a16.46,16.46,0,0,0-9.37,28.86l45,38.83L53,211.75a16.38,16.38,0,0,0,24.5,17.82L128,198.49l50.53,31.08A16.4,16.4,0,0,0,203,211.75l-13.76-58.07,45-38.83A16.43,16.43,0,0,0,239.18,97.26Zm-15.34,5.47-48.7,42a8,8,0,0,0-2.56,7.91l14.88,62.8a.37.37,0,0,1-.17.48c-.18.14-.23.11-.38,0l-54.72-33.65a8,8,0,0,0-8.38,0L69.09,215.94c-.15.09-.19.12-.38,0a.37.37,0,0,1-.17-.48l14.88-62.8a8,8,0,0,0-2.56-7.91l-48.7-42c-.12-.1-.23-.19-.13-.5s.18-.27.33-.29l63.92-5.16A8,8,0,0,0,103,91.86l24.62-59.61c.08-.17.11-.25.35-.25s.27.08.35.25L153,91.86a8,8,0,0,0,6.75,4.92l63.92,5.16c.15,0,.24,0,.33.29S224,102.63,223.84,102.73Z"/></svg> 7.9 BGG</span></div><div class="price">$39.95</div>
+      <div class="avail inv"><i></i>In stock</div><div class="qa">Add to cart</div></a><a class="pc" href="product.html"><div class="img">Box art</div><span class="heart">♡</span>
+      <div class="vendor">Space Cowboys</div><div class="title">Jaipur</div><div class="bggl"><span>2009</span><span class="rb"><svg width="11" height="11" aria-hidden="true" style="vertical-align:-0.18em;flex-shrink:0;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M239.18,97.26A16.38,16.38,0,0,0,224.92,86l-59-4.76L143.14,26.15a16.36,16.36,0,0,0-30.27,0L90.11,81.23,31.08,86a16.46,16.46,0,0,0-9.37,28.86l45,38.83L53,211.75a16.38,16.38,0,0,0,24.5,17.82L128,198.49l50.53,31.08A16.4,16.4,0,0,0,203,211.75l-13.76-58.07,45-38.83A16.43,16.43,0,0,0,239.18,97.26Zm-15.34,5.47-48.7,42a8,8,0,0,0-2.56,7.91l14.88,62.8a.37.37,0,0,1-.17.48c-.18.14-.23.11-.38,0l-54.72-33.65a8,8,0,0,0-8.38,0L69.09,215.94c-.15.09-.19.12-.38,0a.37.37,0,0,1-.17-.48l14.88-62.8a8,8,0,0,0-2.56-7.91l-48.7-42c-.12-.1-.23-.19-.13-.5s.18-.27.33-.29l63.92-5.16A8,8,0,0,0,103,91.86l24.62-59.61c.08-.17.11-.25.35-.25s.27.08.35.25L153,91.86a8,8,0,0,0,6.75,4.92l63.92,5.16c.15,0,.24,0,.33.29S224,102.63,223.84,102.73Z"/></svg> 7.4 BGG</span></div><div class="price">$29.95</div>
+      <div class="avail inv"><i></i>In stock</div><div class="qa">Add to cart</div></a><a class="pc" href="product.html"><div class="img">Box art</div><span class="heart">♡</span>
+      <div class="vendor">Lookout Spiele</div><div class="title">Patchwork</div><div class="price">$34.95</div>
+      <div class="avail inv"><i></i>In stock</div><div class="qa">Add to cart</div></a><a class="pc" href="product.html"><div class="img">Box art</div><span class="heart">♡</span>
+      <div class="vendor">KOSMOS</div><div class="title">Lost Cities</div><div class="price">$29.95</div>
+      <div class="avail inv"><i></i>In stock</div><div class="qa">Add to cart</div></a></div></div><div class="anno"><strong>Optional, cut if the budget is tight.</strong> Enterprise has no "products in this article" block, so this is the theme's product carousel fed by <span class="mf new">article.featured_games</span> (list of products picked per post) with a few lines of Liquid. Hides when empty. Without it, inline links in the body do the same job for free.</div>
+  </div>
+  <div class="sec">
+    <div class="sec-head"><span class="vol">Article comments</span> <span class="lbl">native · optional</span></div>
+    <h3>Leave a comment</h3><p class="small muted" style="margin-top:4px;">Please note: comments must be approved before they are published.</p><div class="grid g2" style="margin-top:10px;gap:10px;"><div class="field">Name</div><div class="field">Email</div></div><div class="field" style="margin-top:10px;height:70px;">Comment</div><p style="margin-top:10px;"><span class="btn solid">Post comment</span></p><div class="anno">Native, only shows if comments are turned on for the blog in Shopify admin. Recommend off at launch (moderation load) unless Dean wants them.</div>
+  </div>
+  <div class="sec">
+    <div class="sec-head"><span class="vol">Featured blog</span> <span class="lbl">Enterprise featured blog section</span></div>
+    <div class="row" style="justify-content:space-between;align-items:end;"><h2>Related articles</h2><a href="blog.html" class="small" style="text-decoration:underline;">View all</a></div><div class="grid g3" style="margin-top:14px;gap:22px;"><a href="article.html"><div class="img" style="height:170px;">Image</div><p class="small" style="margin-top:8px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:10.5px;">Reviews</p><h3 style="margin-top:2px;">Five great two-player games under $50</h3><p class="small muted" style="margin-top:4px;">21 Sep 2026</p></a><a href="article.html"><div class="img" style="height:170px;">Image</div><p class="small" style="margin-top:8px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:10.5px;">Store news</p><h3 style="margin-top:2px;">Our new website is live</h3><p class="small muted" style="margin-top:4px;">2 Sep 2026</p></a><a href="article.html"><div class="img" style="height:170px;">Image</div><p class="small" style="margin-top:8px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:10.5px;">New releases</p><h3 style="margin-top:2px;">The big preorders landing before Christmas</h3><p class="small muted" style="margin-top:4px;">28 Aug 2026</p></a></div>
+  </div>
+  <div class="sec">
+    <div class="sec-head"><span class="vol">Image banner</span> <span class="lbl">as on the Enterprise demo article</span></div>
+    <div class="img" style="height:180px;flex-direction:column;text-transform:none;letter-spacing:0;color:#333;"><h2>Questions about an order?</h2><span class="btn" style="margin-top:10px;">Help &amp; FAQ</span></div>
+  </div>
+  <!-- ============ FOOTER GROUP (same on every page) ============ -->
+  <div class="sec tg" style="background:#2b2b2b;color:#ddd;border:none;">
+    <div class="sec-head" style="margin-bottom:14px;"><span class="vol">Newsletter</span> <span class="lbl" style="color:#aaa;">Mailchimp list</span></div>
+    <div class="row" style="justify-content:space-between;align-items:center;">
+      <div><h3 style="color:#fff;">New releases and preorders, first.</h3><p class="small" style="color:#aaa;margin-top:4px;">New arrivals, preorders and offers straight to your inbox.</p></div>
+      <div class="row" style="gap:8px;"><div class="field" style="width:260px;background:#3a3a3a;border-color:#555;">Email address</div><span class="btn solid" style="background:#555;border-color:#555;">Sign up</span></div>
+    </div>
+  </div>
+  <div class="sec tg" style="background:#2b2b2b;color:#ddd;border:none;padding-top:10px;">
+    <div class="sec-head" style="margin-bottom:14px;"><span class="vol">Footer</span></div>
+    <div class="row" style="justify-content:space-between;">
+      <div style="flex:1.4;"><div class="img" style="width:150px;height:40px;background:#3a3a3a;border-color:#555;color:#888;">Logo</div><p class="small" style="margin-top:12px;color:#aaa;max-width:280px;">Your friendly, local, online board game store. Sydney based, shipping Australia-wide.</p>
+        <div class="row" style="gap:8px;margin-top:12px;"><div class="img" style="width:28px;height:28px;background:#3a3a3a;border-color:#555;"> </div><div class="img" style="width:28px;height:28px;background:#3a3a3a;border-color:#555;"> </div><div class="img" style="width:28px;height:28px;background:#3a3a3a;border-color:#555;"> </div></div></div>
+      <div style="flex:1;"><p class="small" style="color:#888;letter-spacing:.1em;">SHOP</p><p class="small" style="line-height:2;color:#ccc;"><a href="collection-preorders.html">Preorders</a><br><a href="collection-preorders.html#just-arrived">Just Arrived</a><br><a href="collection.html">Board Games</a><br><a href="collection-rpg.html">Roleplaying</a><br><a href="collection-accessories.html">Accessories</a><br><a href="brands.html">Brands A-Z</a></p></div>
+      <div style="flex:1;"><p class="small" style="color:#888;letter-spacing:.1em;">HELP</p><p class="small" style="line-height:2;color:#ccc;"><a href="help.html">Shipping &amp; pickup</a><br><a href="help.html">Preorder policy</a><br><a href="help.html">Returns</a><br><a href="help.html">FAQ</a><br><a href="account.html">Track my order</a></p></div>
+      <div style="flex:1;"><p class="small" style="color:#888;letter-spacing:.1em;">ADVENT GAMES</p><p class="small" style="line-height:2;color:#ccc;"><a href="about.html">About us</a><br><a href="about.html#contact">Contact</a><br><a href="blog.html">News &amp; reviews</a><br><a href="wishlist.html">Wishlist</a></p></div>
+    </div>
+    <div class="row" style="justify-content:space-between;margin-top:20px;align-items:center;"><p class="small" style="color:#777;font-size:11px;">© 2026 Advent Games · Privacy Policy · Terms &amp; Conditions · Shipping &amp; Returns</p>
+      <div class="row" style="gap:6px;"><span class="pill">Visa</span><span class="pill">MC</span><span class="pill">PayPal</span><span class="pill">Bank transfer</span></div></div>
+  </div>
+</div>
+<script>
+document.addEventListener('click',function(e){var t=e.target.closest('.wf-tabs [data-tab]');if(!t)return;var sec=t.closest('.sec');sec.querySelectorAll('.wf-tabs [data-tab]').forEach(function(x){x.classList.toggle('on',x===t);});sec.querySelectorAll('.tabpanel').forEach(function(p){p.hidden=p.dataset.panel!==t.dataset.tab;});});
+(function(){
+  var g=document.querySelector('.wf-state'); if(!g) return;
+  var b=document.body, btns=g.querySelectorAll('button[data-st]');
+  function set(k){ b.setAttribute('data-st',k); btns.forEach(function(x){x.setAttribute('aria-pressed',String(x.dataset.st===k));}); }
+  set(g.dataset.default);
+  btns.forEach(function(x){x.addEventListener('click',function(){set(x.dataset.st);});});
+})();
+</script>
+<script>
+(function(){
+  var b=document.body, btns=document.querySelectorAll('.wf-toggle button[data-mode]');
+  function set(mode, save){
+    b.classList.toggle('clean', mode==='clean');
+    btns.forEach(function(x){x.setAttribute('aria-pressed', String(x.dataset.mode===mode));});
+    if(save){try{localStorage.setItem('advent-wf-mode', mode);}catch(e){}}
+  }
+  set(b.classList.contains('clean')?'clean':'notes', false);
+  btns.forEach(function(x){x.addEventListener('click',function(){set(x.dataset.mode,true);});});
+})();
+</script>
+</body>
+</html>

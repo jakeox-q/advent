@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Account (Shopify-hosted) wireframe</title>
+<link rel="stylesheet" href="wireframe.css">
+<link rel="stylesheet" href="advent.css">
+</head>
+<body>
+<script>try{if(location.hash==="#clean"||localStorage.getItem("advent-wf-mode")==="clean")document.body.classList.add("clean");}catch(e){}</script>
+<div class="page">
+  <div class="wfbar">
+    <div class="wf-left"><strong>Advent Games × Enterprise</strong>
+      <select class="wf-pages" aria-label="Wireframe page" onchange="location.href=this.value"><option value="index.html">Home</option><option value="meganav.html">Navigation + drawers</option><option value="collection.html">Board Games</option><option value="collection-preorders.html">Preorders</option><option value="collection-rpg.html">RPG</option><option value="collection-accessories.html">Accessories</option><option value="brands.html">Brands</option><option value="brand.html">Brand</option><option value="search.html">Search</option><option value="product.html">Product</option><option value="product-preorder.html">Product: expansion example</option><option value="product-rpg.html">Product: RPG example</option><option value="product-accessory.html">Product: accessory example</option><option value="cart.html">Cart</option><option value="account.html" selected>Account</option><option value="wishlist.html">Wishlist</option><option value="about.html">About + Contact</option><option value="help.html">Help</option><option value="blog.html">Blog</option><option value="article.html">Blog post</option><option value="data-map.html">DATA MAP</option></select></div>
+    <div class="wf-right">
+      <div class="legend"><span class="vol">Enterprise section</span><span class="vol tweak">native + tweak</span><span class="vol custom">custom / app</span><span class="mf">namespace.key</span><span class="mf new">proposed field</span></div>
+      
+      <div class="wf-toggle" role="group" aria-label="View mode"><button type="button" data-mode="notes" aria-pressed="true">Annotated</button><button type="button" data-mode="clean" aria-pressed="false">Clean</button></div>
+    </div>
+  </div>
+
+  <!-- ============ HEADER GROUP (same on every page) ============ -->
+  <div class="sec tg" style="padding:0;">
+    <div style="padding:10px 40px 0;"><div class="sec-head" style="margin-bottom:6px;"><span class="vol">Announcement bar</span> <span class="lbl">site message left · utility links right</span></div></div>
+    <div class="row small" style="justify-content:space-between;background:#f2f2f2;padding:7px 40px;font-size:12px;">
+      <span>Flat rate shipping $10 Sydney Metro, Gosford &amp; Wollongong · $15 rest of Australia · Free over $300</span>
+      <span class="row" style="gap:16px;"><a href="help.html">Help &amp; FAQ</a><a href="account.html">Track my order</a><a href="brands.html">Brands A-Z</a></span>
+    </div>
+    <div style="padding:14px 40px 0;"><div class="sec-head" style="margin-bottom:8px;"><span class="vol">Header</span> <span class="lbl">sticky · search with category dropdown · mega menu</span></div></div>
+    <div class="row" style="align-items:center;justify-content:space-between;padding:4px 40px 12px;gap:24px;">
+      <a href="index.html"><div class="img" style="width:150px;height:44px;">Logo</div></a>
+      <a href="search.html" style="flex:1;display:flex;"><div class="field" style="width:120px;border-right:none;border-radius:4px 0 0 4px;">All ▾</div><div class="field" style="flex:1;border-radius:0 4px 4px 0;">Search 11,000+ games, publishers, designers...</div></a>
+      <div class="row small" style="gap:16px;align-items:center;"><a href="account.html">Account</a><a href="wishlist.html">♡ Wishlist</a><a href="cart.html"><strong>Cart (2)</strong></a></div>
+    </div>
+    <div class="row small nav" style="gap:22px;padding:10px 40px;border-top:1px solid var(--line);justify-content:space-between;">
+      <div class="row" style="gap:22px;flex-wrap:wrap;"><a href="meganav.html#preorders">Preorders ▾</a><a href="meganav.html#arrived">Just Arrived ▾</a><a href="meganav.html#board">Board Games ▾</a><a href="meganav.html#rpg">Roleplaying ▾</a><a href="meganav.html#acc">Accessories ▾</a><a href="meganav.html#sale">Sale</a><a href="brands.html">Brands</a></div>
+      <div class="row" style="gap:16px;color:#777;"><a href="help.html">Shipping &amp; pickup</a><a href="about.html">About</a></div>
+    </div>
+    <div style="padding:10px 40px 0;border-top:1px solid var(--line);"><div class="sec-head" style="margin-bottom:6px;"><span class="vol">Icons with text</span> <span class="lbl">header group trust strip · editable</span></div></div>
+    <div class="grid g4 small center" style="padding:6px 40px 14px;color:#555;">
+      <span>▢ Free shipping over $300</span><span>▢ Australia-wide via AusPost</span><span>▢ Friendly, local service</span><span>▢ Secure checkout + PayPal</span>
+    </div>
+  </div>
+<style>.sec.tg{display:none;}</style><div class="sec" style="padding:12px 40px;background:#fbf6f0;"><p class="small"><strong>Shopify-hosted page.</strong> The store header and footer don't appear here: customers land on Shopify's customer accounts (on the shop's account subdomain) with the store logo, colours and fonts, and a link back to the shop.</p></div>
+  <div class="sec">
+    <div class="sec-head"><span class="vol custom">Customer accounts: Order status (Shopify-hosted)</span> <span class="lbl">native page · 3 extension slots marked</span></div>
+    <div style="max-width:680px;margin:0 auto;border:1px solid var(--line);border-radius:10px;padding:18px;">
+    <div class="row" style="justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:12px;"><div class="img" style="width:110px;height:34px;">Logo</div><span class="small">Shop · Orders · Profile</span></div>
+    <p class="small muted" style="margin-top:14px;">&lt; Orders</p><h2>Order #10482</h2><p class="small muted">Confirmed 2 Oct 2026</p>
+    <div class="ext-slot small" style="margin-top:10px;padding:10px;"><strong>Part of this order is a preorder.</strong> In-stock items are held and shipped together when the preorder lands, unless you've paid for split shipping. <span class="vol tweak">order-status.block.render</span></div>
+    <div class="card small" style="margin-top:12px;"><strong>Confirmed</strong> · 2 Oct<p class="muted" style="margin-top:4px;">Native fulfilment timeline. Shows tracking once AusPost fulfils.</p></div>
+    <div class="row" style="gap:8px;margin-top:12px;"><span class="btn">Buy again</span><span class="btn ghost">Request return</span><span class="btn ghost">Add items to this order <span class="vol tweak">order action</span></span></div>
+    <h3 style="margin-top:18px;">Order summary</h3>
+    <div class="row" style="gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line);"><div class="img" style="width:56px;height:56px;flex-shrink:0;"> </div><div style="flex:1;"><strong>Nusfjord</strong><p class="small muted">Qty 1</p><div class="ext-slot small"><span class="pill">In stock · waiting for the rest of your order</span> <span class="vol tweak">line-item render-after</span></div></div><strong>$107.95</strong></div>
+    <div class="row" style="gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line);"><div class="img" style="width:56px;height:56px;flex-shrink:0;"> </div><div style="flex:1;"><strong>C&amp;C Napoleonics Exp. #7</strong><p class="small muted">Qty 1</p><div class="ext-slot small"><span class="pill">Preorder · expected November 2026</span></div></div><strong>$144.95</strong></div>
+    <div class="row" style="gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line);"><div class="img" style="width:56px;height:56px;flex-shrink:0;"> </div><div style="flex:1;"><strong>Matte Sleeves 63.5 x 88</strong><p class="small muted">Qty 2</p><div class="ext-slot small"><span class="pill">Arriving from supplier · due in 3-5 business days</span></div></div><strong>$19.90</strong></div>
+    <p class="small" style="margin-top:12px;text-align:right;">Subtotal, shipping, total (native)</p>
+    <h3 style="margin-top:14px;">Order details</h3><p class="small muted">Contact · Shipping address · Payment · Billing address (native)</p></div>
+    <div class="anno"><strong>What this page really is:</strong> Shopify's own customer accounts page, not a theme template. Since Feb 2026 new stores can only use the current (hosted) customer accounts; the old theme-based account pages are deprecated. So Enterprise has no say in this layout. What we control: <strong>branding</strong> (logo, colours, fonts, corner style) in the Checkout &amp; accounts editor, and <strong>small add-ons in fixed slots</strong> from a custom app (customer account UI extensions). Everything not marked with a dashed box is Shopify's native page and looks the same on every store.<br><br><strong>The dashed boxes are the only custom parts</strong>, and each needs the custom app:<br>1. <strong>Status text under each item</strong> (target: line item render-after). Reads a per-item status the middleware writes to the order (order or line metafields). This is the closest Shopify gets to the design doc's "item-level status". It sits under each line, not as a status column in a table.<br>2. <strong>Preorder notice banner</strong> (order status block). Optional, plain text.<br>3. <strong>"Add items to this order"</strong> (order action menu item). The simple version opens instructions for the current workaround: choose the $0 "Order addition" shipping rate at checkout and note the order number. Actually merging into a paid order would need order editing through the app backend, a bigger build: treat as out of scope unless quoted.<br><br><strong>Scope check:</strong> none of this is theme work. It is a small custom app, deployed through the Shopify CLI, plus the middleware writing the statuses. Confirm whether it sits under the middleware line in the quote; if not, launch with the native page and the shipping-rate workaround only, and nothing is promised that can't be delivered.</div>
+  </div>
+  <div class="sec">
+    <div class="sec-head"><span class="vol">Customer accounts: Order list + Profile (Shopify-hosted)</span> <span class="lbl">native pages</span></div>
+    <div class="grid g3 small"><div class="card"><strong>Orders</strong><p class="muted">Native list with status, Buy again, returns</p></div><div class="card"><strong>Profile</strong><p class="muted">Native: name, addresses, marketing consent</p></div><div class="card"><strong>Wishlist</strong><p class="muted">Optional app, not in scope. Lives on the storefront if added. Linked from the header, not inside the account.</p></div></div><div class="anno">Branding only, no layout changes. Sign-in is a one-time email code (no passwords), so migrated customers simply sign in with their email; there is nothing to activate or import. Enterprise's header "Account" link goes straight here.</div>
+  </div>
+  <!-- ============ FOOTER GROUP (same on every page) ============ -->
+  <div class="sec tg" style="background:#2b2b2b;color:#ddd;border:none;">
+    <div class="sec-head" style="margin-bottom:14px;"><span class="vol">Newsletter</span> <span class="lbl" style="color:#aaa;">Mailchimp list</span></div>
+    <div class="row" style="justify-content:space-between;align-items:center;">
+      <div><h3 style="color:#fff;">New releases and preorders, first.</h3><p class="small" style="color:#aaa;margin-top:4px;">New arrivals, preorders and offers straight to your inbox.</p></div>
+      <div class="row" style="gap:8px;"><div class="field" style="width:260px;background:#3a3a3a;border-color:#555;">Email address</div><span class="btn solid" style="background:#555;border-color:#555;">Sign up</span></div>
+    </div>
+  </div>
+  <div class="sec tg" style="background:#2b2b2b;color:#ddd;border:none;padding-top:10px;">
+    <div class="sec-head" style="margin-bottom:14px;"><span class="vol">Footer</span></div>
+    <div class="row" style="justify-content:space-between;">
+      <div style="flex:1.4;"><div class="img" style="width:150px;height:40px;background:#3a3a3a;border-color:#555;color:#888;">Logo</div><p class="small" style="margin-top:12px;color:#aaa;max-width:280px;">Your friendly, local, online board game store. Sydney based, shipping Australia-wide.</p>
+        <div class="row" style="gap:8px;margin-top:12px;"><div class="img" style="width:28px;height:28px;background:#3a3a3a;border-color:#555;"> </div><div class="img" style="width:28px;height:28px;background:#3a3a3a;border-color:#555;"> </div><div class="img" style="width:28px;height:28px;background:#3a3a3a;border-color:#555;"> </div></div></div>
+      <div style="flex:1;"><p class="small" style="color:#888;letter-spacing:.1em;">SHOP</p><p class="small" style="line-height:2;color:#ccc;"><a href="collection-preorders.html">Preorders</a><br><a href="collection-preorders.html#just-arrived">Just Arrived</a><br><a href="collection.html">Board Games</a><br><a href="collection-rpg.html">Roleplaying</a><br><a href="collection-accessories.html">Accessories</a><br><a href="brands.html">Brands A-Z</a></p></div>
+      <div style="flex:1;"><p class="small" style="color:#888;letter-spacing:.1em;">HELP</p><p class="small" style="line-height:2;color:#ccc;"><a href="help.html">Shipping &amp; pickup</a><br><a href="help.html">Preorder policy</a><br><a href="help.html">Returns</a><br><a href="help.html">FAQ</a><br><a href="account.html">Track my order</a></p></div>
+      <div style="flex:1;"><p class="small" style="color:#888;letter-spacing:.1em;">ADVENT GAMES</p><p class="small" style="line-height:2;color:#ccc;"><a href="about.html">About us</a><br><a href="about.html#contact">Contact</a><br><a href="blog.html">News &amp; reviews</a><br><a href="wishlist.html">Wishlist</a></p></div>
+    </div>
+    <div class="row" style="justify-content:space-between;margin-top:20px;align-items:center;"><p class="small" style="color:#777;font-size:11px;">© 2026 Advent Games · Privacy Policy · Terms &amp; Conditions · Shipping &amp; Returns</p>
+      <div class="row" style="gap:6px;"><span class="pill">Visa</span><span class="pill">MC</span><span class="pill">PayPal</span><span class="pill">Bank transfer</span></div></div>
+  </div>
+</div>
+<script>
+document.addEventListener('click',function(e){var t=e.target.closest('.wf-tabs [data-tab]');if(!t)return;var sec=t.closest('.sec');sec.querySelectorAll('.wf-tabs [data-tab]').forEach(function(x){x.classList.toggle('on',x===t);});sec.querySelectorAll('.tabpanel').forEach(function(p){p.hidden=p.dataset.panel!==t.dataset.tab;});});
+(function(){
+  var g=document.querySelector('.wf-state'); if(!g) return;
+  var b=document.body, btns=g.querySelectorAll('button[data-st]');
+  function set(k){ b.setAttribute('data-st',k); btns.forEach(function(x){x.setAttribute('aria-pressed',String(x.dataset.st===k));}); }
+  set(g.dataset.default);
+  btns.forEach(function(x){x.addEventListener('click',function(){set(x.dataset.st);});});
+})();
+</script>
+<script>
+(function(){
+  var b=document.body, btns=document.querySelectorAll('.wf-toggle button[data-mode]');
+  function set(mode, save){
+    b.classList.toggle('clean', mode==='clean');
+    btns.forEach(function(x){x.setAttribute('aria-pressed', String(x.dataset.mode===mode));});
+    if(save){try{localStorage.setItem('advent-wf-mode', mode);}catch(e){}}
+  }
+  set(b.classList.contains('clean')?'clean':'notes', false);
+  btns.forEach(function(x){x.addEventListener('click',function(){set(x.dataset.mode,true);});});
+})();
+</script>
+</body>
+</html>

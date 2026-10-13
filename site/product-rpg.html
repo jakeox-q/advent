@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product: RPG example wireframe</title>
+<link rel="stylesheet" href="wireframe.css">
+<link rel="stylesheet" href="advent.css">
+</head>
+<body>
+<script>try{if(location.hash==="#clean"||localStorage.getItem("advent-wf-mode")==="clean")document.body.classList.add("clean");}catch(e){}</script>
+<div class="page">
+  <div class="wfbar">
+    <div class="wf-left"><strong>Advent Games × Enterprise</strong>
+      <select class="wf-pages" aria-label="Wireframe page" onchange="location.href=this.value"><option value="index.html">Home</option><option value="meganav.html">Navigation + drawers</option><option value="collection.html">Board Games</option><option value="collection-preorders.html">Preorders</option><option value="collection-rpg.html">RPG</option><option value="collection-accessories.html">Accessories</option><option value="brands.html">Brands</option><option value="brand.html">Brand</option><option value="search.html">Search</option><option value="product.html">Product</option><option value="product-preorder.html">Product: expansion example</option><option value="product-rpg.html" selected>Product: RPG example</option><option value="product-accessory.html">Product: accessory example</option><option value="cart.html">Cart</option><option value="account.html">Account</option><option value="wishlist.html">Wishlist</option><option value="about.html">About + Contact</option><option value="help.html">Help</option><option value="blog.html">Blog</option><option value="article.html">Blog post</option><option value="data-map.html">DATA MAP</option></select></div>
+    <div class="wf-right">
+      <div class="legend"><span class="vol">Enterprise section</span><span class="vol tweak">native + tweak</span><span class="vol custom">custom / app</span><span class="mf">namespace.key</span><span class="mf new">proposed field</span></div>
+      <div class="wf-toggle wf-state" role="group" aria-label="Availability state" data-default="in"><span style="padding:4px 8px;color:#aaa;font-size:11px;">Availability:</span><button type="button" data-st="in" aria-pressed="true">In stock</button><button type="button" data-st="sup" aria-pressed="false">At supplier</button><button type="button" data-st="pre" aria-pressed="false">Preorder</button><button type="button" data-st="soon" aria-pressed="false">Coming soon</button><button type="button" data-st="out" aria-pressed="false">Out of stock</button></div>
+      <div class="wf-toggle" role="group" aria-label="View mode"><button type="button" data-mode="notes" aria-pressed="true">Annotated</button><button type="button" data-mode="clean" aria-pressed="false">Clean</button></div>
+    </div>
+  </div>
+
+  <!-- ============ HEADER GROUP (same on every page) ============ -->
+  <div class="sec tg" style="padding:0;">
+    <div style="padding:10px 40px 0;"><div class="sec-head" style="margin-bottom:6px;"><span class="vol">Announcement bar</span> <span class="lbl">site message left · utility links right</span></div></div>
+    <div class="row small" style="justify-content:space-between;background:#f2f2f2;padding:7px 40px;font-size:12px;">
+      <span>Flat rate shipping $10 Sydney Metro, Gosford &amp; Wollongong · $15 rest of Australia · Free over $300</span>
+      <span class="row" style="gap:16px;"><a href="help.html">Help &amp; FAQ</a><a href="account.html">Track my order</a><a href="brands.html">Brands A-Z</a></span>
+    </div>
+    <div style="padding:14px 40px 0;"><div class="sec-head" style="margin-bottom:8px;"><span class="vol">Header</span> <span class="lbl">sticky · search with category dropdown · mega menu</span></div></div>
+    <div class="row" style="align-items:center;justify-content:space-between;padding:4px 40px 12px;gap:24px;">
+      <a href="index.html"><div class="img" style="width:150px;height:44px;">Logo</div></a>
+      <a href="search.html" style="flex:1;display:flex;"><div class="field" style="width:120px;border-right:none;border-radius:4px 0 0 4px;">All ▾</div><div class="field" style="flex:1;border-radius:0 4px 4px 0;">Search 11,000+ games, publishers, designers...</div></a>
+      <div class="row small" style="gap:16px;align-items:center;"><a href="account.html">Account</a><a href="wishlist.html">♡ Wishlist</a><a href="cart.html"><strong>Cart (2)</strong></a></div>
+    </div>
+    <div class="row small nav" style="gap:22px;padding:10px 40px;border-top:1px solid var(--line);justify-content:space-between;">
+      <div class="row" style="gap:22px;flex-wrap:wrap;"><a href="meganav.html#preorders">Preorders ▾</a><a href="meganav.html#arrived">Just Arrived ▾</a><a href="meganav.html#board">Board Games ▾</a><a href="meganav.html#rpg" style="font-weight:700;text-decoration:underline;">Roleplaying ▾</a><a href="meganav.html#acc">Accessories ▾</a><a href="meganav.html#sale">Sale</a><a href="brands.html">Brands</a></div>
+      <div class="row" style="gap:16px;color:#777;"><a href="help.html">Shipping &amp; pickup</a><a href="about.html">About</a></div>
+    </div>
+    <div style="padding:10px 40px 0;border-top:1px solid var(--line);"><div class="sec-head" style="margin-bottom:6px;"><span class="vol">Icons with text</span> <span class="lbl">header group trust strip · editable</span></div></div>
+    <div class="grid g4 small center" style="padding:6px 40px 14px;color:#555;">
+      <span>▢ Free shipping over $300</span><span>▢ Australia-wide via AusPost</span><span>▢ Friendly, local service</span><span>▢ Secure checkout + PayPal</span>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-head"><span class="vol">Product page (main product)</span> <span class="vol tweak">BGG line + stats strip + availability = Custom Liquid blocks</span> <span class="lbl">buy box · sticky add to cart on scroll</span></div>
+    
+    <p class="small muted"><a href="index.html">Home</a> / <a href="collection-rpg.html">Roleplaying</a> / Pathfinder Player Core</p>
+    <div class="row pdp-top" style="gap:36px;margin-top:12px;align-items:flex-start;">
+      <div class="pdp-gal" style="flex:1.05;min-width:0;"><div class="img pdp-main" style="height:440px;">Box art (zoom)</div>
+        <div class="grid g5 pdp-thumbs" style="margin-top:8px;"><div class="img" style="height:60px;"> </div><div class="img" style="height:60px;"> </div><div class="img" style="height:60px;"> </div><div class="img" style="height:60px;"> </div><div class="img" style="height:60px;"> </div></div>
+        <p class="note" style="margin-top:6px;">Gallery: box front, back, components, then YouTube videos added as product media (native "Add from URL"). Box art contained, never cropped. On phones it becomes a swipe gallery.</p></div>
+      <div class="pdp-buy" style="flex:1;min-width:0;">
+        <div class="o-head"><div class="row" style="gap:6px;flex-wrap:wrap;"><span class="pill">Core Rulebook</span> <span class="mf">rpg.product_kind</span></div>
+        <p class="small" style="margin-top:6px;"><a href="brand.html" style="text-decoration:underline;">Paizo</a> <span class="mf">vendor</span></p>
+        <h1 style="font-size:28px;margin-top:2px;line-height:1.15;">Pathfinder Player Core</h1>
+        <div class="bggl" style="font-size:12.5px;margin-top:6px;gap:8px;"><span>2023</span><span><a href="collection-rpg.html" style="text-decoration:underline;">Pathfinder 2e</a></span><span class="muted">Remastered</span></div><div style="margin-top:4px;"><span class="mf">bgg.year_published</span> <span class="mf">rpg.system</span></div></div>
+        <div class="o-strip"><div class="grid" style="grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:14px;border:1px solid var(--line);border-radius:6px;"><div style="padding:10px 6px;text-align:center;"><div style="color:#333;"><svg width="22" height="22" aria-hidden="true" style="vertical-align:-0.18em;flex-shrink:0;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M232,48H160a40,40,0,0,0-32,16A40,40,0,0,0,96,48H24a8,8,0,0,0-8,8V200a8,8,0,0,0,8,8H96a24,24,0,0,1,24,24,8,8,0,0,0,16,0,24,24,0,0,1,24-24h72a8,8,0,0,0,8-8V56A8,8,0,0,0,232,48ZM96,192H32V64H96a24,24,0,0,1,24,24V200A39.81,39.81,0,0,0,96,192Zm128,0H160a39.81,39.81,0,0,0-24,8V88a24,24,0,0,1,24-24h64Z"/></svg></div><div class="muted" style="font-size:10.5px;margin-top:2px;">System</div><strong style="font-size:13px;">Pathfinder 2e</strong><div><span class="mf">rpg.system</span></div></div><div style="padding:10px 6px;text-align:center;border-left:1px solid var(--line);"><div style="color:#333;"><svg width="22" height="22" aria-hidden="true" style="vertical-align:-0.18em;flex-shrink:0;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M231.65,194.55,198.46,36.75a16,16,0,0,0-19-12.39L132.65,34.42a16.08,16.08,0,0,0-12.3,19l33.19,157.8A16,16,0,0,0,169.16,224a16.25,16.25,0,0,0,3.38-.36l46.81-10.06A16.09,16.09,0,0,0,231.65,194.55ZM136,50.15c0-.06,0-.09,0-.09l46.8-10,3.33,15.87L139.33,66Zm6.62,31.47,46.82-10.05,3.34,15.9L146,97.53Zm6.64,31.57,46.82-10.06,13.3,63.24-46.82,10.06ZM216,197.94l-46.8,10-3.33-15.87L212.67,182,216,197.85C216,197.91,216,197.94,216,197.94ZM104,32H56A16,16,0,0,0,40,48V208a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V48A16,16,0,0,0,104,32ZM56,48h48V64H56Zm0,32h48v96H56Zm48,128H56V192h48v16Z"/></svg></div><div class="muted" style="font-size:10.5px;margin-top:2px;">Kind</div><strong style="font-size:13px;">Core Rulebook</strong><div><span class="mf">rpg.product_kind</span></div></div><div style="padding:10px 6px;text-align:center;border-left:1px solid var(--line);"><div style="color:#333;"><svg width="22" height="22" aria-hidden="true" style="vertical-align:-0.18em;flex-shrink:0;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M240,208H224V96a16,16,0,0,0-16-16H144V32a16,16,0,0,0-24.88-13.32L39.12,72A16,16,0,0,0,32,85.34V208H16a8,8,0,0,0,0,16H240a8,8,0,0,0,0-16ZM208,96V208H144V96ZM48,85.34,128,32V208H48ZM112,112v16a8,8,0,0,1-16,0V112a8,8,0,1,1,16,0Zm-32,0v16a8,8,0,0,1-16,0V112a8,8,0,1,1,16,0Zm0,56v16a8,8,0,0,1-16,0V168a8,8,0,0,1,16,0Zm32,0v16a8,8,0,0,1-16,0V168a8,8,0,0,1,16,0Z"/></svg></div><div class="muted" style="font-size:10.5px;margin-top:2px;">Publisher</div><strong style="font-size:13px;">Paizo</strong><div><span class="mf">vendor</span></div></div></div></div>
+        <div class="o-sum"><p class="muted small" style="margin-top:12px;">Everything players need to build characters and play Pathfinder: ancestries, classes, spells and the core rules. <span class="mf">custom.game_summary</span></p>
+        </div>
+        <div class="o-price"><p style="margin-top:14px;font-size:24px;font-weight:700;">$89.95</p><p class="small muted" style="margin-top:2px;">Card, PayPal or bank transfer</p></div>
+        <div class="o-avail"><div class="card small" style="margin-top:12px;padding:14px;">
+      <div class="st st-in"><div class="avail" style="font-size:13px;"><i></i><strong>In stock</strong> · dispatched in 1-3 business days</div><div class="muted" style="margin-top:4px;">Only 3 left <span class="lbl">Enterprise stock counter</span></div></div>
+      <div class="st st-sup"><div class="avail" style="font-size:13px;"><i class="half"></i><strong>Available from supplier</strong> · ships in 3-5 business days <span class="mf new">advent.supplier_lead_time</span></div><div class="muted" style="margin-top:4px;">We order it in as soon as you check out.</div></div>
+      <div class="st st-pre"><div class="avail" style="font-size:13px;"><i class="hollow"></i><strong>Preorder</strong> · expected November 2026 <span class="mf">advent.eta</span></div><div class="muted" style="margin-top:4px;">Publisher release 14 Nov 2026 <span class="mf">advent.release_date</span>. Charged now, shipped within one working day of release. Cancel any time before it leaves our supplier.</div><div style="margin-top:8px;border-top:1px dashed var(--line);padding-top:8px;">⚠ Publisher update: this wave has slipped two weeks. <span class="mf new">advent.notice</span></div></div>
+      <div class="st st-soon"><div class="avail" style="font-size:13px;"><i class="hollow"></i><strong>Coming soon</strong> · November 2026</div><div class="muted" style="margin-top:4px;">Preorders aren't open yet. Get an email the moment they are.</div></div>
+      <div class="st st-out"><div class="avail" style="font-size:13px;"><i class="hollow"></i><strong>Out of stock</strong></div><div class="muted" style="margin-top:4px;">We'll email you as soon as it's back.</div></div>
+      <div class="note" style="margin-top:6px;">Custom Liquid block driven by <span class="mf">advent.availability_state</span>. Use the Availability switch in the top bar to see each state.</div></div></div>
+        <div class="o-cta"><div class="row" style="gap:8px;margin-top:12px;align-items:stretch;">
+      <div class="st st-in st-sup st-pre"><div class="field" style="width:90px;">− 1 +</div></div>
+      <div class="st st-soon st-out"><div class="field" style="flex:1;">Email address</div></div>
+      <span class="btn solid" style="flex:1;text-align:center;"><span class="st st-in st-sup">Add to cart</span><span class="st st-pre">Preorder now</span><span class="st st-soon st-out"><svg width="15" height="15" aria-hidden="true" style="vertical-align:-0.18em;flex-shrink:0;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,71.1a8,8,0,0,1-10.78-3.42,94.13,94.13,0,0,0-33.46-36.91,8,8,0,1,1,8.54-13.54,111.46,111.46,0,0,1,39.12,43.09A8,8,0,0,1,224,71.1ZM35.71,72a8,8,0,0,0,7.1-4.32A94.13,94.13,0,0,1,76.27,30.77a8,8,0,1,0-8.54-13.54A111.46,111.46,0,0,0,28.61,60.32,8,8,0,0,0,35.71,72Zm186.1,103.94A16,16,0,0,1,208,200H167.2a40,40,0,0,1-78.4,0H48a16,16,0,0,1-13.79-24.06C43.22,160.39,48,138.28,48,112a80,80,0,0,1,160,0C208,138.27,212.78,160.38,221.81,175.94ZM150.62,200H105.38a24,24,0,0,0,45.24,0ZM208,184c-10.64-18.27-16-42.49-16-72a64,64,0,0,0-128,0c0,29.52-5.38,53.74-16,72Z"/></svg> Notify me</span></span><span class="btn">♡</span></div>
+      <div class="st st-soon st-out"><p class="note" style="margin-top:4px;">Back-in-stock / notify app block (same app as wishlist if possible).</p></div></div>
+        
+        <div class="o-rest"><div class="small" style="margin-top:12px;line-height:1.8;">
+      <div><svg width="16" height="16" aria-hidden="true" style="vertical-align:-0.18em;flex-shrink:0;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M255.42,117l-14-35A15.93,15.93,0,0,0,226.58,72H192V64a8,8,0,0,0-8-8H32A16,16,0,0,0,16,72V184a16,16,0,0,0,16,16H49a32,32,0,0,0,62,0h50a32,32,0,0,0,62,0h17a16,16,0,0,0,16-16V120A7.94,7.94,0,0,0,255.42,117ZM192,88h34.58l9.6,24H192ZM32,72H176v64H32ZM80,208a16,16,0,1,1,16-16A16,16,0,0,1,80,208Zm81-24H111a32,32,0,0,0-62,0H32V152H176v12.31A32.11,32.11,0,0,0,161,184Zm31,24a16,16,0,1,1,16-16A16,16,0,0,1,192,208Zm48-24H223a32.06,32.06,0,0,0-31-24V128h48Z"/></svg> <strong>$10</strong> Sydney Metro, Gosford &amp; Wollongong · <strong>$15</strong> rest of Australia · <strong>Free over $300</strong></div>
+      <div><svg width="16" height="16" aria-hidden="true" style="vertical-align:-0.18em;flex-shrink:0;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M232,96a7.89,7.89,0,0,0-.3-2.2L217.35,43.6A16.07,16.07,0,0,0,202,32H54A16.07,16.07,0,0,0,38.65,43.6L24.31,93.8A7.89,7.89,0,0,0,24,96h0v16a40,40,0,0,0,16,32v72a8,8,0,0,0,8,8H208a8,8,0,0,0,8-8V144a40,40,0,0,0,16-32V96ZM54,48H202l11.42,40H42.61Zm50,56h48v8a24,24,0,0,1-48,0Zm-16,0v8a24,24,0,0,1-35.12,21.26,7.88,7.88,0,0,0-1.82-1.06A24,24,0,0,1,40,112v-8ZM200,208H56V151.2a40.57,40.57,0,0,0,8,.8,40,40,0,0,0,32-16,40,40,0,0,0,64,0,40,40,0,0,0,32,16,40.57,40.57,0,0,0,8-.8Zm4.93-75.8a8.08,8.08,0,0,0-1.8,1.05A24,24,0,0,1,168,112v-8h48v8A24,24,0,0,1,204.93,132.2Z"/></svg> Free pickup in Chatswood, Tuesday nights</div>
+      <div class="st st-pre st-sup" style="color:#555;"><svg width="16" height="16" aria-hidden="true" style="vertical-align:-0.18em;flex-shrink:0;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M223.68,66.15,135.68,18a15.88,15.88,0,0,0-15.36,0l-88,48.17a16,16,0,0,0-8.32,14v95.64a16,16,0,0,0,8.32,14l88,48.17a15.88,15.88,0,0,0,15.36,0l88-48.17a16,16,0,0,0,8.32-14V80.18A16,16,0,0,0,223.68,66.15ZM128,32l80.34,44-29.77,16.3-80.35-44ZM128,120,47.66,76l33.9-18.56,80.34,44ZM40,90l80,43.78v85.79L40,175.82Zm176,85.78h0l-80,43.79V133.82l32-17.51V152a8,8,0,0,0,16,0V107.55L216,90v85.77Z"/></svg> Mixed orders are held and shipped together unless you ask us to split</div></div>
+        <p class="small" style="margin-top:10px;"><a href="#details" style="text-decoration:underline;">Full details ↓</a></p>
+        <div class="acc-open small"><div class="row" style="justify-content:space-between;font-weight:600;"><span>Delivery &amp; pickup</span><span>–</span></div><div class="acc-body"><p>We ship Australia-wide with Australia Post eParcel, tracked. Games are boxed and padded; small items may go in a satchel.</p><ul><li><strong>$10</strong> Sydney Metro, Gosford and Wollongong</li><li><strong>$15</strong> rest of Australia</li><li><strong>Free</strong> on orders over $300</li></ul><p>In-stock games are dispatched in 1-3 business days. Games we order in from our supplier ship in 3-5 business days.</p><p><strong>Free pickup:</strong> Tuesday nights at Northside Gamers Group, Chatswood. Orders placed on a Monday or Tuesday are ready the following Tuesday.</p><p>We currently ship within Australia only. For overseas delivery, email us for a quote.</p><p class="note">Confirm with Dean: supplier dispatch (site says 3-5 and 2-7 days in different places), pickup venue and time (Chatswood RSL 6-9pm vs The Chatswood Club 6:30-9pm).</p></div></div><div class="acc-open small"><div class="row" style="justify-content:space-between;font-weight:600;"><span>Returns &amp; damaged games</span><span>–</span></div><div class="acc-body"><p><strong>Change of mind:</strong> let us know in writing within 7 days of delivery. The game must be unopened and in its original packaging. We offer an exchange or store credit. Preorders, special orders, sleeves and accessories can't be returned for change of mind.</p><p><strong>Arrived damaged?</strong> Please note any damage when you receive the parcel, then email us for a Return Product Number (RPN). We'll replace the item, or give you a credit or refund for it.</p><p><a href="help.html" style="text-decoration:underline;">Full returns policy</a></p><p class="note">Copy rewritten from the current site&#39;s Returns page. Check the 7-day window and exclusions still apply, and that the wording sits right with Australian Consumer Law (Dean or his adviser to confirm).</p></div></div>
+      </div></div></div>
+    <div class="anno">Top fold carries everything a buyer needs to decide: BGG line (Meeplewatch), at-a-glance stats strip (Gameology's icon box, with our data), real dispatch promise per state, delivery costs from the current site, and a jump to videos (More Than Meeples). Description moves below the fold instead of being the wall of text competitors lead with. Built from Enterprise main-product blocks plus three Custom Liquid blocks (BGG line, stats strip, availability) fed by metafields. <strong>Mobile:</strong> narrow the window to see the phone order: title and BGG line first, then gallery, price, availability and button inside the first screen, then the stats strip. Same blocks, reordered with CSS.</div>
+  </div>
+  <div class="sec" id="details">
+    <div class="sec-head"><span class="vol">Product details</span> <span class="vol tweak">spec rows via Custom Liquid</span> <span class="lbl">tabs below the fold · click to switch</span></div>
+    <div class="tabs wf-tabs"><span data-tab="0" class="on">Description</span><span data-tab="1">Book details</span><span data-tab="2">Reviews</span></div><div style="margin-top:14px;"><div class="tabpanel" data-panel="0"><div style="max-width:760px;"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cras mattis consectetur purus sit amet fermentum.</p><p style="margin-top:10px;">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Maecenas sed diam eget risus varius blandit sit amet non magna.</p><p class="small" style="margin-top:10px;text-decoration:underline;">Show more</p><p style="margin-top:8px;"><span class="mf">body_html</span></p></div><div class="anno">Native product description, first two paragraphs then "Show more" (Meeplewatch), so long publisher blurbs stop pushing everything down. Component lists move out of here into their own tab.</div></div><div class="tabpanel" data-panel="1" hidden><div class="kv"><div class="muted">System</div><div><a href="collection-rpg.html" style="text-decoration:underline;">Pathfinder 2e</a> <span class="mf">rpg.system</span></div><div class="muted">Product kind</div><div><a href="collection-rpg.html" style="text-decoration:underline;">Core Rulebook</a> <span class="mf">rpg.product_kind</span></div><div class="muted">Publisher</div><div><a href="brand.html" style="text-decoration:underline;">Paizo</a> <span class="mf">vendor</span></div><div class="muted">Designers</div><div><a style="text-decoration:underline;">Logan Bonner</a>, <a style="text-decoration:underline;">Mark Seifter</a> <span class="mf">bgg.designers</span></div><div class="muted">Genre</div><div><span class="pill">Fantasy</span> <span class="mf">bgg.categories</span></div><div class="muted">Year published</div><div>2023 <span class="mf">bgg.year_published</span></div><div class="muted">Barcode</div><div>9781640785540 <span class="mf">variant barcode</span></div></div><div class="anno">Spec rows from metafields (Custom Liquid). Pills link to pre-filtered collections (every designer, category, mechanic is clickable). Rows hide when empty.</div></div><div class="tabpanel" data-panel="2" hidden><p class="small">★★★★★ 4.8 from 12 reviews</p><div class="card small" style="margin-top:8px;"><strong>★★★★★ Reviewer name</strong><p class="muted" style="margin-top:4px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venen...</p></div><div class="card small" style="margin-top:8px;"><strong>★★★★★ Reviewer name</strong><p class="muted" style="margin-top:4px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venen...</p></div><div class="anno">Product reviews app block (app TBC: Shopify Product Reviews, Judge.me or similar). Not product data, so nothing for Ben here. Google Reviews (in scope) are store reviews and sit on the home page, not here.</div></div></div>
+    <div class="note" style="margin-top:8px;">Click the tabs to see each one (Enterprise product details tabs).</div>
+  </div>
+  <div class="sec">
+    <div class="sec-head"><span class="vol tweak">Featured collection</span> <span class="lbl">same-system row</span></div>
+    <h2>More for Pathfinder 2e</h2><div style="margin-top:12px;"><div class="grid g5"><a class="pc" href="product.html"><div class="img">Box art</div><span class="heart">♡</span>
+      <div class="vendor">Paizo</div><div class="title">Pathfinder GM Core</div><div class="price">$89.95</div>
+      <div class="meta">RPG · Core Rulebook</div><div class="avail inv"><i></i>In stock</div><div class="qa">Add to cart</div></a><a class="pc" href="product.html"><div class="img">Box art</div><span class="heart">♡</span>
+      <div class="vendor">Paizo</div><div class="title">Pathfinder Beginner Box</div><div class="price">$59.95</div>
+      <div class="meta">RPG · Starter Set</div><div class="avail inv"><i></i>In stock</div><div class="qa">Add to cart</div></a><a class="pc" href="product-preorder.html"><div class="img">Box art</div><span class="badge">Preorder</span><span class="heart">♡</span>
+      <div class="vendor">Paizo</div><div class="title">Pathfinder 2e: Lost Omens Atlas</div><div class="price">$79.95</div>
+      <div class="meta">RPG · Sourcebook</div><div class="avail inv"><i class="hollow"></i>Preorder · due Nov 2026</div><div class="qa">Preorder</div></a><a class="pc" href="product.html"><div class="img">Box art</div><span class="heart">♡</span>
+      <div class="vendor">Paizo</div><div class="title">Pathfinder Flip-Mat</div><div class="price">$24.95</div>
+      <div class="meta">RPG Accessory</div><div class="avail inv"><i></i>In stock</div><div class="qa">Add to cart</div></a></div></div><div class="anno">Smart collection per system (<span class="mf">rpg.system</span>). The system metaobject image doubles as the collection logo.</div>
+  </div>
+  <!-- ============ FOOTER GROUP (same on every page) ============ -->
+  <div class="sec tg" style="background:#2b2b2b;color:#ddd;border:none;">
+    <div class="sec-head" style="margin-bottom:14px;"><span class="vol">Newsletter</span> <span class="lbl" style="color:#aaa;">Mailchimp list</span></div>
+    <div class="row" style="justify-content:space-between;align-items:center;">
+      <div><h3 style="color:#fff;">New releases and preorders, first.</h3><p class="small" style="color:#aaa;margin-top:4px;">New arrivals, preorders and offers straight to your inbox.</p></div>
+      <div class="row" style="gap:8px;"><div class="field" style="width:260px;background:#3a3a3a;border-color:#555;">Email address</div><span class="btn solid" style="background:#555;border-color:#555;">Sign up</span></div>
+    </div>
+  </div>
+  <div class="sec tg" style="background:#2b2b2b;color:#ddd;border:none;padding-top:10px;">
+    <div class="sec-head" style="margin-bottom:14px;"><span class="vol">Footer</span></div>
+    <div class="row" style="justify-content:space-between;">
+      <div style="flex:1.4;"><div class="img" style="width:150px;height:40px;background:#3a3a3a;border-color:#555;color:#888;">Logo</div><p class="small" style="margin-top:12px;color:#aaa;max-width:280px;">Your friendly, local, online board game store. Sydney based, shipping Australia-wide.</p>
+        <div class="row" style="gap:8px;margin-top:12px;"><div class="img" style="width:28px;height:28px;background:#3a3a3a;border-color:#555;"> </div><div class="img" style="width:28px;height:28px;background:#3a3a3a;border-color:#555;"> </div><div class="img" style="width:28px;height:28px;background:#3a3a3a;border-color:#555;"> </div></div></div>
+      <div style="flex:1;"><p class="small" style="color:#888;letter-spacing:.1em;">SHOP</p><p class="small" style="line-height:2;color:#ccc;"><a href="collection-preorders.html">Preorders</a><br><a href="collection-preorders.html#just-arrived">Just Arrived</a><br><a href="collection.html">Board Games</a><br><a href="collection-rpg.html">Roleplaying</a><br><a href="collection-accessories.html">Accessories</a><br><a href="brands.html">Brands A-Z</a></p></div>
+      <div style="flex:1;"><p class="small" style="color:#888;letter-spacing:.1em;">HELP</p><p class="small" style="line-height:2;color:#ccc;"><a href="help.html">Shipping &amp; pickup</a><br><a href="help.html">Preorder policy</a><br><a href="help.html">Returns</a><br><a href="help.html">FAQ</a><br><a href="account.html">Track my order</a></p></div>
+      <div style="flex:1;"><p class="small" style="color:#888;letter-spacing:.1em;">ADVENT GAMES</p><p class="small" style="line-height:2;color:#ccc;"><a href="about.html">About us</a><br><a href="about.html#contact">Contact</a><br><a href="blog.html">News &amp; reviews</a><br><a href="wishlist.html">Wishlist</a></p></div>
+    </div>
+    <div class="row" style="justify-content:space-between;margin-top:20px;align-items:center;"><p class="small" style="color:#777;font-size:11px;">© 2026 Advent Games · Privacy Policy · Terms &amp; Conditions · Shipping &amp; Returns</p>
+      <div class="row" style="gap:6px;"><span class="pill">Visa</span><span class="pill">MC</span><span class="pill">PayPal</span><span class="pill">Bank transfer</span></div></div>
+  </div>
+</div>
+<script>
+document.addEventListener('click',function(e){var t=e.target.closest('.wf-tabs [data-tab]');if(!t)return;var sec=t.closest('.sec');sec.querySelectorAll('.wf-tabs [data-tab]').forEach(function(x){x.classList.toggle('on',x===t);});sec.querySelectorAll('.tabpanel').forEach(function(p){p.hidden=p.dataset.panel!==t.dataset.tab;});});
+(function(){
+  var g=document.querySelector('.wf-state'); if(!g) return;
+  var b=document.body, btns=g.querySelectorAll('button[data-st]');
+  function set(k){ b.setAttribute('data-st',k); btns.forEach(function(x){x.setAttribute('aria-pressed',String(x.dataset.st===k));}); }
+  set(g.dataset.default);
+  btns.forEach(function(x){x.addEventListener('click',function(){set(x.dataset.st);});});
+})();
+</script>
+<script>
+(function(){
+  var b=document.body, btns=document.querySelectorAll('.wf-toggle button[data-mode]');
+  function set(mode, save){
+    b.classList.toggle('clean', mode==='clean');
+    btns.forEach(function(x){x.setAttribute('aria-pressed', String(x.dataset.mode===mode));});
+    if(save){try{localStorage.setItem('advent-wf-mode', mode);}catch(e){}}
+  }
+  set(b.classList.contains('clean')?'clean':'notes', false);
+  btns.forEach(function(x){x.addEventListener('click',function(){set(x.dataset.mode,true);});});
+})();
+</script>
+</body>
+</html>

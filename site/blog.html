@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog wireframe</title>
+<link rel="stylesheet" href="wireframe.css">
+<link rel="stylesheet" href="advent.css">
+</head>
+<body>
+<script>try{if(location.hash==="#clean"||localStorage.getItem("advent-wf-mode")==="clean")document.body.classList.add("clean");}catch(e){}</script>
+<div class="page">
+  <div class="wfbar">
+    <div class="wf-left"><strong>Advent Games × Enterprise</strong>
+      <select class="wf-pages" aria-label="Wireframe page" onchange="location.href=this.value"><option value="index.html">Home</option><option value="meganav.html">Navigation + drawers</option><option value="collection.html">Board Games</option><option value="collection-preorders.html">Preorders</option><option value="collection-rpg.html">RPG</option><option value="collection-accessories.html">Accessories</option><option value="brands.html">Brands</option><option value="brand.html">Brand</option><option value="search.html">Search</option><option value="product.html">Product</option><option value="product-preorder.html">Product: expansion example</option><option value="product-rpg.html">Product: RPG example</option><option value="product-accessory.html">Product: accessory example</option><option value="cart.html">Cart</option><option value="account.html">Account</option><option value="wishlist.html">Wishlist</option><option value="about.html">About + Contact</option><option value="help.html">Help</option><option value="blog.html" selected>Blog</option><option value="article.html">Blog post</option><option value="data-map.html">DATA MAP</option></select></div>
+    <div class="wf-right">
+      <div class="legend"><span class="vol">Enterprise section</span><span class="vol tweak">native + tweak</span><span class="vol custom">custom / app</span><span class="mf">namespace.key</span><span class="mf new">proposed field</span></div>
+      
+      <div class="wf-toggle" role="group" aria-label="View mode"><button type="button" data-mode="notes" aria-pressed="true">Annotated</button><button type="button" data-mode="clean" aria-pressed="false">Clean</button></div>
+    </div>
+  </div>
+
+  <!-- ============ HEADER GROUP (same on every page) ============ -->
+  <div class="sec tg" style="padding:0;">
+    <div style="padding:10px 40px 0;"><div class="sec-head" style="margin-bottom:6px;"><span class="vol">Announcement bar</span> <span class="lbl">site message left · utility links right</span></div></div>
+    <div class="row small" style="justify-content:space-between;background:#f2f2f2;padding:7px 40px;font-size:12px;">
+      <span>Flat rate shipping $10 Sydney Metro, Gosford &amp; Wollongong · $15 rest of Australia · Free over $300</span>
+      <span class="row" style="gap:16px;"><a href="help.html">Help &amp; FAQ</a><a href="account.html">Track my order</a><a href="brands.html">Brands A-Z</a></span>
+    </div>
+    <div style="padding:14px 40px 0;"><div class="sec-head" style="margin-bottom:8px;"><span class="vol">Header</span> <span class="lbl">sticky · search with category dropdown · mega menu</span></div></div>
+    <div class="row" style="align-items:center;justify-content:space-between;padding:4px 40px 12px;gap:24px;">
+      <a href="index.html"><div class="img" style="width:150px;height:44px;">Logo</div></a>
+      <a href="search.html" style="flex:1;display:flex;"><div class="field" style="width:120px;border-right:none;border-radius:4px 0 0 4px;">All ▾</div><div class="field" style="flex:1;border-radius:0 4px 4px 0;">Search 11,000+ games, publishers, designers...</div></a>
+      <div class="row small" style="gap:16px;align-items:center;"><a href="account.html">Account</a><a href="wishlist.html">♡ Wishlist</a><a href="cart.html"><strong>Cart (2)</strong></a></div>
+    </div>
+    <div class="row small nav" style="gap:22px;padding:10px 40px;border-top:1px solid var(--line);justify-content:space-between;">
+      <div class="row" style="gap:22px;flex-wrap:wrap;"><a href="meganav.html#preorders">Preorders ▾</a><a href="meganav.html#arrived">Just Arrived ▾</a><a href="meganav.html#board">Board Games ▾</a><a href="meganav.html#rpg">Roleplaying ▾</a><a href="meganav.html#acc">Accessories ▾</a><a href="meganav.html#sale">Sale</a><a href="brands.html">Brands</a></div>
+      <div class="row" style="gap:16px;color:#777;"><a href="help.html">Shipping &amp; pickup</a><a href="about.html">About</a></div>
+    </div>
+    <div style="padding:10px 40px 0;border-top:1px solid var(--line);"><div class="sec-head" style="margin-bottom:6px;"><span class="vol">Icons with text</span> <span class="lbl">header group trust strip · editable</span></div></div>
+    <div class="grid g4 small center" style="padding:6px 40px 14px;color:#555;">
+      <span>▢ Free shipping over $300</span><span>▢ Australia-wide via AusPost</span><span>▢ Friendly, local service</span><span>▢ Secure checkout + PayPal</span>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-head"><span class="vol">Blog posts (main blog)</span> <span class="lbl">blog.json · Enterprise main blog, no changes</span></div>
+    <h1 class="center">News &amp; reviews</h1><p class="center muted" style="max-width:640px;margin:8px auto 0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p><div class="row small center" style="gap:16px;justify-content:center;margin-top:14px;"><span>Share:</span><span class="muted">X · Facebook · Pinterest</span></div><div class="row small" style="gap:18px;justify-content:center;margin-top:12px;"><strong style="text-decoration:underline;">All</strong><span>New releases</span><span>Reviews</span><span>Store news</span></div><a href="article.html" class="row" style="gap:0;margin-top:22px;border:1px solid var(--line);border-radius:8px;overflow:hidden;align-items:stretch;"><div class="img" style="flex:1;height:300px;border:none;">Featured image</div><div style="flex:1;padding:32px;display:flex;flex-direction:column;justify-content:center;"><p class="small" style="font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:10.5px;">New releases</p><h2 style="margin-top:4px;">Essen 2026: the games we're most excited to stock</h2><p class="muted small" style="margin-top:8px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p><p class="small muted" style="margin-top:10px;">3 Oct 2026</p></div></a><div class="grid g3" style="margin-top:22px;gap:22px;"><a href="article.html"><div class="img" style="height:170px;">Image</div><p class="small" style="margin-top:8px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:10.5px;">Reviews</p><h3 style="margin-top:2px;">Five great two-player games under $50</h3><p class="small muted" style="margin-top:4px;">21 Sep 2026</p></a><a href="article.html"><div class="img" style="height:170px;">Image</div><p class="small" style="margin-top:8px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:10.5px;">Store news</p><h3 style="margin-top:2px;">Our new website is live</h3><p class="small muted" style="margin-top:4px;">2 Sep 2026</p></a><a href="article.html"><div class="img" style="height:170px;">Image</div><p class="small" style="margin-top:8px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:10.5px;">New releases</p><h3 style="margin-top:2px;">The big preorders landing before Christmas</h3><p class="small muted" style="margin-top:4px;">28 Aug 2026</p></a><a href="article.html"><div class="img" style="height:170px;">Image</div><p class="small" style="margin-top:8px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:10.5px;">Reviews</p><h3 style="margin-top:2px;">Gateway games for a family games night</h3><p class="small muted" style="margin-top:4px;">14 Aug 2026</p></a><a href="article.html"><div class="img" style="height:170px;">Image</div><p class="small" style="margin-top:8px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:10.5px;">New releases</p><h3 style="margin-top:2px;">GMT's autumn P500 list, explained</h3><p class="small muted" style="margin-top:4px;">1 Aug 2026</p></a><a href="article.html"><div class="img" style="height:170px;">Image</div><p class="small" style="margin-top:8px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:10.5px;">Store news</p><h3 style="margin-top:2px;">Pickup is changing for the holidays</h3><p class="small muted" style="margin-top:4px;">20 Jul 2026</p></a></div><p class="center small" style="margin-top:20px;">‹ 1 <strong>2</strong> 3 ›</p><div class="anno"><strong>Enterprise main blog, as is.</strong> Centred title and blog description, share links, tag links (All plus each article tag), latest post as a wide featured card (image beside text), then a 3-column grid of cards: image, tag, title, date. Pagination below. Nothing custom: Dean just tags posts (New releases / Reviews / Store news) and the tag links appear. Mobile stacks to one column.</div>
+  </div>
+  <div class="sec">
+    <div class="sec-head"><span class="vol">Media with text</span> <span class="lbl">optional · same as Enterprise demo blog page</span></div>
+    <div class="row" style="gap:32px;align-items:center;"><div style="flex:1;"><div class="img" style="height:180px;">Image</div></div><div style="flex:1;"><h2>Need a hand choosing?</h2><p class="muted" style="margin-top:8px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p><p style="margin-top:12px;"><a href="help.html" class="btn">Ask Dean</a></p></div></div>
+  </div>
+  <!-- ============ FOOTER GROUP (same on every page) ============ -->
+  <div class="sec tg" style="background:#2b2b2b;color:#ddd;border:none;">
+    <div class="sec-head" style="margin-bottom:14px;"><span class="vol">Newsletter</span> <span class="lbl" style="color:#aaa;">Mailchimp list</span></div>
+    <div class="row" style="justify-content:space-between;align-items:center;">
+      <div><h3 style="color:#fff;">New releases and preorders, first.</h3><p class="small" style="color:#aaa;margin-top:4px;">New arrivals, preorders and offers straight to your inbox.</p></div>
+      <div class="row" style="gap:8px;"><div class="field" style="width:260px;background:#3a3a3a;border-color:#555;">Email address</div><span class="btn solid" style="background:#555;border-color:#555;">Sign up</span></div>
+    </div>
+  </div>
+  <div class="sec tg" style="background:#2b2b2b;color:#ddd;border:none;padding-top:10px;">
+    <div class="sec-head" style="margin-bottom:14px;"><span class="vol">Footer</span></div>
+    <div class="row" style="justify-content:space-between;">
+      <div style="flex:1.4;"><div class="img" style="width:150px;height:40px;background:#3a3a3a;border-color:#555;color:#888;">Logo</div><p class="small" style="margin-top:12px;color:#aaa;max-width:280px;">Your friendly, local, online board game store. Sydney based, shipping Australia-wide.</p>
+        <div class="row" style="gap:8px;margin-top:12px;"><div class="img" style="width:28px;height:28px;background:#3a3a3a;border-color:#555;"> </div><div class="img" style="width:28px;height:28px;background:#3a3a3a;border-color:#555;"> </div><div class="img" style="width:28px;height:28px;background:#3a3a3a;border-color:#555;"> </div></div></div>
+      <div style="flex:1;"><p class="small" style="color:#888;letter-spacing:.1em;">SHOP</p><p class="small" style="line-height:2;color:#ccc;"><a href="collection-preorders.html">Preorders</a><br><a href="collection-preorders.html#just-arrived">Just Arrived</a><br><a href="collection.html">Board Games</a><br><a href="collection-rpg.html">Roleplaying</a><br><a href="collection-accessories.html">Accessories</a><br><a href="brands.html">Brands A-Z</a></p></div>
+      <div style="flex:1;"><p class="small" style="color:#888;letter-spacing:.1em;">HELP</p><p class="small" style="line-height:2;color:#ccc;"><a href="help.html">Shipping &amp; pickup</a><br><a href="help.html">Preorder policy</a><br><a href="help.html">Returns</a><br><a href="help.html">FAQ</a><br><a href="account.html">Track my order</a></p></div>
+      <div style="flex:1;"><p class="small" style="color:#888;letter-spacing:.1em;">ADVENT GAMES</p><p class="small" style="line-height:2;color:#ccc;"><a href="about.html">About us</a><br><a href="about.html#contact">Contact</a><br><a href="blog.html">News &amp; reviews</a><br><a href="wishlist.html">Wishlist</a></p></div>
+    </div>
+    <div class="row" style="justify-content:space-between;margin-top:20px;align-items:center;"><p class="small" style="color:#777;font-size:11px;">© 2026 Advent Games · Privacy Policy · Terms &amp; Conditions · Shipping &amp; Returns</p>
+      <div class="row" style="gap:6px;"><span class="pill">Visa</span><span class="pill">MC</span><span class="pill">PayPal</span><span class="pill">Bank transfer</span></div></div>
+  </div>
+</div>
+<script>
+document.addEventListener('click',function(e){var t=e.target.closest('.wf-tabs [data-tab]');if(!t)return;var sec=t.closest('.sec');sec.querySelectorAll('.wf-tabs [data-tab]').forEach(function(x){x.classList.toggle('on',x===t);});sec.querySelectorAll('.tabpanel').forEach(function(p){p.hidden=p.dataset.panel!==t.dataset.tab;});});
+(function(){
+  var g=document.querySelector('.wf-state'); if(!g) return;
+  var b=document.body, btns=g.querySelectorAll('button[data-st]');
+  function set(k){ b.setAttribute('data-st',k); btns.forEach(function(x){x.setAttribute('aria-pressed',String(x.dataset.st===k));}); }
+  set(g.dataset.default);
+  btns.forEach(function(x){x.addEventListener('click',function(){set(x.dataset.st);});});
+})();
+</script>
+<script>
+(function(){
+  var b=document.body, btns=document.querySelectorAll('.wf-toggle button[data-mode]');
+  function set(mode, save){
+    b.classList.toggle('clean', mode==='clean');
+    btns.forEach(function(x){x.setAttribute('aria-pressed', String(x.dataset.mode===mode));});
+    if(save){try{localStorage.setItem('advent-wf-mode', mode);}catch(e){}}
+  }
+  set(b.classList.contains('clean')?'clean':'notes', false);
+  btns.forEach(function(x){x.addEventListener('click',function(){set(x.dataset.mode,true);});});
+})();
+</script>
+</body>
+</html>

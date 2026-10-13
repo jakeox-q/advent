@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cart wireframe</title>
+<link rel="stylesheet" href="wireframe.css">
+<link rel="stylesheet" href="advent.css">
+</head>
+<body>
+<script>try{if(location.hash==="#clean"||localStorage.getItem("advent-wf-mode")==="clean")document.body.classList.add("clean");}catch(e){}</script>
+<div class="page">
+  <div class="wfbar">
+    <div class="wf-left"><strong>Advent Games × Enterprise</strong>
+      <select class="wf-pages" aria-label="Wireframe page" onchange="location.href=this.value"><option value="index.html">Home</option><option value="meganav.html">Navigation + drawers</option><option value="collection.html">Board Games</option><option value="collection-preorders.html">Preorders</option><option value="collection-rpg.html">RPG</option><option value="collection-accessories.html">Accessories</option><option value="brands.html">Brands</option><option value="brand.html">Brand</option><option value="search.html">Search</option><option value="product.html">Product</option><option value="product-preorder.html">Product: expansion example</option><option value="product-rpg.html">Product: RPG example</option><option value="product-accessory.html">Product: accessory example</option><option value="cart.html" selected>Cart</option><option value="account.html">Account</option><option value="wishlist.html">Wishlist</option><option value="about.html">About + Contact</option><option value="help.html">Help</option><option value="blog.html">Blog</option><option value="article.html">Blog post</option><option value="data-map.html">DATA MAP</option></select></div>
+    <div class="wf-right">
+      <div class="legend"><span class="vol">Enterprise section</span><span class="vol tweak">native + tweak</span><span class="vol custom">custom / app</span><span class="mf">namespace.key</span><span class="mf new">proposed field</span></div>
+      
+      <div class="wf-toggle" role="group" aria-label="View mode"><button type="button" data-mode="notes" aria-pressed="true">Annotated</button><button type="button" data-mode="clean" aria-pressed="false">Clean</button></div>
+    </div>
+  </div>
+
+  <!-- ============ HEADER GROUP (same on every page) ============ -->
+  <div class="sec tg" style="padding:0;">
+    <div style="padding:10px 40px 0;"><div class="sec-head" style="margin-bottom:6px;"><span class="vol">Announcement bar</span> <span class="lbl">site message left · utility links right</span></div></div>
+    <div class="row small" style="justify-content:space-between;background:#f2f2f2;padding:7px 40px;font-size:12px;">
+      <span>Flat rate shipping $10 Sydney Metro, Gosford &amp; Wollongong · $15 rest of Australia · Free over $300</span>
+      <span class="row" style="gap:16px;"><a href="help.html">Help &amp; FAQ</a><a href="account.html">Track my order</a><a href="brands.html">Brands A-Z</a></span>
+    </div>
+    <div style="padding:14px 40px 0;"><div class="sec-head" style="margin-bottom:8px;"><span class="vol">Header</span> <span class="lbl">sticky · search with category dropdown · mega menu</span></div></div>
+    <div class="row" style="align-items:center;justify-content:space-between;padding:4px 40px 12px;gap:24px;">
+      <a href="index.html"><div class="img" style="width:150px;height:44px;">Logo</div></a>
+      <a href="search.html" style="flex:1;display:flex;"><div class="field" style="width:120px;border-right:none;border-radius:4px 0 0 4px;">All ▾</div><div class="field" style="flex:1;border-radius:0 4px 4px 0;">Search 11,000+ games, publishers, designers...</div></a>
+      <div class="row small" style="gap:16px;align-items:center;"><a href="account.html">Account</a><a href="wishlist.html">♡ Wishlist</a><a href="cart.html"><strong>Cart (2)</strong></a></div>
+    </div>
+    <div class="row small nav" style="gap:22px;padding:10px 40px;border-top:1px solid var(--line);justify-content:space-between;">
+      <div class="row" style="gap:22px;flex-wrap:wrap;"><a href="meganav.html#preorders">Preorders ▾</a><a href="meganav.html#arrived">Just Arrived ▾</a><a href="meganav.html#board">Board Games ▾</a><a href="meganav.html#rpg">Roleplaying ▾</a><a href="meganav.html#acc">Accessories ▾</a><a href="meganav.html#sale">Sale</a><a href="brands.html">Brands</a></div>
+      <div class="row" style="gap:16px;color:#777;"><a href="help.html">Shipping &amp; pickup</a><a href="about.html">About</a></div>
+    </div>
+    <div style="padding:10px 40px 0;border-top:1px solid var(--line);"><div class="sec-head" style="margin-bottom:6px;"><span class="vol">Icons with text</span> <span class="lbl">header group trust strip · editable</span></div></div>
+    <div class="grid g4 small center" style="padding:6px 40px 14px;color:#555;">
+      <span>▢ Free shipping over $300</span><span>▢ Australia-wide via AusPost</span><span>▢ Friendly, local service</span><span>▢ Secure checkout + PayPal</span>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-head"><span class="vol tweak">Cart (main cart)</span> <span class="lbl">Enterprise main cart</span></div>
+    <div class="row" style="gap:48px;align-items:flex-start;">
+      <div style="flex:1.6;min-width:0;"><h1>Your cart</h1>
+        <div style="padding:16px 20px;background:#f2f2f2;margin-top:16px;"><p class="small" style="font-weight:600;">You're $65.15 away from free shipping</p><div style="height:6px;background:#ddd;border-radius:3px;margin-top:10px;"><div style="width:78%;height:6px;background:#333;border-radius:3px;"></div></div></div>
+        <div class="row" style="gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--line);"><div class="img" style="width:76px;height:76px;flex-shrink:0;"> </div><div style="flex:1;"><p class="small muted">Lookout Spiele</p><strong class="small">Nusfjord</strong><p class="small" style="margin-top:2px;font-weight:600;">$79.95</p><div class="avail" style="font-size:11px;margin-top:2px;"><i></i>In stock</div><div class="row" style="gap:10px;align-items:center;margin-top:8px;"><span style="border:1px solid #999;border-radius:999px;padding:3px 12px;font-size:12px;">−&nbsp;&nbsp; 1 &nbsp;&nbsp;+</span><span class="muted small" style="text-decoration:underline;">Remove</span></div></div><strong class="small">$79.95</strong></div>
+        <div class="row" style="gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--line);"><div class="img" style="width:76px;height:76px;flex-shrink:0;"> </div><div style="flex:1;"><p class="small muted">GMT</p><strong class="small">C&amp;C Napoleonics Exp. #7</strong><p class="small" style="margin-top:2px;font-weight:600;">$144.95</p><div class="avail" style="font-size:11px;margin-top:2px;"><i class="hollow"></i>Preorder · due Nov 2026</div><div class="row" style="gap:10px;align-items:center;margin-top:8px;"><span style="border:1px solid #999;border-radius:999px;padding:3px 12px;font-size:12px;">−&nbsp;&nbsp; 1 &nbsp;&nbsp;+</span><span class="muted small" style="text-decoration:underline;">Remove</span></div></div><strong class="small">$144.95</strong></div>
+        <div class="row" style="gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--line);"><div class="img" style="width:76px;height:76px;flex-shrink:0;"> </div><div style="flex:1;"><p class="small muted">Gamegenic</p><strong class="small">Matte Sleeves 63.5 x 88 (100)</strong><p class="small" style="margin-top:2px;font-weight:600;">$9.95</p><div class="avail" style="font-size:11px;margin-top:2px;"><i class="half"></i>At supplier · ships 3-5 days</div><div class="row" style="gap:10px;align-items:center;margin-top:8px;"><span style="border:1px solid #999;border-radius:999px;padding:3px 12px;font-size:12px;">−&nbsp;&nbsp; 1 &nbsp;&nbsp;+</span><span class="muted small" style="text-decoration:underline;">Remove</span></div></div><strong class="small">$9.95</strong></div>
+        <div class="row" style="justify-content:space-between;align-items:center;margin-top:22px;"><h3>You may also like...</h3><span class="muted">‹ &nbsp; ›</span></div>
+        <div class="row" style="gap:14px;margin-top:10px;"><div class="row" style="gap:12px;align-items:center;padding:10px;background:#f2f2f2;border-radius:6px;flex:1;"><div class="img" style="width:72px;height:72px;flex-shrink:0;"> </div><div><strong class="small">Nusfjord Organiser</strong><p class="small" style="font-weight:600;">$34.95</p><span class="btn" style="margin-top:4px;display:inline-block;padding:3px 12px;font-size:12px;border-radius:999px;">Add to cart</span></div></div><div class="row" style="gap:12px;align-items:center;padding:10px;background:#f2f2f2;border-radius:6px;flex:1;"><div class="img" style="width:72px;height:72px;flex-shrink:0;"> </div><div><strong class="small">The Crew: Mission Deep Sea</strong><p class="small" style="font-weight:600;">$24.95</p><span class="btn" style="margin-top:4px;display:inline-block;padding:3px 12px;font-size:12px;border-radius:999px;">Add to cart</span></div></div></div>
+      </div>
+      <div style="flex:1;min-width:0;margin-top:48px;"><div style="border:1px solid var(--line);padding:22px;">
+        <h2>Order summary</h2>
+        <div class="row small" style="justify-content:space-between;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:14px;"><span>Add order note</span><span>⌄</span></div>
+        <p class="small" style="margin-top:14px;">Tax included, shipping calculated at checkout.</p>
+        <div class="row" style="justify-content:space-between;margin-top:12px;"><strong>Subtotal:</strong><strong>$234.85 AUD</strong></div>
+        <span class="btn solid" style="display:block;text-align:center;margin-top:14px;border-radius:999px;">Checkout</span>
+        <p class="center small" style="margin-top:12px;text-decoration:underline;">Continue shopping</p></div>
+        <div class="anno">Checkout is Shopify-hosted: shipping vs local pickup is chosen there (native). <strong>Bookable pickup dates/windows</strong> from the design doc fall under "complex delivery logic", excluded from scope.</div></div>
+    </div>
+    <div class="anno"><strong>Enterprise cart page, as on the demo:</strong> free shipping progress bar ($300 in theme settings), line items with publisher, quantity and remove, "You may also like..." slider under the items, and an Order summary box on the right with order note, tax line, subtotal, Checkout and Continue shopping. Only tweak: our availability line under each item (same snippet as the cards and drawer).</div>
+  </div>
+  <div class="sec" id="drawer">
+    <div class="sec-head"><span class="vol tweak">Cart drawer</span> <span class="lbl">opens on add to cart · Enterprise cart drawer</span></div>
+    <div style="max-width:420px;margin-left:auto;border:2px solid #555;border-radius:6px;overflow:hidden;background:#fff;"><div class="row" style="justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid var(--line);"><h3>Your cart</h3><span class="small"><u>View cart</u> &nbsp;&nbsp; ✕</span></div><div style="padding:14px 18px;border-bottom:1px solid var(--line);"><div class="row small" style="justify-content:space-between;"><u>Add order note</u><u>Estimate shipping</u></div><span class="btn solid" style="display:block;text-align:center;margin-top:10px;border-radius:999px;">Checkout - $224.90 AUD</span> <span class="vol tweak">button goes to checkout</span></div><div style="padding:12px 18px;background:#f2f2f2;text-align:center;"><p class="small" style="font-weight:600;">You're $75.10 away from free shipping</p><div style="height:6px;background:#ddd;border-radius:3px;margin-top:8px;"><div style="width:75%;height:6px;background:#333;border-radius:3px;"></div></div></div><div style="padding:0 18px;"><div class="row" style="gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--line);"><div class="img" style="width:76px;height:76px;flex-shrink:0;"> </div><div style="flex:1;"><p class="small muted">Lookout Spiele</p><strong class="small">Nusfjord</strong><p class="small" style="margin-top:2px;font-weight:600;">$79.95</p><div class="avail" style="font-size:11px;margin-top:2px;"><i></i>In stock</div><div class="row" style="gap:10px;align-items:center;margin-top:8px;"><span style="border:1px solid #999;border-radius:999px;padding:3px 12px;font-size:12px;">−&nbsp;&nbsp; 1 &nbsp;&nbsp;+</span><span class="muted small" style="text-decoration:underline;">Remove</span></div></div><strong class="small">$79.95</strong></div><div class="row" style="gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--line);"><div class="img" style="width:76px;height:76px;flex-shrink:0;"> </div><div style="flex:1;"><p class="small muted">GMT</p><strong class="small">C&amp;C Napoleonics Exp. #7</strong><p class="small" style="margin-top:2px;font-weight:600;">$144.95</p><div class="avail" style="font-size:11px;margin-top:2px;"><i class="hollow"></i>Preorder · due Nov 2026</div><div class="row" style="gap:10px;align-items:center;margin-top:8px;"><span style="border:1px solid #999;border-radius:999px;padding:3px 12px;font-size:12px;">−&nbsp;&nbsp; 1 &nbsp;&nbsp;+</span><span class="muted small" style="text-decoration:underline;">Remove</span></div></div><strong class="small">$144.95</strong></div></div><div style="padding:14px 18px;"><div class="row" style="justify-content:space-between;align-items:center;"><strong>You may also like...</strong><span class="muted">‹ &nbsp; ›</span></div><div class="row" style="gap:12px;align-items:center;margin-top:8px;padding:10px;background:#f2f2f2;border-radius:6px;"><div class="img" style="width:64px;height:64px;flex-shrink:0;"> </div><div><strong class="small">Matte Sleeves 63.5 x 88 (100)</strong><p class="small" style="font-weight:600;">$9.95</p><span class="btn" style="margin-top:4px;display:inline-block;padding:3px 12px;font-size:12px;border-radius:999px;">Add to cart</span></div></div></div><div style="padding:0 18px 18px;"><div class="img" style="height:120px;flex-direction:column;align-items:flex-start;justify-content:center;padding:16px;text-transform:none;letter-spacing:0;color:#333;"><h3>New to preorder</h3><span class="btn" style="margin-top:8px;border-radius:999px;">Reserve now</span></div></div></div><div class="anno"><strong>Enterprise cart drawer, as on the demo:</strong> "View cart" link and close at the top, order note and shipping estimate links, a full-width main button, the free shipping progress bar (set to $300 in theme settings), line items with quantity and remove, a "You may also like..." slider (Shopify product recommendations; check in the theme editor whether it uses related or complementary products), and a promo image banner at the bottom that Dean can swap. <strong>Tweaks:</strong> (1) the main button reads "Checkout - $total" and goes straight to checkout instead of the theme's default "View cart - $total", since the drawer already shows everything the cart page does and the "View cart" link stays at the top for anyone who wants it. Small Liquid/JS change to the drawer snippet (button label and link to /checkout), to check for a theme setting first. (2) our availability line under each item (same snippet as the cards) so preorders are clear before checkout.</div>
+  </div>
+  <!-- ============ FOOTER GROUP (same on every page) ============ -->
+  <div class="sec tg" style="background:#2b2b2b;color:#ddd;border:none;">
+    <div class="sec-head" style="margin-bottom:14px;"><span class="vol">Newsletter</span> <span class="lbl" style="color:#aaa;">Mailchimp list</span></div>
+    <div class="row" style="justify-content:space-between;align-items:center;">
+      <div><h3 style="color:#fff;">New releases and preorders, first.</h3><p class="small" style="color:#aaa;margin-top:4px;">New arrivals, preorders and offers straight to your inbox.</p></div>
+      <div class="row" style="gap:8px;"><div class="field" style="width:260px;background:#3a3a3a;border-color:#555;">Email address</div><span class="btn solid" style="background:#555;border-color:#555;">Sign up</span></div>
+    </div>
+  </div>
+  <div class="sec tg" style="background:#2b2b2b;color:#ddd;border:none;padding-top:10px;">
+    <div class="sec-head" style="margin-bottom:14px;"><span class="vol">Footer</span></div>
+    <div class="row" style="justify-content:space-between;">
+      <div style="flex:1.4;"><div class="img" style="width:150px;height:40px;background:#3a3a3a;border-color:#555;color:#888;">Logo</div><p class="small" style="margin-top:12px;color:#aaa;max-width:280px;">Your friendly, local, online board game store. Sydney based, shipping Australia-wide.</p>
+        <div class="row" style="gap:8px;margin-top:12px;"><div class="img" style="width:28px;height:28px;background:#3a3a3a;border-color:#555;"> </div><div class="img" style="width:28px;height:28px;background:#3a3a3a;border-color:#555;"> </div><div class="img" style="width:28px;height:28px;background:#3a3a3a;border-color:#555;"> </div></div></div>
+      <div style="flex:1;"><p class="small" style="color:#888;letter-spacing:.1em;">SHOP</p><p class="small" style="line-height:2;color:#ccc;"><a href="collection-preorders.html">Preorders</a><br><a href="collection-preorders.html#just-arrived">Just Arrived</a><br><a href="collection.html">Board Games</a><br><a href="collection-rpg.html">Roleplaying</a><br><a href="collection-accessories.html">Accessories</a><br><a href="brands.html">Brands A-Z</a></p></div>
+      <div style="flex:1;"><p class="small" style="color:#888;letter-spacing:.1em;">HELP</p><p class="small" style="line-height:2;color:#ccc;"><a href="help.html">Shipping &amp; pickup</a><br><a href="help.html">Preorder policy</a><br><a href="help.html">Returns</a><br><a href="help.html">FAQ</a><br><a href="account.html">Track my order</a></p></div>
+      <div style="flex:1;"><p class="small" style="color:#888;letter-spacing:.1em;">ADVENT GAMES</p><p class="small" style="line-height:2;color:#ccc;"><a href="about.html">About us</a><br><a href="about.html#contact">Contact</a><br><a href="blog.html">News &amp; reviews</a><br><a href="wishlist.html">Wishlist</a></p></div>
+    </div>
+    <div class="row" style="justify-content:space-between;margin-top:20px;align-items:center;"><p class="small" style="color:#777;font-size:11px;">© 2026 Advent Games · Privacy Policy · Terms &amp; Conditions · Shipping &amp; Returns</p>
+      <div class="row" style="gap:6px;"><span class="pill">Visa</span><span class="pill">MC</span><span class="pill">PayPal</span><span class="pill">Bank transfer</span></div></div>
+  </div>
+</div>
+<script>
+document.addEventListener('click',function(e){var t=e.target.closest('.wf-tabs [data-tab]');if(!t)return;var sec=t.closest('.sec');sec.querySelectorAll('.wf-tabs [data-tab]').forEach(function(x){x.classList.toggle('on',x===t);});sec.querySelectorAll('.tabpanel').forEach(function(p){p.hidden=p.dataset.panel!==t.dataset.tab;});});
+(function(){
+  var g=document.querySelector('.wf-state'); if(!g) return;
+  var b=document.body, btns=g.querySelectorAll('button[data-st]');
+  function set(k){ b.setAttribute('data-st',k); btns.forEach(function(x){x.setAttribute('aria-pressed',String(x.dataset.st===k));}); }
+  set(g.dataset.default);
+  btns.forEach(function(x){x.addEventListener('click',function(){set(x.dataset.st);});});
+})();
+</script>
+<script>
+(function(){
+  var b=document.body, btns=document.querySelectorAll('.wf-toggle button[data-mode]');
+  function set(mode, save){
+    b.classList.toggle('clean', mode==='clean');
+    btns.forEach(function(x){x.setAttribute('aria-pressed', String(x.dataset.mode===mode));});
+    if(save){try{localStorage.setItem('advent-wf-mode', mode);}catch(e){}}
+  }
+  set(b.classList.contains('clean')?'clean':'notes', false);
+  btns.forEach(function(x){x.addEventListener('click',function(){set(x.dataset.mode,true);});});
+})();
+</script>
+</body>
+</html>
