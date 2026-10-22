@@ -86,10 +86,10 @@ def head(title, template, current=""):
       <span class="row" style="gap:16px;"><a href="help.html">Help &amp; FAQ</a><a href="account.html">Track my order</a><a href="brands.html">Brands A-Z</a></span>
     </div>
     <div style="padding:14px 40px 0;"><div class="sec-head" style="margin-bottom:8px;">{tag("Header")} <span class="lbl">sticky · search with category dropdown · mega menu</span></div></div>
-    <div class="row" style="align-items:center;justify-content:space-between;padding:4px 40px 12px;gap:24px;">
-      <a href="index.html"><div class="img" style="width:150px;height:44px;">Logo</div></a>
-      <a href="search.html" style="flex:1;display:flex;"><div class="field" style="width:120px;border-right:none;border-radius:4px 0 0 4px;">All ▾</div><div class="field" style="flex:1;border-radius:0 4px 4px 0;">Search 11,000+ games, publishers, designers...</div></a>
-      <div class="row small" style="gap:16px;align-items:center;"><a href="account.html">Account</a><a href="wishlist.html">♡ Wishlist</a><a href="cart.html"><strong>Cart (2)</strong></a></div>
+    <div class="row hd-main" style="align-items:center;justify-content:space-between;padding:4px 40px 12px;gap:24px;">
+      <a href="meganav.html#mobile-menu" class="burger" aria-label="Menu">☰</a><a href="index.html" class="hd-logo"><div class="img" style="width:150px;height:44px;">Logo</div></a>
+      <a href="search.html" class="hd-search" style="flex:1;display:flex;"><div class="field" style="width:120px;border-right:none;border-radius:4px 0 0 4px;">All ▾</div><div class="field" style="flex:1;border-radius:0 4px 4px 0;">Search 11,000+ games, publishers, designers...</div></a>
+      <div class="row small hd-icons" style="gap:16px;align-items:center;"><a href="account.html">Account</a><a href="wishlist.html">♡ Wishlist</a><a href="cart.html"><strong>Cart (2)</strong></a></div>
     </div>
     <div class="row small nav" style="gap:22px;padding:10px 40px;border-top:1px solid var(--line);justify-content:space-between;">
       <div class="row" style="gap:22px;flex-wrap:wrap;">{nav}</div>
@@ -123,7 +123,8 @@ FOOTER = f'''
       <div style="flex:1;"><p class="small" style="color:#888;letter-spacing:.1em;">ADVENT GAMES</p><p class="small" style="line-height:2;color:#ccc;"><a href="about.html">About us</a><br><a href="about.html#contact">Contact</a><br><a href="blog.html">News &amp; reviews</a><br><a href="wishlist.html">Wishlist</a></p></div>
     </div>
     <div class="row" style="justify-content:space-between;margin-top:20px;align-items:center;"><p class="small" style="color:#777;font-size:11px;">© 2026 Advent Games · Privacy Policy · Terms &amp; Conditions · Shipping &amp; Returns</p>
-      <div class="row" style="gap:6px;"><span class="pill">Visa</span><span class="pill">MC</span><span class="pill">PayPal</span><span class="pill">Bank transfer</span></div></div>
+      <div class="row" style="gap:6px;"><span class="pill">Visa</span><span class="pill">MC</span><span class="pill">PayPal</span><span class="pill">Bank transfer</span>
+        <span class="bgg-badge" title="Required by BoardGameGeek's API terms">Powered by BGG</span></div></div>
   </div>
 </div>
 </body>
@@ -148,15 +149,15 @@ def ico(name, size=15):
     svg = ICONS[name]
     return svg.replace('<svg ', f'<svg width="{size}" height="{size}" aria-hidden="true" style="vertical-align:-0.18em;flex-shrink:0;" ', 1)
 
-STAT_ICON = {"Players": "users-three", "Play time": "clock", "Age": "person", "Complexity": "brain", "Weight": "brain", "System": "book-open", "Kind": "books",
+STAT_ICON = {"Players": "users-three", "Play time": "clock", "Age": "person", "Complexity": "brain", "Weight": "brain", "System": "book-open", "Kind": "books", "Category": "books",
              "Publisher": "buildings", "Sleeve size": "ruler", "Pack": "stack", "Finish": "sparkle"}
 
 def meta_icons(meta):
     parts = [x.strip() for x in meta.split("·")]
     out = []; hit = False
     for x in parts:
-        if x.startswith("Weight:"):
-            out.append(ico("brain", 13) + " " + x.replace("Weight:", "").strip() + '<span class="muted">/5</span>'); hit = True
+        if x.startswith("Complexity:"):
+            out.append(ico("brain", 13) + " " + x.replace("Complexity:", "").strip() + '<span class="muted">/5</span>'); hit = True
         elif _re.match(r"^\d+(-\d+)?$", x):
             out.append(ico("users-three", 13) + " " + x); hit = True
         elif "min" in x or "hr" in x:
@@ -185,21 +186,21 @@ BGG = {
  "Agricola": (2007, 7.9, 45, 0), "A Feast for Odin": (2016, 8.1, 38, 0),
 }
 
-def bgg_line(title):
+def bgg_line(title, rating_on=True):
     d = BGG.get(title)
     if not d: return ""
     year, rating, rank, exp = d
     parts = [f'<span>{year}</span>']
-    if rating: parts.append(f'<span class="rb">{ico("star", 11)} {rating} BGG</span>')
+    if rating and rating_on: parts.append(f'<span class="rb">{ico("star", 11)} {rating} BGG</span>')
     if exp: parts.append(f'<span class="xb">{ico("puzzle-piece", 11)} Expansion</span>')
     return '<div class="bggl">' + "".join(parts) + '</div>'
 
-def card(title, vendor, price, state="in", badge="", was="", meta="1-4 · 60-120 min · 14+ · Weight: 2.9", eta="", qa=True, link="product.html"):
+def card(title, vendor, price, state="in", badge="", was="", meta="1-4 · 60-120 min · 14+ · Complexity: 2.9", eta="", qa=True, link="product.html"):
     states = {
         "in": ('<i></i>In stock', "Add to cart"),
         "pre": (f'<i class="hollow"></i>Preorder · due {eta or "Nov 2026"}', "Preorder"),
         "soon": (f'<i class="hollow"></i>Coming soon · {eta or "early 2027"}', "Notify me"),
-        "sup": ('<i class="half"></i>At supplier · ships 3-5 days', "Add to cart"),
+        "sup": ('<i class="half"></i>At supplier · ships 2-7 days', "Add to cart"),
         "out": ('<i class="hollow"></i>Out of stock', "Notify me"),
     }
     av, btn = states[state]
@@ -211,19 +212,20 @@ def card(title, vendor, price, state="in", badge="", was="", meta="1-4 · 60-120
       <div class="vendor">{vendor}</div><div class="title">{title}</div>{bgg_line(title)}<div class="price">${price}{w}</div>
       {m}<div class="avail inv">{av}</div>{q}</a>'''
 
-def carousel(cards, cols=5):
-    return f'<div class="grid g{cols}">{"".join(cards)}</div>'
+def carousel(cards, cols=4):
+    return (f'<div class="carousel" style="--cols:{cols};">{"".join(cards)}</div>'
+            '<div class="row small" style="justify-content:flex-end;gap:10px;margin-top:8px;"><span class="car-arrow">‹</span><span class="car-arrow">›</span></div>')
 
-ROW_JUST = [card("Nusfjord: Expansion Pack #1", "Lookout Spiele", "44.95", meta="1-5 · 20-100 min · 12+ · Weight: 2.9", badge="Just arrived"),
-            card("Three Days of Gettysburg: Deluxe", "GMT", "169.95", meta="1-2 · 2 hrs+ · 14+ · Weight: 3.7"),
-            card("Thunderbolt: Deluxe Edition", "GMT", "169.95", meta="1-2 · 2 hrs+ · 14+ · Weight: 3.7"),
-            card("Container: More Containers", "Pegasus Spiele", "39.95", meta="3-5 · 60-120 min · 12+ · Weight: 2.9"),
-            card("Cascadia: Landmarks", "Flatout Games", "49.95", meta="1-5 · 30-60 min · 10+ · Weight: 2.1", badge="Back in stock")]
-ROW_PRE = [card("Commands & Colors: Napoleonics Exp. #7", "GMT", "144.95", "pre", "Preorder", eta="Nov 2026", meta="2 · 60-120 min · 12+ · Weight: 2.9", link="product-preorder.html"),
-           card("Baltic Empires", "Compass Games", "129.95", "pre", "Preorder", eta="Dec 2026", meta="1-4 · 2 hrs+ · 14+ · Weight: 3.7", link="product-preorder.html"),
-           card("Arcs: Leaders & Lore Pack", "Leder Games", "54.95", "pre", "Preorder", eta="Jan 2027", meta="2-4 · 60-120 min · 14+ · Weight: 2.9", link="product-preorder.html"),
-           card("Spirit Island: Nature Incarnate", "Greater Than Games", "89.95", "pre", "Preorder", eta="Feb 2027", meta="1-4 · 60-120 min · 13+ · Weight: 3.7", link="product-preorder.html"),
-           card("Heat: Tunnel Vision", "Days of Wonder", "64.95", "soon", "Coming soon", eta="Mar 2027", meta="1-6 · 30-60 min · 10+ · Weight: 2.1", link="product-preorder.html")]
+ROW_JUST = [card("Nusfjord: Expansion Pack #1", "Lookout Spiele", "44.95", meta="1-5 · 20-100 min · 12+ · Complexity: 2.9", badge="Just arrived"),
+            card("Three Days of Gettysburg: Deluxe", "GMT", "169.95", meta="1-2 · 2 hrs+ · 14+ · Complexity: 3.7"),
+            card("Thunderbolt: Deluxe Edition", "GMT", "169.95", meta="1-2 · 2 hrs+ · 14+ · Complexity: 3.7"),
+            card("Container: More Containers", "Pegasus Spiele", "39.95", meta="3-5 · 60-120 min · 12+ · Complexity: 2.9"),
+            card("Cascadia: Landmarks", "Flatout Games", "49.95", meta="1-5 · 30-60 min · 10+ · Complexity: 2.1", badge="Back in stock")]
+ROW_PRE = [card("Commands & Colors: Napoleonics Exp. #7", "GMT", "144.95", "pre", "Preorder", eta="Nov 2026", meta="2 · 60-120 min · 12+ · Complexity: 2.9", link="product-preorder.html"),
+           card("Baltic Empires", "Compass Games", "129.95", "pre", "Preorder", eta="Dec 2026", meta="1-4 · 2 hrs+ · 14+ · Complexity: 3.7", link="product-preorder.html"),
+           card("Arcs: Leaders & Lore Pack", "Leder Games", "54.95", "pre", "Preorder", eta="Jan 2027", meta="2-4 · 60-120 min · 14+ · Complexity: 2.9", link="product-preorder.html"),
+           card("Spirit Island: Nature Incarnate", "Greater Than Games", "89.95", "pre", "Preorder", eta="Feb 2027", meta="1-4 · 60-120 min · 13+ · Complexity: 3.7", link="product-preorder.html"),
+           card("Heat: Tunnel Vision", "Days of Wonder", "64.95", "soon", "Coming soon", eta="Mar 2027", meta="1-6 · 30-60 min · 10+ · Complexity: 2.1", link="product-preorder.html")]
 
 # ---- Enterprise collection UI (matched to the live Enterprise demo) ----
 ENT_FILTER_ICO = '<svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke-width="1.25" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" d="M1 6h18M1 14h18"/><circle cx="7" cy="6" r="3" fill="#fff"/><circle cx="13" cy="14" r="3" fill="#fff"/></svg>'
@@ -240,7 +242,7 @@ def ent_toolbar(sort="BGG rank"):
     return f'''<div class="ent-tb">
       <div class="ent-tb-l"><span class="ent-fbtn"><span class="d">Filter</span><span class="m">Filter &amp; Sort</span>{ENT_FILTER_ICO}</span>
         <span class="ent-sort"><span class="small">Sort by</span><span class="ent-input">{sort} <span style="margin-left:auto;">▾</span></span></span></div>
-      <div class="ent-tb-r"><span class="small" style="font-weight:600;">Compare</span><span class="ent-switch"></span><span class="ent-lay">{ENT_LIST_ICO}</span><span class="ent-lay on">{ENT_GRID_ICO}</span></div>
+      <div class="ent-tb-r"><span class="ent-lay">{ENT_LIST_ICO}</span><span class="ent-lay on">{ENT_GRID_ICO}</span></div>
     </div>'''
 
 def ent_applied(chips):
@@ -276,6 +278,11 @@ def filters(groups, applied=None):
             o = opts; active = False
         elif not opts:
             o = price_range(); active = False
+        elif str(opts[0]).startswith("Search"):
+            active = False
+            items = "".join(f'<div class="chk"><b></b>{x}</div>' for x in opts[1:])
+            o = (f'<div style="margin-top:8px;"><span class="ent-input" style="width:100%;color:#888;">⌕ {opts[0]}</span></div>'
+                 f'<div class="ent-scroll">{items}</div>')
         else:
             active = any(str(x).startswith("✓") for x in opts)
             vis = opts[:5]
@@ -293,31 +300,32 @@ def ent_products(sidebar_groups, applied, cards_html, sort="BGG rank", cols=3, c
       <div style="flex:1;min-width:0;"><div class="grid g{cols} ent-grid">{cards_html}</div>
         <p class="center" style="margin-top:20px;"><span class="btn">Load more</span></p><p class="center muted" style="margin-top:6px;font-size:11px;">Showing 24 of {count}</p></div>
     </div>
-    <div class="anno"><strong>Matches Enterprise's collection UI:</strong> "Filter" button toggles the sidebar; "Sort by" dropdown; "Compare" toggle (adds a Compare tick box to each card, can be switched off in theme settings); list / grid view icons; applied filters as the first sidebar group with ⓧ chips and "Clear all"; each group collapsible with counts, "Show more" and "Clear". On mobile the button reads "Filter &amp; Sort" and opens Enterprise's drawer with sort, filters and a "Show N results" button. Price uses Enterprise's own price range (inputs + slider); players, play time, complexity and rating reuse that same slider look over the band values. {extra_anno}</div>'''
+    <div class="anno"><strong>Matches Enterprise's collection UI:</strong> "Filter" button toggles the sidebar; "Sort by" dropdown; list / grid view icons; applied filters as the first sidebar group with ⓧ chips and "Clear all"; each group collapsible with counts, "Show more" and "Clear". On mobile the button reads "Filter &amp; Sort" and opens Enterprise's drawer with sort, filters and a "Show N results" button. Price uses Enterprise's own price range (inputs + slider); players, play time, complexity and rating reuse that same slider look over the band values. {extra_anno}</div>'''
 
 BOARD_FILTERS = [
-    ("Availability", mf("advent.availability_state"), ["In stock (412)", "At supplier (1,830)", "Preorder (96)", "Coming soon (41)"], "Replaces native in/out of stock filter. Out of stock hidden by default."),
+    ("Availability", mf("advent.availability_state"), ["In stock (2,242)", "Preorder (137)", "Out of stock (1,120)"], "Three options only (Dean): In stock includes games we order in from the supplier; Preorder covers preorders with or without a date. Replaces the native in/out of stock filter."),
     ("Price", mf("variant price"), [], "Native range: min / max inputs"),
     ("Product type", mf("product_type"), ["Board Game", "Expansion", "Card Game"], ""),
     ("Game type", mf("bgg.type"), ["Strategy", "Family", "Party", "Thematic", "Wargames", "+ 3 more"], ""),
-    ("Players", mf("bgg.supports_players") + ' <span class="vol tweak">min/max tweak</span>', minmax("2", "4"), "Min/Max like Meeplewatch. Script ticks every count in between (2, 3, 4) on the native list filter."),
-    ("Play time", mf("bgg.playtime_band") + ' <span class="vol tweak">stepped slider</span>', stepped(["&lt;30m", "30-60", "1-2h", "2h+"], 1, 2), "Slider snaps to the bands and ticks them. No app."),
+    ("Players", mf("bgg.supports_players") + ' <span class="vol tweak">min/max tweak</span>', minmax("2", "4"), "Min/Max like Meeplewatch. Min and max can be the same (1 and 1 shows solo-only games). Script ticks every count in between on the native list filter."),
+    ("Play time", mf("bgg.playtime_band") + ' <span class="vol tweak">stepped slider</span>', stepped(["&lt;30m", "30-60", "1-2h", "2h+"], 1, 2, "30 min", "2 hrs"), "Min and max boxes each hold a single time. Slider snaps to the bands and ticks them. No app."),
     ("Youngest player", mf("bgg.age_band") + ' <span class="vol tweak">single select</span>', '<div style="margin-top:8px;"><span class="ent-input" style="width:100%;">8 years <span style="margin-left:auto;">▾</span></span></div>', "Ticks every band suitable for that age (6+, 8+). Dean asked for no multi-checkboxes here."),
-    ("Weight (complexity)", mf("bgg.weight_band") + ' <span class="vol tweak">stepped slider</span>', stepped(["1", "2", "3", "4", "5"], 1, 3, "2.0", "3.9"), "BGG weight out of 5. Slider snaps to whole numbers and ticks the bands 1.0-1.9, 2.0-2.9, 3.0-3.9, 4.0-5.0."),
-    ("Publisher", mf("vendor") + ' <span class="vol tweak">search box tweak</span>', ["Search publishers...", "GMT (214)", "Stonemaier Games (31)", "Lookout Spiele (28)"], "100+ values: scrollable list with type-ahead"),
-    ("Category / theme", mf("bgg.categories") + " " + mf("game_category", ""), ["Search...", "Economic", "Fantasy", "Historical"], "metaobject reference"),
-    ("Mechanic", mf("bgg.mechanics"), ["Search...", "Worker Placement", "Deck Building", "Co-operative"], "metaobject reference"),
-    ("Designer", mf("bgg.designers"), ["Search...", "Uwe Rosenberg", "Reiner Knizia"], "metaobject reference"),
-    ("Artist", mf("bgg.artists"), ["Search..."], "metaobject reference"),
+    ("Complexity", mf("bgg.weight_band") + ' <span class="vol tweak">stepped slider</span>', stepped(["1", "2", "3", "4", "5"], 1, 3, "2.0", "3.9"), "BGG complexity score out of 5. Slider snaps to whole numbers and ticks the bands 1.0-1.9, 2.0-2.9, 3.0-3.9, 4.0-5.0."),
+    ("Publisher", mf("vendor") + ' <span class="vol tweak">search box tweak</span>', ["Search publishers...", "Abacusspiele (12)", "Allplay (9)", "Asmodee (186)", "Capstone Games (14)", "Compass Games (22)", "Feuerland (11)", "GMT (214)", "Lookout Spiele (28)", "Stonemaier Games (31)", "Zoch Verlag (8)"], "800+ publishers: search box with a scrollable list (like Meeplewatch). Theme tweak."),
+    ("Category / theme", mf("bgg.categories") + " " + mf("game_category", ""), ["Search categories...", "Adventure (412)", "Card Game (390)", "Economic (288)", "Fantasy (604)", "Historical (351)", "Horror (97)", "Science Fiction (318)", "Wargame (402)"], "Search box with a scrollable list. Metaobject reference."),
+    ("Mechanic", mf("bgg.mechanics"), ["Search mechanics...", "Area Majority (244)", "Cooperative Game (301)", "Deck Building (176)", "Dice Rolling (520)", "Drafting (231)", "Hand Management (610)", "Tile Placement (198)", "Worker Placement (142)"], "Search box with a scrollable list. Metaobject reference."),
+    ("Designer", mf("bgg.designers"), ["Search designers...", "Bruno Faidutti (14)", "Martin Wallace (22)", "Reiner Knizia (61)", "Stefan Feld (19)", "Uwe Rosenberg (27)", "Vital Lacerda (9)", "Vlaada Chvátil (12)"], "Search box with a scrollable list. Metaobject reference."),
+    ("Artist", mf("bgg.artists"), ["Search artists...", "Beth Sobel (18)", "Ian O'Toole (24)", "Kwanchai Moriya (21)", "Lukas Siegmon (11)", "Vincent Dutrait (33)"], "Search box with a scrollable list. Metaobject reference."),
     ("Series / family", mf("bgg.families"), ["Search...", "Commands & Colors"], ""),
     ("Base game or expansion", mf("bgg.is_expansion"), ["Base game", "Expansion"], ""),
     ("Offers", mf("tags"), ["On sale", "Clearance", "Dings & dents", "Kickstarter"], "State tags only"),
     ("BGG rating", mf("bgg.rating_band", "new") + ' <span class="vol tweak">min select</span>', '<div style="margin-top:8px;"><span class="ent-input" style="width:100%;">7.5 and up <span style="margin-left:auto;">▾</span></span></div>', "Needs a rating band field (8+, 7.5+, 7+, 6.5+, 6+)."),
     ("BGG rank", mf("bgg.rank_band", "new"), ["Top 100", "Top 500", "Top 1000"], "Optional. Rank sort covers most of this."),
 ]
-AVAIL_ON = ("Availability", BOARD_FILTERS[0][1], ["✓ In stock (412)", "At supplier (1,830)", "Preorder (96)", "Coming soon (41)"], BOARD_FILTERS[0][3])
+AVAIL_ON = ("Availability", BOARD_FILTERS[0][1], ["✓ In stock (2,242)", "Preorder (137)", "Out of stock (1,120)"], BOARD_FILTERS[0][3])
 # Board Games sidebar order (all filters live in Enterprise's sidebar, applied filters group on top)
-SIDEBAR = [AVAIL_ON] + [BOARD_FILTERS[i] for i in (1, 4, 5, 6, 7, 16, 3, 2, 8, 9, 10, 11, 12, 13, 14, 17, 15)]
+# BGG rating and BGG rank filters removed (Dean): new games have no rating or rank yet
+SIDEBAR = [AVAIL_ON] + [BOARD_FILTERS[i] for i in (1, 4, 5, 6, 7, 3, 2, 8, 9, 10, 11, 12, 13, 14, 15)]
 
 CN = ' <span class="lbl" style="border-color:#9a5b2b;color:#9a5b2b;">content needed</span>'
 L1 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus."
@@ -327,12 +335,12 @@ L2 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod te
 home = sec("Gallery (promo tiles)", f'''
     <div class="grid" style="grid-template-columns:2fr 1fr;gap:12px;">
       <div class="img" style="height:340px;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:24px;text-transform:none;letter-spacing:0;color:#333;font-size:14px;">
-        <span class="pill">Preorders open</span><h1 style="margin-top:8px;">The big December releases are here to reserve</h1>
-        <p class="muted" style="margin-top:6px;">Lock in your copy now. We charge today and ship the day it lands.</p>
-        <span class="btn solid" style="margin-top:12px;">Shop preorders</span></div>
+        <span class="pill">Launch</span><h1 style="margin-top:8px;">Welcome to the new look Advent Games!</h1>
+        <p class="muted" style="margin-top:6px;">Same friendly service, a much easier way to find your next game.</p>
+        <a href="article.html" class="btn solid" style="margin-top:12px;">Read the blog post</a></div>
       <div class="grid" style="gap:12px;">
         <div class="img" style="height:164px;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:16px;text-transform:none;letter-spacing:0;color:#333;"><h3>Just arrived this week</h3><span class="small" style="text-decoration:underline;">See what's new</span></div>
-        <div class="img" style="height:164px;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:16px;text-transform:none;letter-spacing:0;color:#333;"><h3>Gift ideas under $50</h3><span class="small" style="text-decoration:underline;">Shop gifts</span></div>
+        <div class="img" style="height:164px;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:16px;text-transform:none;letter-spacing:0;color:#333;"><h3>Preorders open</h3><span class="small" style="text-decoration:underline;">Reserve the big December releases</span></div>
       </div></div>
     <div class="anno">Static tiles, no auto-rotate. Dean flagged constant moving banners on Gameology as a dislike, and it fits the moodboard's "modular card-grid hero" direction. Dean edits image, heading, link per tile. Slideshow remains available if he wants one rotating hero for big campaigns.</div>''',
     note="hero · 1 large + 2 small tiles")
@@ -340,11 +348,11 @@ home = sec("Gallery (promo tiles)", f'''
 home += sec("Featured collection", f'''
     <div class="row" style="justify-content:space-between;align-items:end;margin-bottom:14px;"><div><h2>Just arrived</h2><p class="muted small">Fresh off the truck and ready to ship today.</p></div><a href="collection-preorders.html#just-arrived" class="small" style="text-decoration:underline;">View all</a></div>
     {carousel(ROW_JUST)}
-    <div class="anno">Collection: <strong>Just Arrived</strong> (tag {mf("new-arrival")}, set by the 30-day job on {mf("advent.arrived_at")}). Carousel layout, swipe on mobile. Order needs to follow arrival date, see Data Map gap #8.</div>''',
+    <div class="anno">Collection: <strong>Just Arrived</strong> (tag {mf("new-arrival")}, set by the 30-day job on {mf("advent.arrived_at")}). Carousel: side-scrolls with arrows on desktop, swipe on mobile (Enterprise featured collection, carousel layout). Order needs to follow arrival date, see Data Map gap #8.</div>''',
     note="carousel · Dean's #1 browse path", sid="just-arrived-row")
 
 home += sec("Featured collection", f'''
-    <div class="row" style="justify-content:space-between;align-items:end;margin-bottom:14px;"><div><h2>New to preorder</h2><p class="muted small">Reserve before they sell through. Due dates shown on every game.</p></div><a href="collection-preorders.html" class="small" style="text-decoration:underline;">All preorders</a></div>
+    <div class="row" style="justify-content:space-between;align-items:end;margin-bottom:14px;"><div><h2>New to preorder</h2><p class="muted small">Reserve before they sell through.</p></div><a href="collection-preorders.html" class="small" style="text-decoration:underline;">All preorders</a></div>
     {carousel(ROW_PRE)}''', note="carousel · collection: New to Preorder")
 
 home += sec("Collection list", f'''
@@ -357,22 +365,22 @@ home += sec("Collection list", f'''
 
 home += sec("Featured collection", f'''
     <div class="row" style="justify-content:space-between;align-items:end;margin-bottom:14px;"><h2>Best sellers</h2><a href="collection.html" class="small" style="text-decoration:underline;">View all</a></div>
-    {carousel([card("Cascadia", "Flatout Games", "54.95", meta="1-4 · 30-60 min · 10+ · Weight: 2.1"), card("Wingspan", "Stonemaier Games", "79.95", meta="1-5 · 60-120 min · 10+ · Weight: 2.9"), card("Ark Nova", "Feuerland", "99.95", "sup", meta="1-4 · 2 hrs+ · 14+ · Weight: 3.7"), card("Sky Team", "Le Scorpion Masqué", "39.95", meta="2 · Under 30 min · 12+ · Weight: 2.1"), card("The Crew: Mission Deep Sea", "KOSMOS", "24.95", meta="2-5 · Under 30 min · 10+ · Weight: 2.1")])}''',
+    {carousel([card("Cascadia", "Flatout Games", "54.95", meta="1-4 · 30-60 min · 10+ · Complexity: 2.1"), card("Wingspan", "Stonemaier Games", "79.95", meta="1-5 · 60-120 min · 10+ · Complexity: 2.9"), card("Ark Nova", "Feuerland", "99.95", "sup", meta="1-4 · 2 hrs+ · 14+ · Complexity: 3.7"), card("Sky Team", "Le Scorpion Masqué", "39.95", meta="2 · Under 30 min · 12+ · Complexity: 2.1"), card("The Crew: Mission Deep Sea", "KOSMOS", "24.95", meta="2-5 · Under 30 min · 10+ · Complexity: 2.1")])}''',
     note="carousel · repeatable for any collection (Solo, Gateway, Staff picks)")
 
-PICKS = [("Sky Team","Le Scorpion Masqué","39.95","2 · Under 30 min · 12+ · Weight: 2.1","Lorem ipsum dolor sit amet, consectetur adipiscing elit."),
-         ("Cascadia","Flatout Games","54.95","1-4 · 30-60 min · 10+ · Weight: 2.1","Integer posuere erat a ante venenatis dapibus posuere."),
-         ("Ark Nova","Feuerland","99.95","1-4 · 2 hrs+ · 14+ · Weight: 3.7","Donec ullamcorper nulla non metus auctor fringilla."),
-         ("Nusfjord","Lookout Spiele","79.95","1-5 · 20-100 min · 12+ · Weight: 2.9","Cras mattis consectetur purus sit amet fermentum.")]
+PICKS = [("Sky Team","Le Scorpion Masqué","39.95","2 · Under 30 min · 12+ · Complexity: 2.1","Lorem ipsum dolor sit amet, consectetur adipiscing elit."),
+         ("Cascadia","Flatout Games","54.95","1-4 · 30-60 min · 10+ · Complexity: 2.1","Integer posuere erat a ante venenatis dapibus posuere."),
+         ("Ark Nova","Feuerland","99.95","1-4 · 2 hrs+ · 14+ · Complexity: 3.7","Donec ullamcorper nulla non metus auctor fringilla."),
+         ("Nusfjord","Lookout Spiele","79.95","1-5 · 20-100 min · 12+ · Complexity: 2.9","Cras mattis consectetur purus sit amet fermentum.")]
 picks_html = "".join('<div>' + card(t, v, p, meta=m) + '<p class="small" style="margin-top:8px;border-left:2px solid #999;padding-left:8px;font-style:italic;">"' + q + '"</p></div>' for t, v, p, m, q in PICKS)
 home += sec("Featured collection",
-    '<div class="row" style="justify-content:space-between;align-items:end;margin-bottom:14px;"><div><h2>Dean recommends</h2><p class="muted small">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div><a href="collection.html" class="small" style="text-decoration:underline;">All staff picks</a></div>'
+    '<div class="row" style="justify-content:space-between;align-items:end;margin-bottom:14px;"><div><h2>Staff recommendations</h2><p class="muted small">What have we been playing this week?</p></div><a href="collection.html" class="small" style="text-decoration:underline;">All staff picks</a></div>'
     + '<div class="grid g4">' + picks_html + '</div>'
     + '<div class="anno">Leans on Dean\'s personal knowledge, the point of difference he named (range plus his personal service). Manual "Staff picks" collection, with a one-line note per game from ' + mf("advent.staff_note","new") + ' that also shows on the product page. Note hides when empty.</div>',
     note="staff picks", extra_tags=CN)
 home += sec("Image with text",
     '<div class="row" style="gap:32px;align-items:center;"><div style="flex:1;"><div class="img" style="height:220px;">Photo: family playing</div></div>'
-    + '<div style="flex:1;"><h2>New to board games? Start here</h2><p class="muted" style="margin-top:8px;">' + L2 + '</p>'
+    + '<div style="flex:1;"><h2>New to board games? Start here</h2><p class="muted" style="margin-top:8px;">Every journey begins with a single step, and these collections will set you on the Board Game path. These games provide a strong base for learning essential board game mechanics, and are great fun for nearly all ages!</p>'
     + '<div class="row" style="gap:8px;margin-top:14px;flex-wrap:wrap;"><a href="collection.html" class="btn">Gateway games</a><a href="collection.html" class="btn">Family games</a><a href="collection.html" class="btn">Two-player</a></div></div></div>'
     + '<div class="anno">For the family buyer and gift buyer personas in Dean\'s design doc, who need simple guidance on age, play time and complexity. Buttons go to existing smart collections.</div>',
     note="beginner pathway", extra_tags=CN)
@@ -391,7 +399,7 @@ home += sec("Gallery", f'''
 
 home += sec("Image with text", '''
     <div class="row" style="gap:32px;align-items:center;"><div style="flex:1;"><div class="img" style="height:240px;">Photo: Dean / packing table / games shelf</div></div>
-    <div style="flex:1;"><h2>Your friendly, local, online board game store</h2><p class="muted" style="margin-top:10px;">Owner-operated in Sydney, with a huge range, fair prices and the hard-to-find games other stores don't carry. Ask about a game, a preorder or an order you've already placed and you'll hear back from Dean himself.</p>
+    <div style="flex:1;"><h2>Your friendly, local, online board game store</h2><p class="muted" style="margin-top:10px;">Owner-operated in Sydney, with a huge range, fair prices and the hard-to-find games other stores don't carry. Ask about a game, a preorder or an order you've already placed and you'll hear back from Dean, not an AI response.</p>
     <p style="margin-top:14px;"><a href="about.html" class="btn">Our story</a> <a href="help.html" class="btn ghost">Pickup &amp; shipping</a></p></div></div>''', note="brand story · USP")
 
 home += sec("App block: Google Reviews", '''
@@ -407,7 +415,7 @@ write("index.html", "Home", "index.json", "", home)
 def card_anatomy():
     return f'''
     <div class="row" style="gap:28px;align-items:flex-start;">
-      <div style="width:220px;">{card("Nusfjord: Expansion Pack #1", "Lookout Spiele", "44.95", meta="1-5 · 20-100 min · 12+ · Weight: 2.9", badge="Just arrived")}</div>
+      <div style="width:220px;">{card("Nusfjord: Expansion Pack #1", "Lookout Spiele", "44.95", meta="1-5 · 20-100 min · 12+ · Complexity: 2.9", badge="Just arrived")}</div>
       <div style="flex:1;" class="small">
         <table class="tbl"><tr><th>Card element</th><th>Source</th><th>Notes</th></tr>
         <tr><td>Box art (square)</td><td>{mf("featured image")}</td><td>Fixed 1:1 ratio, contain not crop. Hover shows 2nd image (theme setting).</td></tr>
@@ -417,40 +425,40 @@ def card_anatomy():
         <tr><td>Year · BGG rating chip</td><td>{mf("bgg.year_published")} {mf("bgg.rating")}</td><td>One chip like Meeplewatch: "☆ 7.7 BGG". Hidden when blank (unreleased games). Rank is not shown on cards, it drives the default sort.</td></tr>
         <tr><td>Expansion badge</td><td>{mf("bgg.is_expansion")}</td><td>Inline badge, separate from the status badge, so a preorder expansion shows both.</td></tr>
         <tr><td>Title + price</td><td>{mf("title")} {mf("price")}</td><td>Strike-through only on genuine sales, see gap #3 (RRP)</td></tr>
-        <tr><td>Availability line</td><td>{mf("advent.availability_state")} {mf("advent.eta")} {mf("advent.supplier_lead_time","new")}</td><td>Reuses Enterprise's card stock line (<code>product-inventory__status</code>: top rule, small text, normal / low-stock colour). We swap its text for our availability state ("In stock", "At supplier · ships 3-5 days", "Preorder · due Nov 2026") and keep the theme's low-stock level for "Only 2 left". Labels in Data Map state matrix.</td></tr>
-        <tr><td>Play stats row (icons)</td><td>{mf("bgg.min_players")} {mf("bgg.max_players")} {mf("bgg.playtime_band")} {mf("bgg.min_age")} {mf("bgg.weight")}</td><td>Hidden if no BGG data (accessories). Weight shown as BGG's decimal score out of 5 (e.g. 2.9 /5), the way hobby gamers know it.</td></tr>
+        <tr><td>Availability line</td><td>{mf("advent.availability_state")} {mf("advent.eta")} {mf("advent.supplier_lead_time","new")}</td><td>Reuses Enterprise's card stock line (<code>product-inventory__status</code>: top rule, small text, normal / low-stock colour). We swap its text for our availability state ("In stock", "At supplier · ships 2-7 days", "Preorder · due Nov 2026") and keep the theme's low-stock level for "Only 2 left". Labels in Data Map state matrix.</td></tr>
+        <tr><td>Play stats row (icons)</td><td>{mf("bgg.min_players")} {mf("bgg.max_players")} {mf("bgg.playtime_band")} {mf("bgg.min_age")} {mf("bgg.weight")}</td><td>Hidden if no BGG data (accessories). Complexity shown as BGG's decimal score out of 5 (e.g. 2.9/5). Labelled \"Complexity\" rather than BGG's \"Weight\" so non-hobbyists understand it (Dean).</td></tr>
         <tr><td>Quick add</td><td>native quick buy</td><td>Label switches: Add to cart / Preorder / Notify me. Single-variant games add straight to the drawer.</td></tr>
         </table></div></div>'''
 
 coll = ent_banner('<a href="index.html">Home</a> / Board Games', "Board Games", "2,379", "Over 9,000 board games from family classics to 4-hour heavy euros. Use the filters to narrow by player count, play time and complexity, or jump into a type below.")
 
 
-grid_cards = [card("Nusfjord", "Lookout Spiele", "79.95", meta="1-5 · 20-100 min · 12+ · Weight: 2.9"),
-              card("Three Days of Gettysburg: Deluxe", "GMT", "169.95", meta="1-2 · 2 hrs+ · 14+ · Weight: 3.7"),
-              card("Wingspan", "Stonemaier Games", "79.95", "sup", meta="1-5 · 60-120 min · 10+ · Weight: 2.9"),
+grid_cards = [card("Nusfjord", "Lookout Spiele", "79.95", meta="1-5 · 20-100 min · 12+ · Complexity: 2.9"),
+              card("Three Days of Gettysburg: Deluxe", "GMT", "169.95", meta="1-2 · 2 hrs+ · 14+ · Complexity: 3.7"),
+              card("Wingspan", "Stonemaier Games", "79.95", "sup", meta="1-5 · 60-120 min · 10+ · Complexity: 2.9"),
               '<div class="img" style="aspect-ratio:1/1.55;flex-direction:column;text-transform:none;letter-spacing:0;color:#333;padding:12px;text-align:center;"><span class="vol">Promo tile</span><h3 style="margin-top:8px;">New to preorder this month</h3><span class="small" style="text-decoration:underline;">Reserve now</span></div>',
-              card("Ark Nova", "Feuerland", "99.95", meta="1-4 · 2 hrs+ · 14+ · Weight: 3.7"),
-              card("Baltic Empires", "Compass Games", "129.95", "pre", "Preorder", eta="Dec 2026", meta="1-4 · 2 hrs+ · 14+ · Weight: 3.7", link="product-preorder.html"),
-              card("Sky Team", "Le Scorpion Masqué", "39.95", meta="2 · Under 30 min · 12+ · Weight: 2.1", badge="Sale", was="44.95"),
-              card("Cascadia", "Flatout Games", "54.95", meta="1-4 · 30-60 min · 10+ · Weight: 2.1"),
-              card("Heat: Pedal to the Metal", "Days of Wonder", "84.95", "out", "Out of stock", meta="1-6 · 30-60 min · 10+ · Weight: 2.1")]
+              card("Ark Nova", "Feuerland", "99.95", meta="1-4 · 2 hrs+ · 14+ · Complexity: 3.7"),
+              card("Baltic Empires", "Compass Games", "129.95", "pre", "Preorder", eta="Dec 2026", meta="1-4 · 2 hrs+ · 14+ · Complexity: 3.7", link="product-preorder.html"),
+              card("Sky Team", "Le Scorpion Masqué", "39.95", meta="2 · Under 30 min · 12+ · Complexity: 2.1", badge="Sale", was="44.95"),
+              card("Cascadia", "Flatout Games", "54.95", meta="1-4 · 30-60 min · 10+ · Complexity: 2.1"),
+              card("Heat: Pedal to the Metal", "Days of Wonder", "84.95", "out", "Out of stock", meta="1-6 · 30-60 min · 10+ · Complexity: 2.1")]
 
-coll += sec("Collection products", ent_products(SIDEBAR, ["Players: 2-4", "Weight: 2.0-3.9", "In stock"], "".join(grid_cards), sort="BGG rank", cols=3, count="2,379",
-    extra_anno='<br><br><strong>Sort by options:</strong> BGG rank (default), Best selling, Alphabetically A-Z / Z-A, Price low to high / high to low, Date new to old. "BGG rank" is Shopify\'s Featured (manual) order renamed in the theme, set nightly by Ben\'s script in rank order with unranked games last. Only one custom order per collection, so BGG rating can\'t also be a sort. <strong>Range filters:</strong> the slider look and min/max inputs are Enterprise\'s own price range UI, reused over the native band filters (no app). Free-value ranges (e.g. complexity 2.3 to 3.1) would need a filter app. <strong>Compare:</strong> the toggle stays (Enterprise built-in), useful for comparing editions or two similar games side by side; switch off in theme settings if Dean doesn\'t want it. <strong>Default:</strong> "In stock" applied on arrival, matching the design doc\'s "hide out of stock while browsing". <strong>Paging:</strong> "Load more" keeps the footer reachable and URLs keep filter state.'),
+coll += sec("Collection products", ent_products(SIDEBAR, ["Players: 2-4", "Complexity: 2.0-3.9", "In stock"], "".join(grid_cards), sort="BGG rank", cols=3, count="2,379",
+    extra_anno='<br><br><strong>Sort by options:</strong> BGG rank (default), Best selling, Alphabetically A-Z / Z-A, Price low to high / high to low, Date new to old. "BGG rank" is Shopify\'s Featured (manual) order renamed in the theme, set nightly by Ben\'s script in rank order with unranked games last. Only one custom order per collection, so BGG rating can\'t also be a sort. <strong>Range filters:</strong> the slider look and min/max inputs are Enterprise\'s own price range UI, reused over the native band filters (no app). Free-value ranges (e.g. complexity 2.3 to 3.1) would need a filter app. <strong>Compare:</strong> switched off in theme settings (Dean: not needed). <strong>Default:</strong> "In stock" applied on arrival, matching the design doc\'s "hide out of stock while browsing". <strong>Paging:</strong> "Load more" keeps the footer reachable and URLs keep filter state.'),
     note="Enterprise toolbar · sidebar filters (Search & Discovery) · grid with promo tile")
 
 
 def lvrow(title, vendor, price, avail, stats, btn="Add to cart", link="product.html"):
     return f"""<div class="lv"><div class="img" style="width:48px;height:48px;"> </div>
-      <div><a href="{link}"><strong>{title}</strong></a><div class="muted" style="font-size:11px;">{vendor}</div>{bgg_line(title)}</div>
+      <div><a href="{link}"><strong>{title}</strong></a><div class="muted" style="font-size:11px;">{vendor}</div>{bgg_line(title, rating_on=False)}</div>
       <div class="muted">{meta_icons(stats)}</div><div class="avail">{avail}</div><strong>${price}</strong><div class="qa" style="margin:0;">{btn}</div></div>"""
 
-LIST_VIEW = sec("Collection products (list view)", '<div class="lv h"><span></span><span>Game</span><span>Players · time · weight</span><span>Availability</span><span>Price</span><span></span></div>' + "".join([
-    lvrow("Ark Nova", "Feuerland", "99.95", '<i></i>In stock', "1-4 · 2 hrs+ · Weight: 3.7"),
-    lvrow("Nusfjord: Expansion Pack #1", "Lookout Spiele", "44.95", '<i></i>In stock', "1-5 · 20-100 min · Weight: 2.9"),
-    lvrow("Wingspan", "Stonemaier Games", "79.95", '<i class="half"></i>At supplier · 3-5 days', "1-5 · 60-120 min · Weight: 2.9"),
-    lvrow("Spirit Island: Nature Incarnate", "Greater Than Games", "89.95", '<i class="hollow"></i>Preorder · Feb 2027', "1-4 · 60-120 min · Weight: 3.7", "Preorder", "product-preorder.html"),
-    lvrow("Heat: Pedal to the Metal", "Days of Wonder", "84.95", '<i class="hollow"></i>Out of stock', "1-6 · 30-60 min · Weight: 2.1", "Notify me"),
+LIST_VIEW = sec("Collection products (list view)", '<div class="lv h"><span></span><span>Game</span><span>Players · time · complexity</span><span>Availability</span><span>Price</span><span></span></div>' + "".join([
+    lvrow("Ark Nova", "Feuerland", "99.95", '<i></i>In stock', "1-4 · 2 hrs+ · Complexity: 3.7"),
+    lvrow("Nusfjord: Expansion Pack #1", "Lookout Spiele", "44.95", '<i></i>In stock', "1-5 · 20-100 min · Complexity: 2.9"),
+    lvrow("Wingspan", "Stonemaier Games", "79.95", '<i class="half"></i>At supplier · 2-7 days', "1-5 · 60-120 min · Complexity: 2.9"),
+    lvrow("Spirit Island: Nature Incarnate", "Greater Than Games", "89.95", '<i class="hollow"></i>Preorder · Feb 2027', "1-4 · 60-120 min · Complexity: 3.7", "Preorder", "product-preorder.html"),
+    lvrow("Heat: Pedal to the Metal", "Days of Wonder", "84.95", '<i class="hollow"></i>Out of stock', "1-6 · 30-60 min · Complexity: 2.1", "Notify me"),
     ]) + '<div class="anno">The list view icon in Enterprise\'s toolbar switches the grid to dense rows, like Meeplewatch\'s list view. For hobby gamers scanning a lot of titles, it shows the same data as the card in a scannable line. The column layout is a CSS/Liquid tweak on its list card. View choice is remembered per visitor.</div>',
     note="same data as the card, one line per game", kind="tweak")
 
@@ -463,7 +471,7 @@ coll += '<div class="sec internal"><div class="anno"><strong>Same template serve
 write("collection.html", "Board Games", "collection.json", "board", coll)
 
 # ================================================================ PREORDERS
-pre = ent_banner('<a href="index.html">Home</a> / Preorders', "Preorders", "137", "Reserve upcoming games before they land. Every listing shows its expected arrival, and we'll email you the moment your copy is allocated.")
+pre = ent_banner('<a href="index.html">Home</a> / Preorders', "Preorders", "137", "Reserve upcoming games before they land. We'll email you the moment your copy is allocated.")
 pre += sec("Rich text", f'''<div class="grid g3 small">
     <div class="card"><strong>1. Reserve and pay today</strong><p class="muted" style="margin-top:4px;">Preorders are charged at checkout, which locks in your copy and the price.</p></div>
     <div class="card"><strong>2. Ships on release</strong><p class="muted" style="margin-top:4px;">We dispatch within one working day of the game arriving with us.</p></div>
@@ -484,7 +492,7 @@ write("collection-preorders.html", "Preorders / Just Arrived", "collection.preor
 # ================================================================ RPG
 rpg_filters = [BOARD_FILTERS[0], BOARD_FILTERS[1],
     ("RPG system", mf("rpg.system") + " " + mf("rpg_system"), ["Search...", "✓ Pathfinder 2e", "D&amp;D 5e", "Call of Cthulhu 7e", "Starfinder"], "metaobject reference"),
-    ("Product kind", mf("rpg.product_kind"), ["Core Rulebook", "Starter Set", "Adventure", "Campaign", "Sourcebook", "Solo RPG", "RPG Accessory"], ""),
+    ("Category", mf("rpg.product_kind"), ["Core Rulebook", "Starter Set", "Adventure", "Campaign", "Sourcebook", "Solo RPG", "RPG Accessory"], ""),
     ("Publisher", mf("vendor"), ["Paizo", "Chaosium", "Free League"], ""),
     ("Genre", mf("bgg.categories"), ["Fantasy", "Horror", "Science Fiction"], "re-use BGG categories"),
     ("Setting", mf("rpg.setting", "new"), ["Golarion", "Forgotten Realms"], "optional, Dean listed Settings separately"),
@@ -494,7 +502,7 @@ rpg += sec("Collection list", '<h3>Shop by system</h3><div class="grid g6" style
 rpg += sec("Image with text", '<div class="row" style="gap:32px;align-items:center;"><div style="flex:1;"><h2>New to roleplaying?</h2><p class="muted" style="margin-top:8px;">' + L2 + '</p><p style="margin-top:12px;"><a href="collection-rpg.html" class="btn">Shop starter sets</a></p></div><div style="flex:1;"><div class="img" style="height:180px;">RPG table photo</div></div></div><div class="anno">Starter sets are the easiest RPG sale. A short beginner block pointing at the Starter Sets kind.</div>', note="beginner pathway", extra_tags=CN)
 RPG_CARDS = "".join(card(t, v, p, meta=m) for t,v,p,m in [("Pathfinder Player Core","Paizo","89.95","RPG · Core Rulebook · Pathfinder 2e"),("Call of Cthulhu Starter Set","Chaosium","44.95","RPG · Starter Set · Call of Cthulhu 7e"),("Alien RPG: Building Better Worlds","Free League","69.95","RPG · Sourcebook · Alien RPG"),("Pathfinder Beginner Box","Paizo","59.95","RPG · Starter Set · Pathfinder 2e"),("Ironsworn: Starforged","Tomkin Press","79.95","RPG · Solo RPG"),("Dice Set: Polyhedral 7","Chessex","14.95","RPG Accessory")])
 rpg += sec("Collection products", ent_products(rpg_filters, ["System: Pathfinder 2e"], RPG_CARDS, sort="Best selling", count="1,164",
-    extra_anno=f'<br><br>RPG cards swap the play-stats row for <strong>kind · system</strong> from {mf("rpg.product_kind")} {mf("rpg.system")}. Same card snippet, conditional on product type = RPG.'), note="Enterprise toolbar · RPG filter set")
+    extra_anno=f'<br><br>RPG cards swap the play-stats row for <strong>category · system</strong> from {mf("rpg.product_kind")} {mf("rpg.system")}. Same card snippet, conditional on product type = RPG.'), note="Enterprise toolbar · RPG filter set")
 write("collection-rpg.html", "Roleplaying", "collection.rpg.json", "rpg", rpg)
 
 # ================================================================ ACCESSORIES
@@ -504,14 +512,13 @@ acc_filters = [BOARD_FILTERS[0], BOARD_FILTERS[1],
     ("Made for", mf("advent.related_game_names", "new"), ["Search games...", "Wingspan", "Ark Nova"], "product references can't be filters, so a text mirror is needed"),
     ("Brand", mf("vendor"), ["Gamegenic", "Mayday", "Folded Space", "Chessex"], "")]
 accp = ent_banner('<a href="index.html">Home</a> / Accessories &amp; Sleeves', "Accessories &amp; Sleeves", "1,412", "Protect, organise and upgrade the games you love.", note="collection.accessories template · Enterprise banner, no image")
-accp += sec("Rich text", '<div class="row" style="gap:10px;align-items:center;"><strong class="small">Find sleeves for your game:</strong><div class="field" style="flex:1;">Type a game name, e.g. Wingspan</div><span class="btn solid">Find</span></div><div class="anno">Native search scoped to Accessories, or simply pre-filters "Made for". No custom finder app needed.</div>', note="sleeve finder via search", kind="tweak")
 ACC_CARDS = "".join(card(t, v, p, meta=m, link="product-accessory.html") for t,v,p,m in [("Matte Sleeves 63.5 x 88 (100)","Gamegenic","9.95","63.5 x 88 · 100 sleeves"),("Wingspan Organiser","Folded Space","39.95","Made for Wingspan"),("Euro Sleeves 59 x 92 (80)","Mayday","6.95","59 x 92 · 80 sleeves"),("Neoprene Playmat 60 x 35","Gamegenic","34.95","Playmat"),("Metal Coins Set","Stonemaier Games","44.95","Made for Scythe"),("Prime Sleeves 41 x 63 (50)","Gamegenic","6.95","41 x 63 · 50 sleeves")])
 accp += sec("Collection products", ent_products(acc_filters, ["Accessory type: Sleeves"], ACC_CARDS, sort="Best selling", count="1,412",
     extra_anno=f'<br><br>Accessory cards show <strong>size · pack count</strong> or <strong>Made for X</strong> instead of play stats. Needs {mf("advent.pack_quantity","new")} for sleeve counts.'), note="Enterprise toolbar · accessory filter set")
 write("collection-accessories.html", "Accessories", "collection.accessories.json", "acc", accp)
 
 # ================================================================ BRANDS A-Z
-brands = sec("Rich text", '<p class="small muted"><a href="index.html">Home</a> / Brands</p><h1 style="margin-top:8px;">Brands A-Z</h1><p class="muted" style="margin-top:6px;">Over 100 publishers, from GMT to Stonemaier.</p>', note="page.brands template")
+brands = sec("Rich text", '<p class="small muted"><a href="index.html">Home</a> / Brands</p><h1 style="margin-top:8px;">Brands A-Z</h1><p class="muted" style="margin-top:6px;">Over 800 publishers, from Abacusspiele to Zoch Verlag.</p>', note="page.brands template")
 brands += sec("Gallery", '<h3>Featured publishers</h3><div class="grid g6" style="margin-top:12px;">' + "".join('<a href="brand.html"><div class="img" style="height:70px;">Logo</div></a>' for _ in range(6)) + '</div>', note="logos, hand-picked")
 brands += sec("Quick links", ''.join(f'<span class="pill" style="margin:0 4px 6px 0;">{x}</span>' for x in "# A B C D E F G H I J K L M N O P Q R S T U V W X Y Z".split()), note="'Jump to' letter anchors")
 brands += sec("Link list", '<div class="grid g4 small">' + "".join(f'<div><strong>{L}</strong><p style="line-height:1.9;margin-top:4px;">' + "<br>".join(f'<a href="brand.html">{n}</a>' for n in ns) + '</p></div>' for L, ns in [("A",["Aetherworks","Alderac (AEG)","Asmodee","Awaken Realms"]),("C",["Chaosium","Compass Games","Czech Games Edition","CMON"]),("G",["Gamegenic","GMT","Greater Than Games","Garphill Games"]),("L",["Leder Games","Lookout Spiele","Lucky Duck Games"])]) + '</div><div class="anno">Each name links to a vendor smart collection (rule: vendor = X). The import script creates these and the menu that feeds this Link list, so Dean doesn\'t maintain 100+ links by hand.</div>', note="one list per letter")
@@ -555,8 +562,8 @@ def st(keys, html, tag="span"):
 def avail_card(eta="November 2026", release="14 Nov 2026", notice=True):
     nt = f'<div style="margin-top:8px;border-top:1px dashed var(--line);padding-top:8px;">⚠ Publisher update: this wave has slipped two weeks. {mf("advent.notice","new")}</div>' if notice else ""
     return f"""<div class="card small" style="margin-top:12px;padding:14px;">
-      {st("in", '<div class="avail" style="font-size:13px;"><i></i><strong>In stock</strong> · dispatched in 1-3 business days</div><div class="muted" style="margin-top:4px;">Only 3 left <span class="lbl">Enterprise stock counter</span></div>', "div")}
-      {st("sup", '<div class="avail" style="font-size:13px;"><i class="half"></i><strong>Available from supplier</strong> · ships in 3-5 business days ' + mf("advent.supplier_lead_time","new") + '</div><div class="muted" style="margin-top:4px;">We order it in as soon as you check out.</div>', "div")}
+      {st("in", '<div class="avail" style="font-size:13px;"><i></i><strong>In stock</strong> · dispatched in 1-3 business days</div><div class="muted" style="margin-top:4px;">Ready to ship from Sydney.</div>', "div")}
+      {st("sup", '<div class="avail" style="font-size:13px;"><i class="half"></i><strong>Available from supplier</strong> · ships in 2-7 business days ' + mf("advent.supplier_lead_time","new") + '</div><div class="muted" style="margin-top:4px;">We order it in as soon as you check out.</div>', "div")}
       {st("pre", f'<div class="avail" style="font-size:13px;"><i class="hollow"></i><strong>Preorder</strong> · expected {eta} {mf("advent.eta")}</div><div class="muted" style="margin-top:4px;">Publisher release {release} {mf("advent.release_date")}. Charged now, shipped within one working day of release. Cancel any time before it leaves our supplier.</div>{nt}', "div")}
       {st("soon", f'<div class="avail" style="font-size:13px;"><i class="hollow"></i><strong>Coming soon</strong> · {eta}</div><div class="muted" style="margin-top:4px;">Preorders aren\'t open yet. Get an email the moment they are.</div>', "div")}
       {st("out", '<div class="avail" style="font-size:13px;"><i class="hollow"></i><strong>Out of stock</strong></div><div class="muted" style="margin-top:4px;">We\'ll email you as soon as it\'s back.</div>', "div")}
@@ -574,7 +581,7 @@ def meta_line(year, rating, ratings, rank, designer):
       <div style="margin-top:4px;">{mf("bgg.year_published")} {mf("bgg.rating")} {mf("bgg.num_ratings","new")} {mf("bgg.rank")} {mf("bgg.designers")}</div>"""
 
 def stat_strip(items):
-    return '<div class="grid" style="grid-template-columns:repeat(' + str(len(items)) + ',minmax(0,1fr));gap:0;margin-top:14px;border:1px solid var(--line);border-radius:6px;">' + "".join(
+    return '<div class="grid stat-strip" style="grid-template-columns:repeat(' + str(len(items)) + ',minmax(0,1fr));gap:0;margin-top:14px;border:1px solid var(--line);border-radius:6px;">' + "".join(
         f'<div style="padding:10px 6px;text-align:center;{"border-left:1px solid var(--line);" if i else ""}"><div style="color:#333;">{ico(STAT_ICON.get(k, "star"), 22)}</div><div class="muted" style="font-size:10.5px;margin-top:2px;">{k}</div><strong style="font-size:13px;">{v}</strong><div>{m}</div></div>'
         for i, (k, v, m) in enumerate(items)) + '</div>'
 
@@ -589,10 +596,10 @@ POLICY_ACC = (
   _acc_open("Delivery &amp; pickup",
     "<p>We ship Australia-wide with Australia Post eParcel, tracked. Games are boxed and padded; small items may go in a satchel.</p>"
     "<ul><li><strong>$10</strong> Sydney Metro, Gosford and Wollongong</li><li><strong>$15</strong> rest of Australia</li><li><strong>Free</strong> on orders over $300</li></ul>"
-    "<p>In-stock games are dispatched in 1-3 business days. Games we order in from our supplier ship in 3-5 business days.</p>"
+    "<p>In-stock games are dispatched in 1-3 business days. Games we order in from our supplier ship in 2-7 business days.</p>"
     "<p><strong>Free pickup:</strong> Tuesday nights at Northside Gamers Group, Chatswood. Orders placed on a Monday or Tuesday are ready the following Tuesday.</p>"
     "<p>We currently ship within Australia only. For overseas delivery, email us for a quote.</p>"
-    '<p class="note">Confirm with Dean: supplier dispatch (site says 3-5 and 2-7 days in different places), pickup venue and time (Chatswood RSL 6-9pm vs The Chatswood Club 6:30-9pm).</p>')
+    '<p class="note">Confirm with Dean: pickup venue and time (Chatswood RSL 6-9pm vs The Chatswood Club 6:30-9pm).</p>')
   + _acc_open("Returns &amp; damaged games",
     "<p><strong>Change of mind:</strong> let us know in writing within 7 days of delivery. The game must be unopened and in its original packaging. We offer an exchange or store credit. Preorders, special orders, sleeves and accessories can't be returned for change of mind.</p>"
     "<p><strong>Arrived damaged?</strong> Please note any damage when you receive the parcel, then email us for a Return Product Number (RPN). We'll replace the item, or give you a credit or refund for it.</p>"
@@ -612,7 +619,13 @@ def comp_block(items):
             f'<div class="anno" style="margin-top:6px;"><strong>Enterprise\'s built-in complementary products block</strong> (the "You might also need..." slider on the demo product page), one product at a time with arrows. Fed by Shopify\'s native {mf("shopify--discovery--product_recommendation.complementary_products")} list. Ben\'s script fills it per product: expansions for base games (from {mf("bgg.expands")} on each expansion), then sleeves and accessories (from {mf("advent.related_game")}). Hides itself when the list is empty, so games without extras show nothing.</div></div>')
 
 
-def pdp2(title, vendor, price, crumbs, crumb_link, badges, meta, summary, strip, extra="", rrp="", gallery="Box art (zoom)", videos=True, eta="November 2026", comp=None):
+
+def comp_row(title, cards):
+    return sec("Expansions &amp; accessories (full width)", f'<h2>{title}</h2><div class="grid g4" style="margin-top:12px;">{"".join(cards)}</div>'
+        + f'<div class="anno">Moved out of the buy box into a full-width row of cards, below the description (Dean). Pulls from the expansions and accessories already linked to each game in Dean\'s product file: Ben\'s import writes them into Shopify\'s complementary products list ({mf("shopify--discovery--product_recommendation.complementary_products")}), and this section shows them as normal product cards. Hides when the list is empty. Enterprise\'s complementary block is a one-at-a-time slider, so a page-wide grid is a small theme tweak (a product grid section reading that list).</div>',
+        note="full-width grid · hides when empty", kind="tweak")
+
+def pdp2(title, vendor, price, crumbs, crumb_link, badges, meta, summary, strip, extra="", rrp="", gallery="Box art (zoom)", videos=True, eta="November 2026", comp=None, comp_off=None):
     vid = '<div class="img" style="height:60px;">▶ How to play</div>' if videos else '<div class="img" style="height:60px;"> </div>'
     r = f'<p class="small muted" style="margin-top:2px;">{rrp} {mf("advent.rrp","new")} · Card, PayPal or bank transfer</p>' if rrp else '<p class="small muted" style="margin-top:2px;">Card, PayPal or bank transfer</p>'
     watch = f'<p class="small" style="margin-top:10px;"><a href="#videos" style="text-decoration:underline;">{ico("play-circle",15)} Watch how to play</a> · <a href="#details" style="text-decoration:underline;">Full game details ↓</a></p>' if videos else '<p class="small" style="margin-top:10px;"><a href="#details" style="text-decoration:underline;">Full details ↓</a></p>'
@@ -658,7 +671,7 @@ DESC_P = ["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posu
           "Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Maecenas sed diam eget risus varius blandit sit amet non magna."]
 BOX_DEFAULT = ["1 game board", "5 player boards", "75 building cards", "60 wooden workers", "Fish, wood and gold tokens", "Rulebook"]
 
-def details_section(rows, tabs=("Description", "Game details", "What's in the box", "Reviews (12)"), on=0, bgg=True, box=None):
+def details_section(rows, tabs=("Description", "Game details", "Reviews (12)"), on=0, bgg=True, box=None):
     box = box or BOX_DEFAULT
     def panel(name):
         n = name.lower()
@@ -710,12 +723,14 @@ nus_rows = [
     ("Players", f'1-5 {mf("bgg.min_players")} {mf("bgg.max_players")}'),
     ("Play time", f'20-100 min {mf("bgg.min_playtime")} {mf("bgg.max_playtime")}'),
     ("Age", f'12+ {mf("bgg.min_age")}'),
-    ("Weight", f'2.88 / 5 {mf("bgg.weight")}'),
+    ("Complexity", f'2.88 / 5 {mf("bgg.weight")}'),
     ("Year published", f'2017 {mf("bgg.year_published")}'),
     ("BoardGameGeek", f'☆ 7.6 from 7,551 ratings · Rank #387 · <a style="text-decoration:underline;">View on BGG ↗</a> {mf("bgg.rating")} {mf("bgg.rank")}'),
+    ("Awards", f'[BGG honours list, e.g. award name and year] {mf("bgg.honors","new")} <span class="note">row hides when empty</span>'),
     ("Barcode", f'4260402312200 {mf("variant barcode")}'),
 ]
-GAME_STRIP = stat_strip([("Players", "1-5", mf("bgg.supports_players")), ("Play time", "20-100 min", mf("bgg.min_playtime")), ("Age", "12+", mf("bgg.min_age")), ("Weight", "2.88 / 5", mf("bgg.weight"))])
+GAME_STRIP = stat_strip([("Players", "1-5", mf("bgg.supports_players")), ("Play time", "20-100 min", mf("bgg.min_playtime")), ("Age", "12+", mf("bgg.min_age")), ("Complexity", "2.88 / 5", mf("bgg.weight"))]) + \
+    '<div class="small" style="margin-top:10px;line-height:2;"><span class="muted">Categories:</span> <a class="pill">Economic</a> <a class="pill">Nautical</a> &nbsp; <span class="muted">Mechanics:</span> <a class="pill">Worker Placement</a> <a class="pill">Open Drafting</a> ' + mf("bgg.categories") + ' ' + mf("bgg.mechanics") + '</div><p class="small" style="margin-top:4px;"><a href="help.html#games" style="text-decoration:underline;">What does complexity mean?</a></p>'
 
 # ---- product.html: board game
 prod = pdp2("Nusfjord", "Lookout Spiele", "107.95", "Board Games", "collection.html",
@@ -723,10 +738,11 @@ prod = pdp2("Nusfjord", "Lookout Spiele", "107.95", "Board Games", "collection.h
     meta=meta_line(2017, 7.6, "7,551", 387, "Uwe Rosenberg"),
     summary="Grow a Norwegian fishing village: build your fleet, clear the forest and keep the village elders happy. Worker placement from the designer of Agricola.",
     strip=GAME_STRIP, rrp="RRP $120.00 · you save $12.05",
-    comp=[("Nusfjord: Expansion Pack #1", "44.95", "Add to cart", ""), ("Nusfjord: Big Box", "119.95", "Preorder", ""), ("Matte Sleeves 63.5 x 88 (100)", "9.95", "Add to cart", ""), ("Nusfjord Organiser", "34.95", "Add to cart", "")])
+    comp_off=[("Nusfjord: Expansion Pack #1", "44.95", "Add to cart", ""), ("Nusfjord: Big Box", "119.95", "Preorder", ""), ("Matte Sleeves 63.5 x 88 (100)", "9.95", "Add to cart", ""), ("Nusfjord Organiser", "34.95", "Add to cart", "")])
 prod += videos_section("Nusfjord")
 prod += details_section(nus_rows)
-prod += sec("Rich text", '<div class="row" style="gap:20px;align-items:flex-start;"><div class="img" style="width:64px;height:64px;border-radius:50%;flex-shrink:0;">Dean</div><div><h3>Why we like it</h3><p class="muted" style="margin-top:6px;font-style:italic;">"' + L1 + ' Sed posuere consectetur est at lobortis."</p><p class="small" style="margin-top:6px;">Dean, Advent Games</p></div></div><div class="anno">Optional one or two lines from ' + mf("advent.staff_note","new") + '. Only shows when filled, so Dean can add notes to a handful of favourites rather than 11,000 products. The same note feeds the "Dean recommends" row on the home page.</div>', note="staff note · hides when empty", kind="tweak", extra_tags=CN)
+prod += comp_row("Expansions &amp; accessories for Nusfjord", [card("Nusfjord: Expansion Pack #1","Lookout Spiele","44.95",meta=""), card("Nusfjord: Big Box","Lookout Spiele","119.95","pre","Preorder",meta=""), card("Matte Sleeves 63.5 x 88 (100)","Gamegenic","9.95",meta="",link="product-accessory.html"), card("Nusfjord Organiser","Folded Space","34.95",meta="",link="product-accessory.html")])
+prod += sec("Rich text", '<div class="row" style="gap:20px;align-items:flex-start;"><div class="img" style="width:64px;height:64px;border-radius:50%;flex-shrink:0;">Dean</div><div><h3>Why we like it</h3><p class="muted" style="margin-top:6px;font-style:italic;">"' + L1 + ' Sed posuere consectetur est at lobortis."</p><p class="small" style="margin-top:6px;">Dean, Advent Games</p></div></div><div class="anno">Optional one or two lines from ' + mf("advent.staff_note","new") + '. Only shows when filled, so Dean can add notes to a handful of favourites rather than 11,000 products. The same note feeds the "Staff recommendations" row on the home page.</div>', note="staff note · hides when empty", kind="tweak", extra_tags=CN)
 prod += sec("Product recommendations", f'<h2>You might also like</h2><div style="margin-top:12px;">{carousel([card("Agricola","Lookout Spiele","99.95"), card("Caverna","Lookout Spiele","129.95","sup"), card("Hallertau","Lookout Spiele","99.95"), card("Fields of Arle","Lookout Spiele","119.95","out"), card("A Feast for Odin","Lookout Spiele","139.95")])}</div><div class="note" style="margin-top:6px;">Shopify related products, overridable per product via {mf("shopify--discovery--product_recommendation.related_products")}.</div>', note="related products")
 prod += sec("FAQ", '<h3>Questions about buying from Advent</h3>' + "".join(f'<div class="acc small"><span>{q}</span><span>+</span></div>' for q in ["When will my order be dispatched?", "Is this the English edition?", "Do you offer pickup?", "What if the game arrives damaged?"]), note="cc-faq · shared content")
 prod += sec("Featured collection", '<h3>Recently viewed</h3><p class="note">Enterprise recently viewed products</p>', note="recently viewed")
@@ -744,15 +760,16 @@ ppre = pdp2("Commands &amp; Colors: Napoleonics Expansion #7: The Grand Battles"
     badges=st("pre", '<span class="pill" style="background:#333;color:#fff;">Preorder</span>') + st("soon", '<span class="pill" style="background:#333;color:#fff;">Coming soon</span>') + '<span class="xb" style="background:#e2e2e2;border-radius:3px;padding:2px 8px;font-size:11px;font-weight:600;">Expansion</span> ' + mf("bgg.is_expansion"),
     meta=f'<div class="bggl" style="font-size:12.5px;margin-top:6px;gap:8px;"><span>2026</span><span class="muted">Not yet rated on BGG</span><span>by <a style="text-decoration:underline;">Richard Borg</a></span></div><div style="margin-top:4px;" class="note">Rating and rank chips hide until BGG has data.</div>',
     summary="Two-board grand battles for up to eight players, using the Napoleonics system.",
-    strip=stat_strip([("Players", "2-8", ""), ("Play time", "2 hrs+", ""), ("Age", "14+", ""), ("Weight", "2.6 / 5", "")]),
+    strip=stat_strip([("Players", "2-8", ""), ("Play time", "2 hrs+", ""), ("Age", "14+", ""), ("Complexity", "2.6 / 5", "")]),
     extra=f'<div class="card small" style="margin-top:12px;background:#f4f4f4;"><strong>Expansion:</strong> needs <a href="product.html" style="text-decoration:underline;">Commands &amp; Colors: Napoleonics</a> to play. {mf("bgg.is_expansion")} {mf("bgg.expands")}</div>',
-    videos=False, eta="November 2026",
-    comp=[("Commands &amp; Colors: Napoleonics (base game)", "129.95", "Add to cart", ""), ("Exp. #5: Generals, Marshals, Tacticians", "79.95", "Add to cart", "")])
-ppre += details_section(cc_rows, tabs=("Description", "Game details", "What's in the box", "Reviews"), box=["2 double-sided battle maps", "Army unit blocks and labels", "Command and tactician cards", "Scenario booklet", "Rules supplement"])
+    videos=False, eta="November 2026", rrp="RRP $170.00 · you save $25.05",
+    comp_off=None)
+ppre += details_section(cc_rows, tabs=("Description", "Game details", "Reviews"), box=["2 double-sided battle maps", "Army unit blocks and labels", "Command and tactician cards", "Scenario booklet", "Rules supplement"])
+ppre += comp_row("Goes with this expansion", [card("Commands &amp; Colors: Napoleonics","GMT","129.95",meta=""), card("Exp. #5: Generals, Marshals, Tacticians","GMT","79.95",meta=""), card("Exp. #6: Generals","GMT","74.95","out","Out of stock",meta="")])
 ppre += sec("Featured collection", f'<h2>More from the Commands &amp; Colors series</h2><div style="margin-top:12px;">{carousel([card("C&amp;C Napoleonics","GMT","129.95"), card("C&amp;C Ancients","GMT","119.95","sup"), card("C&amp;C Medieval","GMT","119.95"), card("Exp. #6: Generals","GMT","74.95","out"), card("Exp. #5: Generals, Marshals, Tacticians","GMT","79.95")])}</div><div class="note" style="margin-top:6px;">Series row: smart collection on {mf("bgg.families")}.</div>', note="optional", kind="tweak")
 ppre += sec("State matrix", '''<div class="tblwrap"><table class="tbl"><tr><th>advent.availability_state</th><th>Badge</th><th>Availability line</th><th>Button</th><th>Purchasable?</th><th>Inventory policy</th></tr>
     <tr><td>in_stock</td><td>none (or Just arrived)</td><td>In stock · dispatched in 1-3 business days</td><td>Add to cart</td><td>Yes</td><td>Deny when 0</td></tr>
-    <tr><td>at_supplier</td><td>none</td><td>Available from supplier · ships in 3-5 business days</td><td>Add to cart</td><td>Yes</td><td>Continue selling</td></tr>
+    <tr><td>at_supplier</td><td>none</td><td>Available from supplier · ships in 2-7 business days</td><td>Add to cart</td><td>Yes</td><td>Continue selling</td></tr>
     <tr><td>preorder</td><td>Preorder</td><td>Preorder · expected {eta}</td><td>Preorder now</td><td>Yes</td><td>Continue selling</td></tr>
     <tr><td>coming_soon</td><td>Coming soon</td><td>Coming soon · {eta}. Preorders open soon.</td><td>Notify me</td><td>No</td><td>Deny</td></tr>
     <tr><td>out_of_stock</td><td>Out of stock</td><td>Out of stock · we'll email you when it's back</td><td>Notify me</td><td>No</td><td>Deny</td></tr>
@@ -762,7 +779,7 @@ write("product-preorder.html", "Product: expansion example", "product.json (same
 
 # ---- product-rpg.html
 rpg_rows = [("System", f'<a href="collection-rpg.html" style="text-decoration:underline;">Pathfinder 2e</a> {mf("rpg.system")}'),
-            ("Product kind", f'<a href="collection-rpg.html" style="text-decoration:underline;">Core Rulebook</a> {mf("rpg.product_kind")}'),
+            ("Category", f'<a href="collection-rpg.html" style="text-decoration:underline;">Core Rulebook</a> {mf("rpg.product_kind")}'),
             ("Publisher", f'<a href="brand.html" style="text-decoration:underline;">Paizo</a> {mf("vendor")}'),
             ("Designers", f'<a style="text-decoration:underline;">Logan Bonner</a>, <a style="text-decoration:underline;">Mark Seifter</a> {mf("bgg.designers")}'),
             ("Genre", f'<span class="pill">Fantasy</span> {mf("bgg.categories")}'),
@@ -772,8 +789,8 @@ prpg = pdp2("Pathfinder Player Core", "Paizo", "89.95", "Roleplaying", "collecti
     badges=f'<span class="pill">Core Rulebook</span> {mf("rpg.product_kind")}',
     meta=f'<div class="bggl" style="font-size:12.5px;margin-top:6px;gap:8px;"><span>2023</span><span><a href="collection-rpg.html" style="text-decoration:underline;">Pathfinder 2e</a></span><span class="muted">Remastered</span></div><div style="margin-top:4px;">{mf("bgg.year_published")} {mf("rpg.system")}</div>',
     summary="Everything players need to build characters and play Pathfinder: ancestries, classes, spells and the core rules.",
-    strip=stat_strip([("System", "Pathfinder 2e", mf("rpg.system")), ("Kind", "Core Rulebook", mf("rpg.product_kind")), ("Publisher", "Paizo", mf("vendor"))]),
-    videos=False)
+    strip=stat_strip([("System", "Pathfinder 2e", mf("rpg.system")), ("Category", "Core Rulebook", mf("rpg.product_kind")), ("Publisher", "Paizo", mf("vendor"))]),
+    videos=False, rrp="RRP $99.95 · you save $10.00")
 prpg += details_section(rpg_rows, tabs=("Description", "Book details", "Reviews"), bgg=False)
 prpg += sec("Featured collection", f'<h2>More for Pathfinder 2e</h2><div style="margin-top:12px;">{carousel([card("Pathfinder GM Core","Paizo","89.95",meta="RPG · Core Rulebook"), card("Pathfinder Beginner Box","Paizo","59.95",meta="RPG · Starter Set"), card("Pathfinder 2e: Lost Omens Atlas","Paizo","79.95","pre","Preorder",meta="RPG · Sourcebook",link="product-preorder.html"), card("Pathfinder Flip-Mat","Paizo","24.95",meta="RPG Accessory")], 5)}</div><div class="anno">Smart collection per system ({mf("rpg.system")}). The system metaobject image doubles as the collection logo.</div>', note="same-system row", kind="tweak")
 write("product-rpg.html", "Product: RPG example", "product.json (same template, RPG blocks shown)", "rpg", prpg, states=("in", ALL_STATES))
@@ -781,7 +798,7 @@ write("product-rpg.html", "Product: RPG example", "product.json (same template, 
 # ---- product-accessory.html
 pacc = pdp2("Matte Sleeves 63.5 x 88 (100)", "Gamegenic", "9.95", "Accessories", "collection-accessories.html",
     badges=f'<span class="pill">Sleeves</span> {mf("product_type")}',
-    meta=f'<div class="small" style="margin-top:6px;">Fits: <a href="product.html" style="text-decoration:underline;">Nusfjord</a>, <a style="text-decoration:underline;">Wingspan</a>, <a style="text-decoration:underline;">Cascadia</a> + 40 more</div><div style="margin-top:4px;">{mf("advent.related_game","fix")} <span class="note">list, not single</span></div>',
+    meta=f'<div class="small" style="margin-top:6px;">Made for: <a href="product.html" style="text-decoration:underline;">Nusfjord</a> {mf("advent.related_game","fix")}</div><div class="note" style="margin-top:4px;">Game-specific accessories (organisers, upgrades) link back to their game. The "Fits" list for generic sleeves stays hidden until sleeve sizes are filled in for games.</div>',
     summary="Standard American-size sleeves with a matte finish for shuffle-heavy games.",
     strip=stat_strip([("Sleeve size", "63.5 x 88", mf("advent.sleeve_size")), ("Pack", "100", mf("advent.pack_quantity","new")), ("Finish", "Matte", "")]),
     videos=False, gallery="Product photo")
@@ -825,7 +842,7 @@ cart = sec("Cart (main cart)", f'''<div class="row" style="gap:48px;align-items:
         <div style="padding:16px 20px;background:#f2f2f2;margin-top:16px;"><p class="small" style="font-weight:600;">You're $65.15 away from free shipping</p><div style="height:6px;background:#ddd;border-radius:3px;margin-top:10px;"><div style="width:78%;height:6px;background:#333;border-radius:3px;"></div></div></div>
         {drawer_line("Lookout Spiele", "Nusfjord", "79.95", '<i></i>In stock')}
         {drawer_line("GMT", "C&amp;C Napoleonics Exp. #7", "144.95", '<i class="hollow"></i>Preorder · due Nov 2026')}
-        {drawer_line("Gamegenic", "Matte Sleeves 63.5 x 88 (100)", "9.95", '<i class="half"></i>At supplier · ships 3-5 days')}
+        {drawer_line("Gamegenic", "Matte Sleeves 63.5 x 88 (100)", "9.95", '<i class="half"></i>At supplier · ships 2-7 days')}
         <div class="row" style="justify-content:space-between;align-items:center;margin-top:22px;"><h3>You may also like...</h3><span class="muted">‹ &nbsp; ›</span></div>
         <div class="row" style="gap:14px;margin-top:10px;">{ymal_card("Nusfjord Organiser", "34.95")}{ymal_card("The Crew: Mission Deep Sea", "24.95")}</div>
       </div>
@@ -853,7 +870,7 @@ acct = sec("Customer accounts: Order status (Shopify-hosted)", f'''<div style="m
     <h3 style="margin-top:18px;">Order summary</h3>
     {ACC_LINE("Nusfjord", 1, "107.95", '<span class="pill">In stock · waiting for the rest of your order</span> <span class="vol tweak">line-item render-after</span>')}
     {ACC_LINE("C&amp;C Napoleonics Exp. #7", 1, "144.95", '<span class="pill">Preorder · expected November 2026</span>')}
-    {ACC_LINE("Matte Sleeves 63.5 x 88", 2, "19.90", '<span class="pill">Arriving from supplier · due in 3-5 business days</span>')}
+    {ACC_LINE("Matte Sleeves 63.5 x 88", 2, "19.90", '<span class="pill">Arriving from supplier · due in 2-7 business days</span>')}
     <p class="small" style="margin-top:12px;text-align:right;">Subtotal, shipping, total (native)</p>
     <h3 style="margin-top:14px;">Order details</h3><p class="small muted">Contact · Shipping address · Payment · Billing address (native)</p></div>
     <div class="anno"><strong>What this page really is:</strong> Shopify's own customer accounts page, not a theme template. Since Feb 2026 new stores can only use the current (hosted) customer accounts; the old theme-based account pages are deprecated. So Enterprise has no say in this layout. What we control: <strong>branding</strong> (logo, colours, fonts, corner style) in the Checkout &amp; accounts editor, and <strong>small add-ons in fixed slots</strong> from a custom app (customer account UI extensions). Everything not marked with a dashed box is Shopify's native page and looks the same on every store.<br><br><strong>The dashed boxes are the only custom parts</strong>, and each needs the custom app:<br>1. <strong>Status text under each item</strong> (target: line item render-after). Reads a per-item status the middleware writes to the order (order or line metafields). This is the closest Shopify gets to the design doc's "item-level status". It sits under each line, not as a status column in a table.<br>2. <strong>Preorder notice banner</strong> (order status block). Optional, plain text.<br>3. <strong>"Add items to this order"</strong> (order action menu item). The simple version opens instructions for the current workaround: choose the $0 "Order addition" shipping rate at checkout and note the order number. Actually merging into a paid order would need order editing through the app backend, a bigger build: treat as out of scope unless quoted.<br><br><strong>Scope check:</strong> none of this is theme work. It is a small custom app, deployed through the Shopify CLI, plus the middleware writing the statuses. Confirm whether it sits under the middleware line in the quote; if not, launch with the native page and the shipping-rate workaround only, and nothing is promised that can't be delivered.</div>''', kind="custom", note="native page · 3 extension slots marked")
@@ -877,16 +894,16 @@ write("about.html", "About + Contact", "page.about.json", "", ab)
 hp = sec("Rich text", '<h1>Help &amp; FAQ</h1><p class="muted" style="margin-top:6px;">Shipping, pickup, preorders, returns and payments.</p>', note="page.help")
 hp += sec("Quick links", ''.join(f'<span class="pill" style="margin-right:6px;">{x}</span>' for x in ["Shipping","Pickup","Preorders &amp; special orders","Orders","Returns &amp; damages","Payments","Our games"]), note="jump to anchors")
 HELP = [
- ("Shipping", "shipping", ["How much is shipping? ($10 Sydney Metro, Gosford, Wollongong · $15 rest of Australia · free over $300)", "When will I receive my order? (dispatched in 1-3 business days, 3-5 if ordered from a supplier)", "Can I track my parcel?", "Do you ship overseas? (Australia only, email for a quote)", "What if I'm not home? (parcel lockers, uncollected parcels)"]),
+ ("Shipping", "shipping", ["How much is shipping? ($10 Sydney Metro, Gosford, Wollongong · $15 rest of Australia · free over $300)", "When will I receive my order? (dispatched in 1-3 business days, 2-7 if ordered from a supplier)", "Can I track my parcel?", "Do you ship overseas? (Australia only, email for a quote)", "What if I'm not home? (parcel lockers, uncollected parcels)"]),
  ("Pickup", "pickup", ["Can I pick up my order? (free, Tuesday nights, Northside Gamers Group, Chatswood)", "When will my pickup be ready?"]),
  ("Preorders &amp; special orders", "preorders", ["When is my preorder due?", "When am I charged? (at purchase)", "Will my in-stock items wait for my preorder?", "Can I cancel a preorder?", "Can you order a game you don't stock?"]),
  ("Orders", "orders", ["Do I need an account to buy?", "How do I check my order status?", "Can I add items to an order that hasn't shipped?"]),
  ("Returns &amp; damages", "returns", ["My parcel arrived damaged", "Can I return an unopened game? (7 days, exclusions apply)", "How do I start a return? (Return Product Number)"]),
  ("Payments", "payments", ["What payment methods do you accept?", "How does bank transfer work?"]),
- ("Our games", "games", ["Which edition is this game? (English retail unless tagged German, KS or Deluxe)", "Why are board games expensive in Australia?"]),
+ ("Our games", "games", [("How is a game's Complexity rating determined?", "Complexity ratings on product pages are taken from data on Board Game Geek, the hobby's main repository of discussion and knowledge. Games are given a rating out of 5, with 1 being extremely light, easy-to-learn and for nearly all ages, and 5 being highly complex, with possibly obtuse rules. These ratings are user submitted, so they are very subjective and change over time as more people vote, but are an excellent indicator of how complex you're likely to find a game to be."), "Which edition is this game? (English retail unless tagged German, KS or Deluxe)", "Why are board games expensive in Australia?"]),
 ]
 for t, a, qs in HELP:
-    hp += sec("FAQ", f'<h2>{t}</h2>' + "".join(f'<div class="acc small"><span>{q}</span><span>+</span></div>' for q in qs), note=t, sid=a)
+    hp += sec("FAQ", f'<h2>{t}</h2>' + "".join((f'<div class="acc-open small"><div class="row" style="justify-content:space-between;font-weight:600;"><span>{q[0]}</span><span>–</span></div><div class="acc-body"><p>{q[1]}</p></div></div>' if isinstance(q, tuple) else f'<div class="acc small"><span>{q}</span><span>+</span></div>') for q in qs), note=t, sid=a)
 hp += sec("Image banner", '<div class="img" style="height:120px;flex-direction:column;text-transform:none;letter-spacing:0;color:#333;"><h3>Still stuck?</h3><a href="about.html#contact" class="btn" style="margin-top:8px;">Contact Dean</a></div>', note="contact CTA")
 hp += '<div class="sec internal"><div class="anno">Questions are the current FAQ &amp; Contact, Shipping, Pick Up, Pre-Orders, Returns and Payment Options pages regrouped (bracketed text = the gist of today\'s answer). Answers live in one shared FAQ so the product page accordions and the cart pull the same copy. Full policies (Shipping, Returns, Pre-orders &amp; special orders, Payments, Privacy, Terms) stay as default policy pages. The old "Video review credits" page can go: credits sit under each video instead.</div></div>'
 write("help.html", "Help & FAQ", "page.help.json", "", hp)
@@ -949,7 +966,7 @@ mn_body = sec("Rich text", '<h1>Navigation + drawers</h1><p class="muted" style=
     + '<div class="tblwrap" style="margin-top:12px;"><table class="tbl small"><tr><th>Menu item</th><th>Enterprise layout</th><th>Why</th></tr>'
     + "".join(f'<tr><td>{a}</td><td>{b}</td><td>{c}</td></tr>' for a, b, c in [
         ("Preorders", "Column + promo banners", "Two short link groups plus room for timely promos (due this month, Kickstarter)."),
-        ("Just Arrived", "Button", "Five equal destinations, each better as a picture than a word."),
+        ("Just Arrived", "Standard dropdown", "Six plain links. No images, as Dean asked."),
         ("Board Games", "Sidebar", "The big catalogue: several groups with 8+ links each. Sidebar shows one group at a time instead of a wall of links."),
         ("Roleplaying", "Column", "RPG customers shop by system first. Systems grouped by genre, plus an all-RPGs link, beginner shortcuts and accessories, so the menu covers the whole category."),
         ("Accessories", "Column + promo banners", "Three small groups by job (protect, upgrade, play) plus sleeve finder and organiser promos."),
@@ -961,9 +978,8 @@ mn_body += mega_column("preorders", "Preorders",
     [("Preorders", [("New to preorder", P), ("Coming soon", P), ("All preorders", P), ("Kickstarter", P)]), ("By type", [("Board games", P), ("Expansions", P), ("RPGs", P), ("Accessories", P)])],
     [("Due this month", "Big releases landing soon"), ("Kickstarter pledges", "Late pledges and retail editions"), ("How preorders work", "Pay today, ships on release")],
     "Dean's #2 browse path after Just Arrived. Column headings without images, link list and \"Shop all\", then a row of three promo banners (Enterprise's column layout supports these). Banners swapped monthly.", images=False)
-mn_body += mega_button("arrived", "Just Arrived",
-    [("New board games", P + "#just-arrived", "Image"), ("New expansions", P + "#just-arrived", "Image"), ("New RPGs", P + "#just-arrived", "Image"), ("New accessories", P + "#just-arrived", "Image"), ("Back in stock", P + "#just-arrived", "Image")],
-    "Customers' main way in today. Five \"Heading &gt;\" image cards, each a tag-based smart collection fed by the arrival job.")
+mn_body += mega_wrap("arrived", "Just Arrived", "dropdown", '<div style="width:240px;" class="small"><p style="line-height:2;">' + "<br>".join(f'<a href="{P}#just-arrived">{x}</a>' for x in ["New board games", "New expansions", "New RPGs", "New accessories", "Back in stock", "Everything new"]) + '</p></div>',
+    "A simple list, no images (Dean: hard to picture New expansions as an image). Enterprise standard dropdown, so no mega menu block needed. Each link is a tag-based smart collection fed by the arrival job.")
 mn_body += mega_sidebar("board", "Board Games", [
     ("Game type", [(x, C, "") for x in ["Strategy", "Family", "Party", "Thematic", "Wargames", "Abstract", "Children's", "Card games"]]),
     ("Player count", [("Solo", C, ""), ("Two-player", C, ""), ("3-4 players", C, ""), ("Big groups (6+)", C, "")]),
@@ -983,7 +999,7 @@ mn_body += mega_column("rpg", "Roleplaying",
     "Follows how Australian RPG retailers organise the category (Good Games, Gameology, Games Empire all lead with game system, Good Games groups systems by genre). Systems are the main way in, with \"All roleplaying games\" first in the Browse column so nothing in the range is hidden, beginner shortcuts across every system, and RPG accessories. \"Shop all\" under each column goes to the full Roleplaying collection with that genre or kind filtered. System names here are placeholders: the real list comes from Dean's range (rpg.system values, ordered by sales), and genre comes from the rpg_system metaobject so a new system lands in the right column.", images=False)
 mn_body += mega_column("acc", "Accessories",
     [("Protect", [("Sleeves", A), ("Inserts &amp; organisers", A)]), ("Upgrade", [("Tokens &amp; scenery", A), ("Coins", A), ("Component upgrades", A)]), ("Play", [("Dice", A), ("Play mats", A)])],
-    [("Find sleeves for your game", "Search by game name"), ("Organisers", "Tidy boxes, faster setup"), ("Dice", "Sets for every system")],
+    [("Card sleeves", "Every standard size in stock"), ("Organisers", "Tidy boxes, faster setup"), ("Dice", "Sets for every system")],
     "Grouped by job rather than a flat list of types. Coins and component upgrades need a product type before they can exist as collections (Dean's doc marks them with ?).")
 mn_body += mega_wrap("sale", "Sale", "dropdown", '<div style="width:220px;" class="small"><p style="line-height:2;"><a href="collection.html">Weekly sale</a><br><a href="collection.html">Clearance</a><br><a href="collection.html">Dings &amp; dents</a><br><a href="collection.html">All sale</a></p></div>',
     "No mega menu block, so Enterprise shows its standard dropdown. Small on purpose: sale lives here and in one campaign banner, not spread across the site (brief: built to convert, not a discount store).")
@@ -1065,7 +1081,7 @@ GAPS = [
  ("Must", "Expansions + accessories in 'You might also need...'", mf("shopify--discovery--product_recommendation.complementary_products") + " (native, script-filled)", "Enterprise's complementary products slider in the buy box replaces separate Expansions and Sleeves sections. Ben's script writes each base game's expansions (reverse of {}) and fitting accessories (from advent.related_game) into the native complementary products list. No bgg.expansions field needed.".format(mf("bgg.expands"))),
  ("Must", "Accessories that fit many games", mf("advent.related_game","fix") + " → list.product_reference<br>" + mf("advent.related_game_names","new") + " list.single_line_text", "Sleeves and organisers fit more than one game. Product references aren't a supported storefront filter type, so 'Made for' filtering needs a plain-text mirror. Script also pushes accessories into the game's native complementary_products."),
  ("Must", "RRP vs genuine sale price", mf("advent.rrp","new") + " number_decimal", "Ben already flagged it. Mapping RRP to compare-at puts a strike-through on nearly every product, which is the 'discount store' look we want to avoid. Recommend: RRP as a quiet line on the PDP only, compare-at reserved for real sales. Needs Dean's call."),
- ("Must", "At-supplier lead time", mf("advent.supplier_lead_time","new") + " single_line_text", "For 'ships in 3-5 business days'. Could be a single theme setting instead if lead time is the same for every supplier. Ask Dean."),
+ ("Must", "At-supplier lead time", mf("advent.supplier_lead_time","new") + " single_line_text", "For 'ships in 2-7 business days'. Could be a single theme setting instead if lead time is the same for every supplier. Ask Dean."),
  ("Should", "Product-level operational notice", mf("advent.notice","new") + " single_line_text", "'Publisher delay: now expected Feb'. Shown in the PDP availability block and on the cart line. Matches the design doc's front-end messaging requirement without an app."),
  ("Should", "Game summary not in import", mf("custom.game_summary"), "Defined on the store, missing from the import sheet. Add the column (first sentence of description or BGG blurb) or delete the definition. Used as the PDP standfirst."),
  ("Should", "Clean availability filter", mf("advent.availability_state","fix") + " add choice validation", "Lock values to the 6 states so the filter never shows typos. Customer-facing labels mapped in the theme (state matrix on the preorder PDP). Hide the native in/out-of-stock filter, it treats preorders as 'in stock'."),
@@ -1073,7 +1089,7 @@ GAPS = [
  ("Should", "Sort by BGG rank (no app)", "script, no new field", "Shopify can't sort by a metafield, but every collection has a manual 'Featured' order. Ben's script sets that order by {} nightly (unranked last) via the collection reorder API, and the theme labels it 'BGG rank'. Filters keep the order. Limits: one custom order per collection, so rating and release date can't also be sorts; search results stay relevance-sorted; Shop All needs a real 'All games' collection; new products sit at the end until the next run.".format(mf("bgg.rank"))),
  ("Should", "Range-style filters (no app)", mf("bgg.rating_band","new") + " " + mf("bgg.rank_band","new") + " optional", "Search &amp; Discovery only returns lists (price is the only range). Theme tweak puts Meeplewatch-style Min/Max on players and stepped sliders on play time and complexity, ticking the band values behind the scenes. Ben's bands make this work. Add rating and rank bands if Dean wants those as filters. Free-value ranges need a filter app."),
  ("Info", "Long filter lists", "theme tweak", "Publisher, Designer, Artist, Mechanic will have hundreds of values. Enterprise has no in-filter search, so add a small type-ahead + max-height scroll (CSS/JS). Check the value cap Shopify returns per filter on the full 11k catalogue."),
- ("Optional", "Staff notes", mf("advent.staff_note","new") + " multi_line_text", "One or two lines from Dean on favourite games. Feeds the 'Dean recommends' row on the home page and 'Why we like it' on the product page. Hides when empty."),
+ ("Optional", "Staff notes", mf("advent.staff_note","new") + " multi_line_text", "One or two lines from Dean on favourite games. Feeds the 'Staff recommendations' row on the home page and 'Why we like it' on the product page. Hides when empty."),
  ("Optional", "BGG ratings count", mf("bgg.num_ratings","new") + " number_integer", "'7,551 ratings' next to the rating on the product page (Meeplewatch). Gives the rating weight. From the same BGG pull (usersrated)."),
  ("Optional", "What's in the box", mf("advent.components","new") + " multi_line_text", "Component lists already sit in Dean's descriptions. Split into a field for its own product tab, or keep in the description under a heading."),
  ("Info", "Icon set", "theme snippet, no field", "Enterprise ships its own small set of filled icons (truck, return, map pin, chat; the same names as Dawn's icon picker), with nothing for players, play time, age or complexity. Use Phosphor Icons (MIT): users-three, clock, person, brain, star, calendar, trophy, pen-nib, puzzle-piece, play-circle, bell. Add them to the theme as one icon snippet (Fill or Regular weight to match Enterprise), no CDN. Keep Enterprise's own icons in its native sections."),
@@ -1097,7 +1113,7 @@ MOBJ = '''<div class="tblwrap"><table class="tbl"><tr><th>Metaobject</th><th>Fie
 <tr><td>rpg_system</td><td>name, publisher, bgg_id, description, image</td><td>Filter, RPG card line, system tiles</td><td>Image field doubles as the system tile logo. One smart collection per major system.</td></tr>
 <tr><td><em>brand (not needed)</em></td><td></td><td>Brand pages</td><td>Use vendor smart collections (image = logo) created by script, rather than a Brand metaobject. Keeps vendor as the single source.</td></tr></table></div>'''
 
-FILTER_ORDER = '<p class="small"><strong>Toolbar (Enterprise):</strong> Filter toggle · Sort by · Compare toggle · list / grid view. <strong>Sort:</strong> BGG rank (Featured, renamed, default), Best selling, A-Z, Z-A, Price low/high, Date new/old. <strong>Sidebar order</strong> (applied filters group first):</p><ol class="small" style="line-height:1.9;margin:10px 0 0;padding-left:18px;">' + "".join(f"<li>{n} {s}</li>" for n, s, _, _ in SIDEBAR) + '</ol><p class="note" style="margin-top:6px;">18 filters in Search &amp; Discovery, inside the 25-filter limit. RPG and Accessories collections show their own subsets (system, product kind, sleeve size, made for).</p>'
+FILTER_ORDER = '<p class="small"><strong>Toolbar (Enterprise):</strong> Filter toggle · Sort by · list / grid view. <strong>Sort:</strong> BGG rank (Featured, renamed, default), Best selling, A-Z, Z-A, Price low/high, Date new/old. <strong>Sidebar order</strong> (applied filters group first):</p><ol class="small" style="line-height:1.9;margin:10px 0 0;padding-left:18px;">' + "".join(f"<li>{n} {s}</li>" for n, s, _, _ in SIDEBAR) + '</ol><p class="note" style="margin-top:6px;">18 filters in Search &amp; Discovery, inside the 25-filter limit. RPG and Accessories collections show their own subsets (system, product kind, sleeve size, made for).</p>'
 
 TEMPLATES = '<div class="tblwrap"><table class="tbl"><tr><th>Template</th><th>Wireframe</th><th>Serves</th></tr>' + "".join(f'<tr><td>{t}</td><td><a href="{h}" style="text-decoration:underline;">{h}</a></td><td class="small">{s}</td></tr>' for t, h, s in [
  ("index", "index.html", "Home"), ("header group", "meganav.html", "Mega menu panels, search dropdown, cart drawer, mobile menu"), ("collection (default)", "collection.html", "Shop All, Board Games + sub-collections, Sale, Best Sellers, BGG Top 100"),
@@ -1131,14 +1147,13 @@ dm += sec("6. Questions for Dean", '<ol class="small" style="line-height:1.9;mar
  "BGG rank as the default sort on collections, ahead of Newest? Rating and rank as filters too?",
  "Wishlist + back-in-stock app preference (one app can do both).",
  "Pickup: which Chatswood venue and time is current? (Pick Up page says Chatswood RSL 6-9pm, Shipping page says The Chatswood Club 6:30-9pm.) Is PlayCon a regular pickup point?",
- "Supplier dispatch time: Shipping page says 3-5 business days, FAQ says 2-7. Which do we show?",
  "Preorder ETAs: policy says dates appear 6-8 weeks before arrival, FAQ says 2-3 months. Which?",
  "Payments: keep bank transfer? Add Afterpay / Zip or Shop Pay instalments (not offered today)?",
- "'At supplier' is shown as In Stock on the current site. Happy to show it as its own state with a 3-5 day promise?",
+ "'At supplier' is shown as In Stock on the current site. Happy to show it as its own state with a 2-7 day promise?",
  "When was Advent founded? (2013 is the footer copyright year.)",
  ]) + '</ol>', note="for the next design review")
 CONTENT_NEEDED = [
- ("Dean recommends", "home", "6-12 favourite games with a one-line note each (advent.staff_note)"),
+ ("Staff recommendations", "home", "6-12 favourite games with a one-line note each (advent.staff_note)"),
  ("Why we like it", "product page", "optional staff notes on favourite products, same field"),
  ("New to board games? Start here", "home", "2-3 sentences for beginners and gift buyers, plus a photo"),
  ("Gift cards", "home", "short pitch and denominations; gift cards are native Shopify"),

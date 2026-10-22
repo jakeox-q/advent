@@ -59,7 +59,7 @@
   .tblwrap{overflow-x:auto;}
 }
 @media (max-width:760px){
-  .row>div{flex-basis:100%;min-width:0;width:auto!important;}
+  .row>div:not(.img){flex:1 1 100%!important;min-width:0;width:auto!important;}
   .grid>*{min-width:0;}
 }
 @media (max-width:760px){ body{overflow-x:hidden;} .page{overflow-x:hidden;} }
@@ -153,3 +153,63 @@ body[data-st="soon"] .st-soon,body[data-st="out"] .st-out{display:revert;}
 .acc-body p{margin:0 0 8px;} .acc-body ul{margin:0 0 8px;padding-left:18px;}
 .mega-side [data-tab].on{background:#fff;font-weight:700;}
 .mega-side [data-tab]{cursor:pointer;}
+.ent-scroll{max-height:150px;overflow-y:auto;margin-top:6px;padding-right:6px;border-bottom:1px solid var(--line);}
+/* Equal-height product cards (Dean): button always sits on the same line */
+.pc{display:flex;flex-direction:column;}
+.grid>.pc,.carousel>.pc{height:100%;}
+.pc .avail.inv{margin-top:auto;padding-top:6px;}
+.pc .meta{margin-bottom:8px;}
+/* Side-scrolling carousels (Enterprise featured collection, carousel layout) */
+.carousel{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - (var(--cols) - 1)*16px)/var(--cols));gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;}
+.carousel > *{scroll-snap-align:start;}
+.car-arrow{display:inline-flex;width:30px;height:30px;border:1px solid #999;border-radius:50%;align-items:center;justify-content:center;}
+.bgg-badge{display:inline-flex;align-items:center;border:1px solid #777;border-radius:3px;padding:2px 6px;font-size:9px;letter-spacing:.04em;color:#bbb;margin-left:8px;}
+
+/* ================= Mobile pass (all pages) ================= */
+.burger{display:none;font-size:22px;line-height:1;text-decoration:none;}
+@media (max-width:760px){
+  /* header: hamburger + logo + icons, search full width, nav row hidden (opens as drawer) */
+  .burger{display:inline-flex;}
+  .hd-main{padding:10px 16px!important;gap:10px!important;}
+  .hd-main>.hd-logo{flex:1;} .hd-main>.hd-logo .img{width:110px!important;height:36px!important;}
+  .hd-main>.hd-search{order:5;flex-basis:100%!important;}
+  .hd-main>.hd-search .field:first-child{width:80px!important;}
+  .hd-main>.hd-icons{flex-basis:auto!important;gap:10px!important;font-size:11px;}
+  .nav{display:none!important;}
+  .sec.tg>div{padding-left:16px!important;padding-right:16px!important;}
+  .sec.tg .row.small{flex-wrap:wrap;gap:4px 12px!important;}
+  /* any inline multi-column grid stacks */
+  .grid[style*="grid-template-columns"]{grid-template-columns:1fr!important;}
+  .g4.center,.grid.g4.small.center{grid-template-columns:repeat(2,minmax(0,1fr))!important;}
+  /* hero tiles: text sits inside a shorter tile, no squashing */
+  .img[style*="height:340px"]{height:auto!important;min-height:260px;padding:20px!important;}
+  .img[style*="height:164px"]{height:auto!important;min-height:120px;}
+  h1{font-size:24px;line-height:1.2;} h2{font-size:19px;}
+  /* carousels: one card and a peek, swipe */
+  .carousel{grid-auto-columns:72%!important;}
+  /* mega menus on phones: plain lists, no images, stacked */
+  .mega{padding:14px!important;}
+  .mega .img{display:none!important;}
+  .mega .row{flex-direction:column;align-items:stretch!important;}
+  .mega-side{width:100%!important;border-right:0!important;padding-right:0!important;border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:8px;}
+  .mega .grid{grid-template-columns:1fr!important;gap:6px!important;}
+  .mega .grid a p{margin-top:0!important;}
+  /* footer */
+  .sec.tg[style*="2b2b2b"] .row{flex-direction:column;align-items:flex-start!important;gap:14px!important;}
+  .sec.tg[style*="2b2b2b"] .row .row{flex-direction:row;flex-wrap:wrap;}
+  /* buttons never stretch tall */
+  .btn{align-self:flex-start;}
+  .o-cta .row{align-items:center!important;}
+  .o-cta .btn{align-self:stretch;}
+  /* cart: summary under items */
+  .sec .row>div[style*="margin-top:48px"]{margin-top:16px!important;}
+  /* collection toolbar */
+  .ent-tb{flex-wrap:wrap;}
+  .ent-body{flex-direction:column;}
+}
+@media (max-width:760px){ .row.hd-main>div.hd-icons{flex:0 0 auto!important;} }
+@media (max-width:760px){
+  .row>.img+div:not(.img){flex:1 1 0!important;}
+  .mega-side [data-tab]{flex-direction:row!important;align-items:center!important;}
+}
+@media (max-width:760px){ .grid.stat-strip[style]{grid-template-columns:repeat(auto-fit,minmax(0,1fr))!important;} .stat-strip .mf{display:none;} }
