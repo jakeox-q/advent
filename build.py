@@ -796,7 +796,7 @@ write("product-rpg.html", "Product: RPG example", "product.json (same template, 
 # ---- product-accessory.html
 pacc = pdp2("Matte Sleeves 63.5 x 88 (100)", "Gamegenic", "9.95", "Accessories", "collection-accessories.html",
     badges=f'<span class="pill">Sleeves</span> {mf("product_type")}',
-    meta=f'<div class="note" style="margin-top:6px;">No "Made for" line on generic sleeves, since there is no data on which games they fit. Game-specific accessories (organisers, upgrade packs) show "Made for: [game]" here, linking back to the game {mf("advent.related_game","fix")}.</div>',
+    meta=f'<div class="small" style="margin-top:6px;">Made for: <a href="product.html" style="text-decoration:underline;">Nusfjord</a> {mf("advent.related_game","fix")}</div><div class="note" style="margin-top:4px;">Accessories made for a specific game link back to it. Hides when no game is linked.</div>',
     summary="Standard American-size sleeves with a matte finish for shuffle-heavy games.",
     strip=stat_strip([("Sleeve size", "63.5 x 88", mf("advent.sleeve_size")), ("Pack", "100", mf("advent.pack_quantity","new")), ("Finish", "Matte", "")]),
     videos=False, gallery="Product photo")
