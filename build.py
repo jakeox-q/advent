@@ -730,7 +730,7 @@ nus_rows = [
     ("Barcode", f'4260402312200 {mf("variant barcode")}'),
 ]
 GAME_STRIP = stat_strip([("Players", "1-5", mf("bgg.supports_players")), ("Play time", "20-100 min", mf("bgg.min_playtime")), ("Age", "12+", mf("bgg.min_age")), ("Complexity", "2.88 / 5", mf("bgg.weight"))]) + \
-    '<div class="small" style="margin-top:10px;line-height:2;"><span class="muted">Categories:</span> <a class="pill">Economic</a> <a class="pill">Nautical</a> ' + mf("bgg.categories") + '</div><div class="small" style="line-height:2;"><span class="muted">Mechanics:</span> <a class="pill">Worker Placement</a> <a class="pill">Open Drafting</a> ' + mf("bgg.mechanics") + '</div><p class="small" style="margin-top:4px;"><a href="help.html#games" style="text-decoration:underline;">What does complexity mean?</a></p>'
+    '<div class="small" style="margin-top:10px;line-height:2;"><span class="muted">Categories:</span> <a class="pill">Economic</a> <a class="pill">Nautical</a> ' + mf("bgg.categories") + '</div><div class="small" style="line-height:2;"><span class="muted">Mechanics:</span> <a class="pill">Worker Placement</a> <a class="pill">Open Drafting</a> ' + mf("bgg.mechanics") + '</div>'
 
 # ---- product.html: board game
 prod = pdp2("Nusfjord", "Lookout Spiele", "107.95", "Board Games", "collection.html",
