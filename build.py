@@ -616,7 +616,7 @@ def comp_block(items):
             f'<div style="flex:1;"><strong class="small">{t}</strong><p class="small" style="margin-top:2px;font-weight:600;">${p}</p><span class="btn" style="margin-top:6px;display:inline-block;padding:4px 14px;font-size:12px;border-radius:999px;">{btn}</span></div></div>'
             f'<div class="row" style="gap:5px;justify-content:center;margin-top:8px;">{dots}</div>'
             f'<p class="small muted" style="margin-top:4px;">{more}</p>'
-            f'<div class="anno" style="margin-top:6px;"><strong>Enterprise\'s built-in complementary products block</strong> (the "You might also need..." slider on the demo product page), one product at a time with arrows. Fed by Shopify\'s native {mf("shopify--discovery--product_recommendation.complementary_products")} list. Ben\'s script fills it per product: expansions for base games (from {mf("bgg.expands")} on each expansion), then sleeves and accessories (from {mf("advent.related_game")}). Hides itself when the list is empty, so games without extras show nothing. Sits in the buy box, right under Add to cart, so add-ons are offered at the moment of purchase rather than in a row further down the page.</div></div>')
+            f'<div class="anno" style="margin-top:6px;"><strong>Enterprise\'s built-in complementary products block</strong> (the "You might also need..." slider on the demo product page), one product at a time with arrows. Fed by Shopify\'s native {mf("shopify--discovery--product_recommendation.complementary_products")} list. Ben\'s script fills it per product: expansions for base games (from {mf("bgg.expands")} on each expansion), then game-specific accessories such as organisers (from {mf("advent.related_game")}). Hides itself when the list is empty, so games without extras show nothing. Sits in the buy box, right under Add to cart, so add-ons are offered at the moment of purchase rather than in a row further down the page.</div></div>')
 
 
 
@@ -738,7 +738,7 @@ prod = pdp2("Nusfjord", "Lookout Spiele", "107.95", "Board Games", "collection.h
     meta=meta_line(2017, 7.6, "7,551", 387, "Uwe Rosenberg"),
     summary="Grow a Norwegian fishing village: build your fleet, clear the forest and keep the village elders happy. Worker placement from the designer of Agricola.",
     strip=GAME_STRIP, rrp="RRP $120.00 · you save $12.05",
-    comp=[("Nusfjord: Expansion Pack #1", "44.95", "Add to cart", ""), ("Nusfjord: Big Box", "119.95", "Preorder", ""), ("Matte Sleeves 63.5 x 88 (100)", "9.95", "Add to cart", ""), ("Nusfjord Organiser", "34.95", "Add to cart", "")])
+    comp=[("Nusfjord: Expansion Pack #1", "44.95", "Add to cart", ""), ("Nusfjord: Big Box", "119.95", "Preorder", ""), ("Nusfjord Organiser", "34.95", "Add to cart", "")])
 prod += videos_section("Nusfjord")
 prod += details_section(nus_rows)
 prod += sec("Rich text", '<div class="row" style="gap:20px;align-items:flex-start;"><div class="img" style="width:64px;height:64px;border-radius:50%;flex-shrink:0;">Dean</div><div><h3>Why we like it</h3><p class="muted" style="margin-top:6px;font-style:italic;">"' + L1 + ' Sed posuere consectetur est at lobortis."</p><p class="small" style="margin-top:6px;">Dean, Advent Games</p></div></div><div class="anno">Optional one or two lines from ' + mf("advent.staff_note","new") + '. Only shows when filled, so Dean can add notes to a handful of favourites rather than 11,000 products. The same note feeds the "Staff recommendations" row on the home page.</div>', note="staff note · hides when empty", kind="tweak", extra_tags=CN)
@@ -796,7 +796,7 @@ write("product-rpg.html", "Product: RPG example", "product.json (same template, 
 # ---- product-accessory.html
 pacc = pdp2("Matte Sleeves 63.5 x 88 (100)", "Gamegenic", "9.95", "Accessories", "collection-accessories.html",
     badges=f'<span class="pill">Sleeves</span> {mf("product_type")}',
-    meta=f'<div class="small" style="margin-top:6px;">Made for: <a href="product.html" style="text-decoration:underline;">Nusfjord</a> {mf("advent.related_game","fix")}</div><div class="note" style="margin-top:4px;">Game-specific accessories (organisers, upgrades) link back to their game. The "Fits" list for generic sleeves stays hidden until sleeve sizes are filled in for games.</div>',
+    meta=f'<div class="note" style="margin-top:6px;">No "Made for" line on generic sleeves, since there is no data on which games they fit. Game-specific accessories (organisers, upgrade packs) show "Made for: [game]" here, linking back to the game {mf("advent.related_game","fix")}.</div>',
     summary="Standard American-size sleeves with a matte finish for shuffle-heavy games.",
     strip=stat_strip([("Sleeve size", "63.5 x 88", mf("advent.sleeve_size")), ("Pack", "100", mf("advent.pack_quantity","new")), ("Finish", "Matte", "")]),
     videos=False, gallery="Product photo")
@@ -1065,7 +1065,7 @@ FIELDS = [
   (mf("custom.game_summary"), "single_line_text", "opt.", Y, "", "", "On the store but NOT in the import sheet (gap 6)"),
  ]),
  ("Native Shopify discovery fields", [
-  (mf("…product_recommendation.complementary_products"), "list.product_reference", "", Y, "", "", "'You might also need...' slider in the buy box (expansions + sleeves/accessories), filled by script (gap 1)"),
+  (mf("…product_recommendation.complementary_products"), "list.product_reference", "", Y, "", "", "'You might also need...' slider in the buy box (expansions + game-specific accessories), filled by script (gap 1)"),
   (mf("…product_recommendation.related_products"), "list.product_reference", "", Y, "", "", "Optional manual override of 'You might also like'"),
  ]),
 ]
@@ -1077,7 +1077,7 @@ ftable += '</table></div>'
 
 GAPS = [
  ("Must", "Expansions + accessories in 'You might also need...'", mf("shopify--discovery--product_recommendation.complementary_products") + " (native, script-filled)", "Enterprise's complementary products slider in the buy box replaces separate Expansions and Sleeves sections. Ben's script writes each base game's expansions (reverse of {}) and fitting accessories (from advent.related_game) into the native complementary products list. No bgg.expansions field needed.".format(mf("bgg.expands"))),
- ("Must", "Accessories that fit many games", mf("advent.related_game","fix") + " → list.product_reference<br>" + mf("advent.related_game_names","new") + " list.single_line_text", "Sleeves and organisers fit more than one game. Product references aren't a supported storefront filter type, so 'Made for' filtering needs a plain-text mirror. Script also pushes accessories into the game's native complementary_products."),
+ ("Must", "Accessories that fit many games", mf("advent.related_game","fix") + " → list.product_reference<br>" + mf("advent.related_game_names","new") + " list.single_line_text", "Game-specific accessories (organisers, upgrades) can fit more than one game. Generic sleeves aren't linked to games. Product references aren't a supported storefront filter type, so 'Made for' filtering needs a plain-text mirror. Script also pushes accessories into the game's native complementary_products."),
  ("Must", "RRP vs genuine sale price", mf("advent.rrp","new") + " number_decimal", "Ben already flagged it. Mapping RRP to compare-at puts a strike-through on nearly every product, which is the 'discount store' look we want to avoid. Recommend: RRP as a quiet line on the PDP only, compare-at reserved for real sales. Needs Dean's call."),
  ("Must", "At-supplier lead time", mf("advent.supplier_lead_time","new") + " single_line_text", "For 'ships in 2-7 business days'. Could be a single theme setting instead if lead time is the same for every supplier. Ask Dean."),
  ("Should", "Product-level operational notice", mf("advent.notice","new") + " single_line_text", "'Publisher delay: now expected Feb'. Shown in the PDP availability block and on the cart line. Matches the design doc's front-end messaging requirement without an app."),
