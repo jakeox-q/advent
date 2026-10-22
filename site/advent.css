@@ -187,13 +187,10 @@ body[data-st="soon"] .st-soon,body[data-st="out"] .st-out{display:revert;}
   h1{font-size:24px;line-height:1.2;} h2{font-size:19px;}
   /* carousels: one card and a peek, swipe */
   .carousel{grid-auto-columns:72%!important;}
-  /* mega menus on phones: plain lists, no images, stacked */
-  .mega{padding:14px!important;}
-  .mega .img{display:none!important;}
-  .mega .row{flex-direction:column;align-items:stretch!important;}
-  .mega-side{width:100%!important;border-right:0!important;padding-right:0!important;border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:8px;}
-  .mega .grid{grid-template-columns:1fr!important;gap:6px!important;}
-  .mega .grid a p{margin-top:0!important;}
+  /* desktop mega panels don't exist on phones (Enterprise uses its drawer instead) */
+  .mega{display:none!important;}
+  .mega-mob{display:block!important;}
+  .mm-grid{grid-template-columns:1fr!important;}
   /* footer */
   .sec.tg[style*="2b2b2b"] .row{flex-direction:column;align-items:flex-start!important;gap:14px!important;}
   .sec.tg[style*="2b2b2b"] .row .row{flex-direction:row;flex-wrap:wrap;}
@@ -210,6 +207,7 @@ body[data-st="soon"] .st-soon,body[data-st="out"] .st-out{display:revert;}
 @media (max-width:760px){ .row.hd-main>div.hd-icons{flex:0 0 auto!important;} }
 @media (max-width:760px){
   .row>.img+div:not(.img){flex:1 1 0!important;}
-  .mega-side [data-tab]{flex-direction:row!important;align-items:center!important;}
 }
 @media (max-width:760px){ .grid.stat-strip[style]{grid-template-columns:repeat(auto-fit,minmax(0,1fr))!important;} .stat-strip .mf{display:none;} }
+
+.mega-mob{display:none;}

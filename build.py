@@ -940,7 +940,7 @@ def navbar(key):
 
 MEGA_NOTE = {"column": "Enterprise Column mega menu", "button": "Enterprise Button mega menu", "sidebar": "Enterprise Sidebar mega menu", "dropdown": "Enterprise standard dropdown"}
 def mega_wrap(key, label, kind, inner, why):
-    return sec("Header: mega menu", navbar(key) + f'<div class="mega">{inner}</div><div class="anno"><strong>{MEGA_NOTE[kind]}.</strong> {why}</div>',
+    return sec("Header: mega menu", navbar(key) + f'<p class="mega-mob note">Desktop panel. On phones this menu opens in Enterprise\'s mobile drawer: <a href="#mobile-menu" style="text-decoration:underline;">see Mobile menu</a>.</p><div class="mega">{inner}</div><div class="anno"><strong>{MEGA_NOTE[kind]}.</strong> {why}</div>',
                note=f"{label} · {MEGA_NOTE[kind]}", sid=key, extra_tags=" " + tag(f"mega menu block: {kind}"))
 
 def mega_column(key, label, cols, banners, why, images=True):
@@ -1007,11 +1007,20 @@ mn_body += sec("Predictive search", ent_predictive("wingsp", "|", [("Wingspan", 
 
 mn_body += cart_drawer_sec()
 
-mn_body += sec("Header: mobile menu", """<div style="max-width:340px;border:2px solid #555;padding:16px;">
-    <div class="row" style="justify-content:space-between;"><strong>Menu</strong><span>✕</span></div>
-    <div class="field" style="margin-top:10px;">Search games...</div>""" + "".join(f'<div class="acc small"><span>{l}</span><span>{">" if k!="brands" else ""}</span></div>' for l,h,k in NAV) + """
-    <p class="small" style="margin-top:12px;line-height:1.9;">Account<br>Wishlist<br>Help &amp; FAQ<br>Track my order</p></div>
-    <div class="anno">Drill-down drawer: each item opens its panel's links as a second level. Promo tiles are dropped on mobile.</div>""", note="mobile drawer", sid="mobile-menu")
+def _frame(inner):
+    return f'<div class="mm-frame" style="border:2px solid #555;border-radius:14px;padding:14px;background:#fff;">{inner}</div>'
+_mm_hd = '<div class="row small" style="justify-content:space-between;align-items:center;"><span>✕</span><div class="img" style="width:90px;height:26px;">Logo</div><span>👤 &nbsp;🛒</span></div><div class="field small" style="margin-top:8px;">All ▾ | Search games...</div>'
+def _row(label, right="›", thumb=False, bold=True):
+    t = '<div class="img" style="width:30px;height:30px;flex-shrink:0;"> </div>' if thumb else ''
+    return f'<div class="row small" style="gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);">{t}<span style="flex:1;{"font-weight:600;" if bold else ""}">{label}</span><span>{right}</span></div>'
+_back = lambda t: '<p class="small" style="margin-top:10px;">‹ Back</p>' + f'<p style="font-weight:700;margin:8px 0 2px;">{t}</p>'
+_l1 = _mm_hd + '<div style="margin-top:6px;">' + "".join(_row(l, "›" if k != "brands" else "") for l, h, k in NAV) + '</div><p class="small" style="margin-top:12px;line-height:2;">Wishlist<br>Help &amp; FAQ<br>Track my order</p>'
+_bg = _mm_hd + _back("Board Games") + _row("Game type", "⌃", thumb=True) + '<div class="grid g2" style="gap:8px;padding:8px 0;">' + "".join(f'<div><div class="img" style="height:56px;"> </div><p class="small" style="margin-top:3px;">{x}</p></div>' for x in ["Strategy", "Family", "Party", "Thematic"]) + '</div>' + "".join(_row(x, "⌄", thumb=True) for x in ["Player count", "Rankings &amp; awards", "LCGs &amp; miniatures", "Collections", "Expansions"])
+_pre = _mm_hd + _back("Preorders") + _row("Preorders", "⌃") + '<p class="small" style="line-height:2;padding:6px 0;">New to preorder<br>Coming soon<br>All preorders<br>Kickstarter<br><span>Shop all ›</span><br><span class="muted">Go to Preorders →</span></p>' + _row("By type", "⌄") + "".join(f'<div class="img" style="height:46px;margin-top:8px;justify-content:flex-start;padding-left:10px;text-transform:none;letter-spacing:0;color:#333;"><span class="small"><strong>{t}</strong></span></div>' for t in ["Due this month", "Kickstarter pledges"])
+mn_body += sec("Header: mobile menu", '<div class="grid g3 mm-grid" style="gap:18px;align-items:start;">'
+    + "".join(f'<div><p class="small muted" style="margin-bottom:6px;">{c}</p>{_frame(f)}</div>' for c, f in [("1. Menu opened", _l1), ("2. Tap Board Games (Sidebar layout)", _bg), ("3. Tap Preorders (Column layout)", _pre)])
+    + '</div><div class="anno"><strong>Enterprise\'s own mobile drawer, no custom work.</strong> Tapping ☰ opens a full-screen drawer: top-level items with a chevron, then extra links below. Tapping an item slides to a second panel with Back and the item name, and each group opens as an accordion. Sidebar menus (Board Games) show the group thumbnails and the image tiles two across. Column menus (Preorders, Accessories, Roleplaying) show plain links, "Shop all" and "Go to …", with any promo banners stacked underneath. Dropdown menus (Just Arrived, Sale) show a simple list. Brands has no chevron and goes straight to the A-Z page. All of this comes from the same mega menu blocks set up for desktop.</div>',
+    note="Enterprise mobile drawer · native", sid="mobile-menu")
 write("meganav.html", "Navigation + drawers", "header group + drawers", "", mn_body)
 
 # ================================================================ DATA MAP
