@@ -165,6 +165,12 @@ body.clean .an,body.clean .legend,body.clean .ph-label,body.clean mark{display:n
 .nav-aux{display:flex;gap:var(--space-4);font-size:14px}
 .nav-aux a{color:var(--ink-muted);text-decoration:none}
 .nav-aux a:hover{color:var(--brand-blue)}
+/* Nav colour variant: light Advent blue band (footer light end / old-site #A2DDED) */
+body.nav-blue .hdr{background:#a2dded;border-bottom-color:rgba(22,33,58,.12)}
+body.nav-blue .nav{border-top-color:rgba(22,33,58,.14)}
+body.nav-blue .nav-aux a{color:var(--ink)}
+body.nav-blue .search-cat,body.nav-blue .search-in{border-color:transparent}
+body.nav-blue .hdr-icons a:hover,body.nav-blue .nav li a:hover{color:var(--brand-blue-hover)}
 
 /* Trust strip */
 .trust-wrap{border-bottom:1px solid var(--border);background:var(--surface)}
@@ -444,6 +450,7 @@ body.clean .an,body.clean .legend,body.clean .ph-label,body.clean mark{display:n
   <div class="wf-left"><strong>Advent Games · Home design v2</strong><span class="wf-sub">Enterprise theme · desktop draft · 1600px page width</span></div>
   <div class="wf-right">
     <div class="legend"><span class="an-tag an-native">Enterprise section</span><span class="an-tag an-tweak">native + tweak</span><span class="an-tag an-custom">custom / app</span></div>
+    <div class="wf-toggle" role="group" aria-label="Nav colour"><span class="wf-lbl">Nav:</span><button type="button" data-nav="white" aria-pressed="true">White</button><button type="button" data-nav="blue" aria-pressed="false">Blue</button></div>
     <div class="wf-toggle" role="group" aria-label="Hero variant"><span class="wf-lbl">Hero:</span><button type="button" data-hero="launch" aria-pressed="true">Launch</button><button type="button" data-hero="sale" aria-pressed="false">Boxing Day sale</button></div>
     <div class="wf-toggle" role="group" aria-label="View mode"><button type="button" data-mode="notes" aria-pressed="true">Annotated</button><button type="button" data-mode="clean" aria-pressed="false">Clean</button></div>
   </div>
@@ -929,6 +936,11 @@ body.clean .an,body.clean .legend,body.clean .ph-label,body.clean mark{display:n
   var hv='launch'; try{hv=localStorage.getItem('advent-hero')||'launch';}catch(e){}
   setHero(hv,false);
   hb.forEach(function(b){b.addEventListener('click',function(){setHero(b.dataset.hero,true);});});
+  var nb=document.querySelectorAll('[data-nav]');
+  function setNav(v,save){document.body.classList.toggle('nav-blue',v==='blue'); nb.forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.nav===v));}); if(save){try{localStorage.setItem('advent-nav',v);}catch(e){}}}
+  var nv='white'; try{nv=localStorage.getItem('advent-nav')||'white';}catch(e){}
+  setNav(nv,false);
+  nb.forEach(function(b){b.addEventListener('click',function(){setNav(b.dataset.nav,true);});});
   // carousels: arrows scroll one card
   function slider(track, prev, next){
     function step(){var k=track.firstElementChild; return k?k.getBoundingClientRect().width+parseFloat(getComputedStyle(track).columnGap||getComputedStyle(track).gap||0):300;}
