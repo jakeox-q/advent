@@ -1239,7 +1239,7 @@ body.clean .mega .an,body.clean .ps .an,body.clean .mob .an{display:none}
   <div class="wf-right">
     <div class="legend"><span class="an-tag an-native">Enterprise section</span><span class="an-tag an-tweak">native + tweak</span><span class="an-tag an-custom">custom / app</span></div>
     <label class="wf-pages"><span class="sr">Page</span><select onchange="location.href=this.value"><option value="index.html">Home</option><option value="collection.html">Collection: Board games</option><option value="collection-preorders.html">Collection: Preorders</option><option value="collection-rpg.html">Collection: Roleplaying</option><option value="collection-accessories.html">Collection: Accessories</option><option value="product.html">Product: Board game</option><option value="product-expansion.html">Product: Expansion</option><option value="product-rpg.html">Product: RPG</option><option value="product-accessory.html">Product: Accessory</option><option value="brands.html" selected>Brands A-Z</option><option value="brand.html">Brand collection</option><option value="about.html">About + Contact</option><option value="help.html">Help & FAQ</option><option value="search.html">Search results</option><option value="blog.html">Blog</option><option value="article.html">Blog post</option><option value="wishlist.html">Wishlist (optional app)</option></select></label>
-    <div class="wf-toggle" role="group" aria-label="Nav colour"><span class="wf-lbl">Nav:</span><button type="button" data-nav="white" aria-pressed="true">White</button><button type="button" data-nav="blue" aria-pressed="false">Gradient</button></div>
+    <div class="wf-toggle" role="group" aria-label="Nav colour"><span class="wf-lbl">Nav:</span><button type="button" data-nav="white" aria-pressed="false">White</button><button type="button" data-nav="blue" aria-pressed="true">Gradient</button></div>
     
     <button type="button" class="wf-cart wf-cart--alt" data-try-search><svg class="ic " width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg> Try search</button>
     <button type="button" class="wf-cart" data-open-cart><svg class="ic " width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2.5l2 11h10l2-7H6"/><circle cx="9" cy="19" r="1.4"/><circle cx="16.5" cy="19" r="1.4"/></svg> Open cart drawer</button>
@@ -1400,8 +1400,8 @@ body.clean .mega .an,body.clean .ps .an,body.clean .mob .an{display:none}
   setHero(hv,false);
   hb.forEach(function(b){b.addEventListener('click',function(){setHero(b.dataset.hero,true);});});
   var nb=document.querySelectorAll('[data-nav]');
-  function setNav(v,save){document.body.classList.toggle('nav-blue',v==='blue'); nb.forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.nav===v));}); if(save){try{localStorage.setItem('advent-nav',v);}catch(e){}}}
-  var nv='white'; try{nv=localStorage.getItem('advent-nav')||'white';}catch(e){}
+  function setNav(v,save){document.body.classList.toggle('nav-blue',v==='blue'); nb.forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.nav===v));}); if(save){try{localStorage.setItem('advent-nav-v2',v);}catch(e){}}}
+  var nv='blue'; try{nv=localStorage.getItem('advent-nav-v2')||'blue';}catch(e){}
   setNav(nv,false);
   nb.forEach(function(b){b.addEventListener('click',function(){setNav(b.dataset.nav,true);});});
   var hdr=document.querySelector('.hdr'), navRow=document.querySelector('.nav-row'), firstSec=document.querySelector('main > section');
