@@ -21,15 +21,13 @@ Preview: https://advent-games-017wrq2h.myshopify.com/?preview_theme_id=160180043
 Checked against the design at 1440px and 390px with Playwright (home page, all mega menus and dropdowns, cart drawer). No sideways scroll at either width. Side-by-side screenshots: `handoff/qa/`.
 
 Remaining differences from Enterprise's native layout:
-- Section subs under headings are missing (no setting, see flags).
-- Product cards: no badges, wishlist heart or players/time/complexity row yet (these come from metafields and are product page work). Many demo products have no images.
+- Product cards: no wishlist heart (needs the wishlist app). Many demo products have no images or BGG data, so their stats rows are short or hidden.
 - Carousels show Enterprise's progress line instead of round arrow buttons.
 - Newsletter submit is an arrow button rather than "Sign up".
 - Hero text panel sits at the bottom of the large tile rather than vertically centred.
 
 ## Flags for Jake
-- Featured collection, Product list and Collection list have no subtitle setting, so the one-line section subs are missing.
-- Announcement bar has two link slots, so "Brands A-Z" is missing there (it is in the footer).
+- Section subs, the announcement's third link (Brands A-Z), and the card badges and stats row are small Liquid tweaks to Enterprise files (see `theme/PATCHES.md`), all editable in the theme editor or theme content.
 - Media with text allows one button: extra buttons are links in the text block styled as secondary buttons.
 - Newsletter section is not allowed in the footer group: it sits at the end of the home template, so other templates need it added.
 - Mobile logo and BGG logo are CSS images (Enterprise has one logo setting, footer allows four blocks).
