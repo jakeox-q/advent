@@ -17,3 +17,5 @@ theme/sections/*
 !theme/sections/header-group.json
 !theme/sections/footer-group.json
 !theme/PATCHES.md
+
+!theme/sections/overlay-group.json
