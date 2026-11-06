@@ -1,0 +1,12 @@
+{%- comment -%}
+  Advent: SEO copy under the collection grid, from the collection metafields advent.seo_heading and advent.seo_text.
+  Hidden when empty, so collections without copy show nothing.
+{%- endcomment -%}
+{%- if collection.metafields.advent.seo_text != blank -%}
+  <div class="advent-seo">
+    {%- if collection.metafields.advent.seo_heading != blank -%}
+      <h2 class="h5">{{ collection.metafields.advent.seo_heading | escape }}</h2>
+    {%- endif -%}
+    <div class="rte">{{ collection.metafields.advent.seo_text | metafield_tag }}</div>
+  </div>
+{%- endif -%}

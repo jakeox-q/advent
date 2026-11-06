@@ -16,3 +16,7 @@ The repo is public, so Enterprise's files are not committed. These are the only 
 6. `sections/announcement.liquid`: settings `link3` and `link3_label` after `link2_label`, rendered after link 2 (spacer classes adjusted so the last link has `no-spacer`).
 7. `locales/en.default.json`: `advent.badges.*` and `advent.stats.*` wording for the card badges and stats row.
 8. `locales/en.default.json`: `advent.wishlist.add` / `advent.wishlist.remove` labels for the card heart. The heart itself is ours (`snippets/advent-wishlist-heart.liquid`, `assets/advent-wishlist.js`), rendered from `snippets/advent-card-badges.liquid`. It saves to the shopper's browser until a wishlist app is chosen; remove its render line to take it out.
+9. `sections/newsletter.liquid`: in the `form` block, remove `arrow_button: true` from the `newsletter-signup` render so the button shows its label instead of an arrow.
+10. `locales/en.default.json`:
+   - `newsletter.placeholder`: "Email address"; `newsletter.button_label`: "Sign up"
+   - `sections.footer.copyright_html`: `&copy; {{ year }} {{ shop_name }} · ABN 76 649 386 212 · <a href="/policies/privacy-policy">Privacy policy</a> · <a href="/policies/terms-of-service">Terms &amp; conditions</a> · <a href="/policies/refund-policy">Refund policy</a>`

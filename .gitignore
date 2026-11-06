@@ -26,3 +26,19 @@ theme/snippets/*
 !theme/snippets/advent-card-stats.liquid
 !theme/assets/advent-wishlist.js
 !theme/snippets/advent-wishlist-heart.liquid
+
+# Advent's own templates and snippets for the other pages
+!theme/templates/collection.json
+!theme/templates/collection.*.json
+!theme/templates/product.json
+!theme/templates/search.json
+!theme/templates/blog.json
+!theme/templates/article.json
+!theme/templates/page.about.json
+!theme/templates/page.help.json
+!theme/templates/page.brands.json
+!theme/templates/page.wishlist.json
+!theme/snippets/advent-*.liquid
+!theme/sections/advent-*.liquid
+!theme/assets/advent-*.js
+!theme/assets/advent-*.css

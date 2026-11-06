@@ -9,8 +9,40 @@
   assign min_t = bgg.min_playtime.value
   assign max_t = bgg.max_playtime.value
   assign weight = bgg.weight.value
+
+  comment
+    RPGs show System and Category. Accessories show size or type, pack and Made for.
+  endcomment
+  assign line = ''
+  if product.metafields.rpg.product_kind != blank or product.metafields.rpg.system != blank
+    assign line = product.metafields.rpg.system.value.name
+    if product.metafields.rpg.product_kind != blank
+      if line != blank
+        assign line = line | append: ' · '
+      endif
+      assign line = line | append: product.metafields.rpg.product_kind.value
+    endif
+  elsif product.metafields.advent.sleeve_size != blank or product.metafields.advent.related_game_names != blank
+    if product.metafields.advent.sleeve_size != blank
+      assign line = product.metafields.advent.sleeve_size.value
+      if product.metafields.advent.pack_quantity != blank
+        assign line = line | append: ' · ' | append: product.metafields.advent.pack_quantity.value | append: ' ' | append: 'advent.stats.sleeves' | t
+      endif
+    else
+      assign line = product.type
+    endif
+    if product.metafields.advent.related_game_names != blank
+      if line != blank
+        assign line = line | append: ' · '
+      endif
+      assign made_for = 'advent.stats.made_for' | t
+      assign line = line | append: made_for | append: ' ' | append: product.metafields.advent.related_game_names.value | join: ', '
+    endif
+  endif
 -%}
-{%- if min_p != blank or min_t != blank or weight != blank -%}
+{%- if line != blank -%}
+  <div class="advent-card-stats advent-card-stats--line">{{ line | escape }}</div>
+{%- elsif min_p != blank or min_t != blank or weight != blank -%}
   <div class="advent-card-stats">
     {%- if min_p != blank -%}
       <span title="{{ 'advent.stats.players' | t }}">
