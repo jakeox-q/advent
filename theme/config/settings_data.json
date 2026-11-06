@@ -149,7 +149,7 @@
     "in_stock_text_color": "#1e6a3e",
     "low_stock_text_color": "#1e6a3e",
     "very_low_stock_text_color": "#1e6a3e",
-    "product_label_card_position": "top-0 start",
+    "product_label_card_position": "none",
     "show_sale_label": true,
     "show_sold_out_label": true,
     "sold_out_label_icon": "none",

@@ -22,3 +22,5 @@ theme/sections/*
 !theme/snippets/
 theme/snippets/*
 !theme/snippets/advent-staff-note.liquid
+!theme/snippets/advent-card-badges.liquid
+!theme/snippets/advent-card-stats.liquid

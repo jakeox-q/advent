@@ -287,7 +287,8 @@
         "circle_image": false,
         "show_border": false,
         "color_scheme": "none",
-        "full_width": true
+        "full_width": true,
+        "advent_subheading": "Browse by the way you like to play."
       }
     },
     "just_arrived": {
@@ -309,7 +310,8 @@
         "link_url": "",
         "button_label": "",
         "color_scheme": "none",
-        "button_style": "btn btn--secondary"
+        "button_style": "btn btn--secondary",
+        "advent_subheading": "Fresh off the truck and ready to ship from Sydney."
       }
     },
     "new_preorder": {
@@ -331,7 +333,8 @@
         "link_url": "",
         "button_label": "",
         "color_scheme": "1",
-        "button_style": "btn btn--secondary"
+        "button_style": "btn btn--secondary",
+        "advent_subheading": "Charged now, shipped the day they land. Cancel any time before they leave our supplier."
       }
     },
     "coming_soon": {
@@ -353,7 +356,8 @@
         "link_url": "",
         "button_label": "",
         "color_scheme": "none",
-        "button_style": "btn btn--secondary"
+        "button_style": "btn btn--secondary",
+        "advent_subheading": "On the way from our suppliers, with a due date. Preorder now to lock in your copy."
       }
     },
     "best_sellers": {
@@ -375,7 +379,8 @@
         "link_url": "",
         "button_label": "",
         "color_scheme": "none",
-        "button_style": "btn btn--secondary"
+        "button_style": "btn btn--secondary",
+        "advent_subheading": "The games our customers keep coming back for."
       }
     },
     "staff": {
@@ -401,7 +406,8 @@
         "link_url": "",
         "button_label": "",
         "color_scheme": "1",
-        "button_style": "btn btn--secondary"
+        "button_style": "btn btn--secondary",
+        "advent_subheading": "What have we been playing this week?"
       }
     },
     "beginners": {

@@ -1,0 +1,34 @@
+{%- comment -%}
+  Advent: players · play time · complexity row on product cards, from the bgg.* metafields.
+  Each item hides when its data is missing; the whole row hides when all are missing. Rendered by snippets/product-card.liquid.
+{%- endcomment -%}
+{%- liquid
+  assign bgg = product.metafields.bgg
+  assign min_p = bgg.min_players.value
+  assign max_p = bgg.max_players.value
+  assign min_t = bgg.min_playtime.value
+  assign max_t = bgg.max_playtime.value
+  assign weight = bgg.weight.value
+-%}
+{%- if min_p != blank or min_t != blank or weight != blank -%}
+  <div class="advent-card-stats">
+    {%- if min_p != blank -%}
+      <span title="{{ 'advent.stats.players' | t }}">
+        <svg aria-hidden="true" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14.2a4.5 4.5 0 0 1 5 4.8"/></svg>
+        {{- min_p -}}{%- if max_p != blank and max_p != min_p -%}-{{ max_p }}{%- endif -%}
+      </span>
+    {%- endif -%}
+    {%- if min_t != blank -%}
+      <span title="{{ 'advent.stats.play_time' | t }}">
+        <svg aria-hidden="true" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
+        {{- min_t -}}{%- if max_t != blank and max_t != min_t -%}-{{ max_t }}{%- endif %} {{ 'advent.stats.minutes' | t -}}
+      </span>
+    {%- endif -%}
+    {%- if weight != blank -%}
+      <span title="{{ 'advent.stats.complexity' | t }}">
+        <svg aria-hidden="true" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 4.5a3 3 0 0 0-3 3 2.8 2.8 0 0 0-2 2.7c0 .9.4 1.6 1 2.1a2.8 2.8 0 0 0 1.2 4.6 3 3 0 0 0 5.3 1.1V5.6a3 3 0 0 0-2.5-1.1z"/><path d="M14.5 4.5a3 3 0 0 1 3 3 2.8 2.8 0 0 1 2 2.7c0 .9-.4 1.6-1 2.1a2.8 2.8 0 0 1-1.2 4.6 3 3 0 0 1-5.3 1.1V5.6a3 3 0 0 1 2.5-1.1z"/></svg>
+        {{- weight | round: 1 -}}<em>/5</em>
+      </span>
+    {%- endif -%}
+  </div>
+{%- endif -%}

@@ -1,0 +1,34 @@
+{%- comment -%}
+  Advent: product card badges (top left of the image). Rendered by snippets/product-card.liquid.
+  Preorder = template or tag "preorder"; Coming soon = preorder with advent.eta set; Just arrived = the "New" label tag in theme settings;
+  Sale = compare-at above price; Expansion = bgg.is_expansion. Wording: locale keys advent.badges.* (Edit theme content).
+{%- endcomment -%}
+{%- liquid
+  assign is_preorder = false
+  if product.template_suffix contains 'preorder' or product.tags contains 'preorder'
+    assign is_preorder = true
+  endif
+  assign is_new = false
+  if settings.new_label_tag != blank and product.tags contains settings.new_label_tag
+    assign is_new = true
+  endif
+  assign is_sale = false
+  if product.compare_at_price > product.price
+    assign is_sale = true
+  endif
+  assign is_expansion = product.metafields.bgg.is_expansion.value
+-%}
+{%- if is_preorder or is_new or is_sale or is_expansion or product.available == false -%}
+  <div class="advent-badges">
+    {%- if is_preorder and product.metafields.advent.eta != blank -%}
+      <span class="advent-badge advent-badge--coming">{{ 'advent.badges.coming_soon' | t }}</span>
+    {%- elsif is_preorder -%}
+      <span class="advent-badge advent-badge--preorder">{{ 'advent.badges.preorder' | t }}</span>
+    {%- elsif is_new -%}
+      <span class="advent-badge advent-badge--new">{{ 'advent.badges.just_arrived' | t }}</span>
+    {%- endif -%}
+    {%- if is_sale -%}<span class="advent-badge advent-badge--sale">{{ 'advent.badges.sale' | t }}</span>{%- endif -%}
+    {%- if is_expansion -%}<span class="advent-badge advent-badge--expansion">{{ 'advent.badges.expansion' | t }}</span>{%- endif -%}
+    {%- if product.available == false -%}<span class="advent-badge advent-badge--soldout">{{ 'advent.badges.sold_out' | t }}</span>{%- endif -%}
+  </div>
+{%- endif -%}

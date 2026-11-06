@@ -232,6 +232,28 @@ body { overflow-x: clip; }
 }
 .product-label { border-radius: 6px; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
 
+/* Badges (snippets/advent-card-badges.liquid) */
+.advent-badges { position: absolute; top: 8px; left: 8px; z-index: 2; display: flex; flex-wrap: wrap; gap: 4px; pointer-events: none; }
+.advent-badge {
+  display: inline-flex; align-items: center; height: 22px; padding: 0 8px;
+  border-radius: 6px; font-size: 11px; line-height: 16px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap;
+}
+.advent-badge--preorder { background: var(--ag-blue-tint); color: var(--ag-blue); }
+.advent-badge--coming { background: var(--ag-sky-tint); color: var(--ag-sky-text); }
+.advent-badge--new { background: var(--ag-sun-tint); color: #6a5200; }
+.advent-badge--sale { background: var(--ag-orange-tint); color: #9a4210; }
+.advent-badge--expansion { background: #fff; color: var(--ag-ink); box-shadow: inset 0 0 0 1px var(--ag-border-strong); }
+.advent-badge--soldout { background: #eef0f3; color: var(--ag-ink-muted); }
+/* Stats row (snippets/advent-card-stats.liquid): players · play time · complexity */
+.advent-card-stats {
+  display: flex; flex-wrap: wrap; gap: 4px 12px;
+  margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--ag-border);
+  font-size: 12px; line-height: 16px; color: var(--ag-ink);
+}
+.advent-card-stats span { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; font-weight: 500; }
+.advent-card-stats svg { color: var(--ag-ink-muted); flex: none; }
+.advent-card-stats em { font-style: normal; color: var(--ag-ink-muted); }
+
 /* Staff note (product-card.liquid tweak): only shown in the Staff recommendations section */
 .advent-staff-note { display: none; }
 [id$="__staff"] .advent-staff-note {
@@ -418,6 +440,11 @@ body { overflow-x: clip; }
 }
 
 /* ---------- 3-6. Featured collections: spacing ---------- */
+/* Section subheading (Advent setting on Featured collection, Product list and Collection list) */
+.section__header .advent-section-sub { flex-basis: 100%; order: 3; margin: 4px 0 0; color: var(--ag-ink-muted); font-size: 16px; line-height: 24px; }
+.section__header:has(.advent-section-sub) { align-items: flex-end; }
+.section__header:has(.advent-section-sub) > .link,
+.section__header:has(.advent-section-sub) > a { order: 2; }
 [id$="__just_arrived"] .section__header a.link,
 [id$="__new_preorder"] .section__header a.link,
 [id$="__coming_soon"] .section__header a.link,

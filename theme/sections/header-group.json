@@ -34,7 +34,9 @@
         "bg_color": "#f5b06a",
         "text_color": "#16213a",
         "text_type_scale": "small",
-        "read_time": 8
+        "read_time": 8,
+        "link3": "/pages/brands",
+        "link3_label": "Brands A-Z"
       }
     },
     "header": {
