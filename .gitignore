@@ -1,2 +1,19 @@
 __pycache__/
 .DS_Store
+
+# Enterprise theme (paid, repo is public): commit only Advent's own files
+theme/*
+!theme/assets/
+theme/assets/*
+!theme/assets/advent.css
+!theme/config/
+theme/config/*
+!theme/config/settings_data.json
+!theme/templates/
+theme/templates/*
+!theme/templates/index.json
+!theme/sections/
+theme/sections/*
+!theme/sections/header-group.json
+!theme/sections/footer-group.json
+!theme/PATCHES.md

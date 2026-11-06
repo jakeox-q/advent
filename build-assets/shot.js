@@ -1,0 +1,1 @@
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const p=await b.newPage();const d=process.argv[2];await p.goto('file://'+d+'/tiles.html');for(const h of ['strategy','family','party','thematic','wargames','solo-games','two-player','kids']){await p.locator('#t-'+h).screenshot({path:d+'/type-tile-'+h+'.png'});}await b.close();})();
