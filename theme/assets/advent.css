@@ -149,6 +149,18 @@ body { overflow-x: clip; }
   [id$="__header"] .main-nav__promos .promo__content strong { font-family: var(--heading-font-family); font-size: 20px; line-height: 24px; font-weight: 800; }
   [id$="__header"] .main-nav__promos .promo__content p + p { font-size: 13px; line-height: 18px; color: var(--ag-ink-muted); margin-top: 4px; }
 }
+/* Desktop search: blue search button on the right of the white field */
+@media (min-width: 769px) {
+  [id$="__header"] .header__search .search__submit {
+    top: 0; bottom: 0; right: 0; left: auto;
+    width: 56px; height: 48px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--ag-blue); color: #fff !important;
+    border-radius: 0 var(--ag-radius-md) var(--ag-radius-md) 0;
+  }
+  [id$="__header"] .header__search .search__submit:hover { background: var(--ag-blue-hover); }
+  [id$="__header"] .header__search .search__input { padding-inline-end: 72px; }
+}
 /* Mobile: horizontal logo (34px tall). Enterprise has one logo setting, so the mobile logo is swapped in CSS. */
 @media (max-width: 768px) {
   [id$="__header"] .logo__link img { opacity: 0; }
