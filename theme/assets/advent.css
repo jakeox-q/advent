@@ -159,6 +159,7 @@ body { overflow-x: clip; }
     border-radius: 0 var(--ag-radius-md) var(--ag-radius-md) 0;
   }
   [id$="__header"] .header__search .search__submit:hover { background: var(--ag-blue-hover); }
+  [id$="__header"] .header__search .search__submit svg { width: 20px; height: 20px; }
   [id$="__header"] .header__search .search__input { padding-inline-end: 72px; }
 }
 /* Mobile: horizontal logo (34px tall). Enterprise has one logo setting, so the mobile logo is swapped in CSS. */
@@ -511,7 +512,7 @@ body { overflow-x: clip; }
 }
 [id$="__reviews"] .testimonial { height: 100%; padding: 24px; border: 1px solid var(--ag-border); border-radius: var(--ag-radius-md); background: #fff; }
 [id$="__reviews"] .testimonial__quote, [id$="__reviews"] .testimonial__quote p { font-size: 16px; line-height: 24px; font-family: var(--body-font-family); font-weight: 400; }
-[id$="__reviews"] .testimonial-stars, [id$="__reviews"] .rating__stars { color: #f4d44d; }
+[id$="__reviews"] .testimonial-stars .rating__stars { --star-color: 244 212 77; }
 [id$="__reviews"] .testimonial__author { margin-top: 12px; font-size: 13px; color: var(--ag-ink-muted); }
 
 /* ---------- Newsletter (footer group) ---------- */
@@ -555,7 +556,10 @@ body { overflow-x: clip; }
 [id$="__footer"] .footer a:hover { color: #fff; }
 [id$="__footer"] .footer__hr { border-color: rgba(22, 33, 58, .25); }
 /* Enterprise pulls the footer columns out by a wider gutter than our 16px: keep them inside the page */
-@media (min-width: 769px) { [id$="__footer"] .footer__main { margin-inline: calc(-1 * var(--gutter)); } }
+@media (min-width: 769px) {
+  [id$="__footer"] .footer__main { margin-inline: -16px; }
+  [id$="__footer"] .footer__main > .footer-col { padding-left: 16px; padding-right: 16px; }
+}
 /* Secondary menu link "Powered by BoardGameGeek" shown as the logo (condition of Dean's BGG API use) */
 [id$="__footer"] .footer-sublinks { justify-content: flex-end; }
 [id$="__footer"] .footer-sublinks__item a {
