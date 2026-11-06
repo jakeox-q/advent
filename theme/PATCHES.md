@@ -20,3 +20,11 @@ The repo is public, so Enterprise's files are not committed. These are the only 
 10. `locales/en.default.json`:
    - `newsletter.placeholder`: "Email address"; `newsletter.button_label`: "Sign up"
    - `sections.footer.copyright_html`: `&copy; {{ year }} {{ shop_name }} · ABN 76 649 386 212 · <a href="/policies/privacy-policy">Privacy policy</a> · <a href="/policies/terms-of-service">Terms &amp; conditions</a> · <a href="/policies/refund-policy">Refund policy</a>`
+
+## Other pages (draft build)
+11. `snippets/products-toolbar.liquid`: product count span before the sort block (`advent-tb-count`).
+12. `sections/main-product.liquid`: the Add to cart label check also treats `advent.availability_state == 'preorder'` as a preorder.
+13. `snippets/product-card.liquid`: `product_preorder` also true when `advent.availability_state == 'preorder'`.
+14. `layout/theme.liquid`: breadcrumbs also show when `request.page_type` is `page` or `search`.
+15. `locales/en.default.json`: `products.product.preorder` set to "Preorder now"; new `advent.*` keys: `availability`, `bgg`, `expansion`, `price`, `delivery`, `tags`, `pdp`, `tabs`, `specs`, `brands`, `contact`, `search`, plus extra `advent.stats` keys.
+

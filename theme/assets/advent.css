@@ -1139,3 +1139,6 @@ body { overflow-x: clip; }
 [id$="__values"] [class*="icons-with-text"] { justify-items: start; }
 [id$="__hero"] .text-overlay { padding: 48px; }
 @media (max-width: 899px) { [id$="__hero"] .text-overlay { padding: 24px; } }
+.article__image { max-width: none; }
+.social-share { justify-content: center; }
+.cc-main-article .social-share { justify-content: flex-start; }

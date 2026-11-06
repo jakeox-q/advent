@@ -1,5 +1,6 @@
 {%- comment -%}Advent: tips and buttons shown under Enterprise's empty search state. Wording: locale keys advent.search.*.{%- endcomment -%}
 {%- if search.performed and search.results_count == 0 -%}
+  <style>.products-toolbar { display: none; }</style>
   <div class="advent-search-empty">
     {% render 'advent-icon', name: 'search', size: 36 %}
     <p>{{ 'advent.search.tips' | t }}</p>
