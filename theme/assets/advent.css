@@ -206,6 +206,8 @@ body { overflow-x: clip; }
   transition: box-shadow 150ms ease;
 }
 .card--product:hover { box-shadow: var(--ag-shadow-hover); }
+.card--product.card--product-contained { padding: 0; }
+.card--product product-form { display: block; }
 .card--product .card__media { background: var(--ag-surface-subtle); }
 .card--product .card__media .media img { padding: 16px; }
 .card--product .card__info-container { display: flex; flex-direction: column; }
