@@ -31,6 +31,12 @@
 :root { --gutter: 16px; }
 @media (min-width: 769px) { :root { --gutter: 16px; } }
 
+/* ---------- Page ---------- */
+/* Box art bleeds and carousel arrows reach past the 16px gutter: clip sideways overflow (clip keeps the sticky header working) */
+body { overflow-x: clip; }
+.carousel .slider-nav.end { inset-inline-end: 4px; }
+.carousel .slider-nav.start { inset-inline-start: 4px; }
+
 /* ---------- Global type and buttons ---------- */
 .subheading,
 .text-overlay__block.subheading,
@@ -126,6 +132,12 @@
   [id$="__header"] .mega-nav--sidebar .is-active > .child-nav__item,
   [id$="__header"] .mega-nav--sidebar .child-nav__item[aria-expanded="true"] { background: var(--ag-blue-tint); color: var(--ag-blue); }
   [id$="__header"] .mega-nav--sidebar .media { border-radius: var(--ag-radius-md); overflow: hidden; }
+  /* Column mega menus with promos on the right (Preorders, Accessories): links left, three banners side by side */
+  [id$="__header"] .mega-nav--promos-right { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 32px; align-items: start; }
+  [id$="__header"] .mega-nav--promos-right .child-nav { gap: 48px; }
+  [id$="__header"] .mega-nav--promos-right .child-promos { width: auto; max-width: none; margin: 0; }
+  [id$="__header"] .mega-nav--promos-right .main-nav__promos { display: grid !important; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 0; }
+  [id$="__header"] .mega-nav--promos-right .main-nav__promos .promo { margin: 0; }
   /* Promo banners: tinted card, image on the right */
   [id$="__header"] .main-nav__promos .promo { border-radius: var(--ag-radius-md); overflow: hidden; min-height: 190px; background: var(--ag-sky-tint); }
   [id$="__header"] .main-nav__promos .promo:nth-child(2) { background: var(--ag-sun-tint); }
