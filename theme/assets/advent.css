@@ -542,6 +542,8 @@ body { overflow-x: clip; }
 [id$="__footer"] .footer a { color: var(--ag-ink); }
 [id$="__footer"] .footer a:hover { color: #fff; }
 [id$="__footer"] .footer__hr { border-color: rgba(22, 33, 58, .25); }
+/* Enterprise pulls the footer columns out by a wider gutter than our 16px: keep them inside the page */
+@media (min-width: 769px) { [id$="__footer"] .footer__main { margin-inline: calc(-1 * var(--gutter)); } }
 /* Secondary menu link "Powered by BoardGameGeek" shown as the logo (condition of Dean's BGG API use) */
 [id$="__footer"] .footer-sublinks { justify-content: flex-end; }
 [id$="__footer"] .footer-sublinks__item a {
