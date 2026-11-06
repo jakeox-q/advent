@@ -1,0 +1,61 @@
+{%- comment -%}
+  Advent: Brands A-Z. Reads the chosen menu, groups the links by first letter and greys out letters with no brands.
+  Add a brand by adding a link to the menu. The product import can write this menu.
+{%- endcomment -%}
+{%- liquid
+  assign letters = '#,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z' | split: ','
+  assign links = section.settings.menu.links | sort_natural: 'title'
+-%}
+<div class="advent-az-sticky">
+  <div class="container">
+    <nav class="advent-az-bar" aria-label="{{ 'advent.brands.jump' | t }}">
+      {%- for L in letters -%}
+        {%- assign found = false -%}
+        {%- for link in links -%}
+          {%- assign first = link.title | slice: 0 | upcase -%}
+          {%- if first == L -%}{%- assign found = true -%}{%- break -%}{%- endif -%}
+          {%- if L == '#' and '0123456789' contains first -%}{%- assign found = true -%}{%- break -%}{%- endif -%}
+        {%- endfor -%}
+        {%- if found -%}
+          <a href="#az-{% if L == '#' %}num{% else %}{{ L }}{% endif %}">{{ L }}</a>
+        {%- else -%}
+          <span aria-disabled="true">{{ L }}</span>
+        {%- endif -%}
+      {%- endfor -%}
+    </nav>
+  </div>
+</div>
+<div class="section">
+  <div class="container">
+    <div class="advent-az-grid">
+      {%- for L in letters -%}
+        {%- capture items -%}
+          {%- for link in links -%}
+            {%- assign first = link.title | slice: 0 | upcase -%}
+            {%- if first == L or L == '#' and '0123456789' contains first -%}
+              <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endcapture -%}
+        {%- if items != blank -%}
+          <div class="advent-az-group" id="az-{% if L == '#' %}num{% else %}{{ L }}{% endif %}">
+            <h2 class="advent-az-letter">{{ L }}</h2>
+            <ul role="list">{{ items }}</ul>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+    {%- if section.settings.footer != blank -%}<div class="advent-az-foot rte">{{ section.settings.footer }}</div>{%- endif -%}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Advent: brands A-Z",
+  "tag": "section",
+  "settings": [
+    { "type": "link_list", "id": "menu", "label": "Brands menu" },
+    { "type": "richtext", "id": "footer", "label": "Text under the list" }
+  ],
+  "presets": [{ "name": "Advent: brands A-Z" }]
+}
+{% endschema %}

@@ -1,0 +1,15 @@
+{%- comment -%}Advent: full-width Description and details tabs under the buy box. Enterprise's own Product details section sits in the left column instead.{%- endcomment -%}
+<div class="section">
+  <div class="container">
+    {% render 'advent-product-tabs', product: product %}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Advent: product details",
+  "tag": "section",
+  "enabled_on": { "templates": ["product"] },
+  "settings": [],
+  "presets": [{ "name": "Advent: product details" }]
+}
+{% endschema %}

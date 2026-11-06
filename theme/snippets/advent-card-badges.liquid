@@ -5,7 +5,7 @@
 {%- endcomment -%}
 {%- liquid
   assign is_preorder = false
-  if product.template_suffix contains 'preorder' or product.tags contains 'preorder'
+  if product.template_suffix contains 'preorder' or product.tags contains 'preorder' or product.metafields.advent.availability_state.value == 'preorder'
     assign is_preorder = true
   endif
   assign is_new = false
@@ -32,4 +32,4 @@
     {%- if product.available == false -%}<span class="advent-badge advent-badge--soldout">{{ 'advent.badges.sold_out' | t }}</span>{%- endif -%}
   </div>
 {%- endif -%}
-{%- render 'advent-wishlist-heart', product: product -%}
+{%- unless hide_heart -%}{%- render 'advent-wishlist-heart', product: product -%}{%- endunless -%}

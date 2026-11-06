@@ -1,0 +1,11 @@
+{%- comment -%}Advent: RRP and saving under the price, plus the ways to pay line. RRP is advent.rrp and only shows when above the price.{%- endcomment -%}
+{%- assign rrp = product.metafields.advent.rrp.value -%}
+{%- assign price = product.selected_or_first_available_variant.price -%}
+{%- if rrp != blank -%}
+  {%- assign rrp_cents = rrp.amount | times: 100 | round -%}
+  {%- if rrp_cents > price -%}
+    {%- assign saving = rrp_cents | minus: price -%}
+    <div class="advent-rrp"><s>{{ 'advent.price.rrp' | t }} {{ rrp_cents | money }}</s> <span>{{ 'advent.price.you_save' | t }} {{ saving | money }}</span></div>
+  {%- endif -%}
+{%- endif -%}
+<div class="advent-pay">{{ 'advent.price.pay_with' | t }}</div>

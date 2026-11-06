@@ -1,0 +1,6 @@
+{%- comment -%}Advent: jump links in the buy box. The videos link only shows when the product has video media.{%- endcomment -%}
+{%- assign videos = product.media | where: 'media_type', 'external_video' -%}
+<div class="advent-jumps">
+  {%- if videos.size > 0 -%}<a href="#videos">{% render 'advent-icon', name: 'play', size: 16 %} {{ 'advent.pdp.watch' | t }}</a>{%- endif -%}
+  <a href="#details">{% render 'advent-icon', name: 'chev', size: 14 %} {{ 'advent.pdp.full_details' | t }}</a>
+</div>

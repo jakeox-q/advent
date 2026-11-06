@@ -1,0 +1,297 @@
+{
+  "sections": {
+    "hero": {
+      "type": "image-banner",
+      "blocks": {
+        "s": {
+          "type": "subheading",
+          "settings": {
+            "text": "About Advent Games"
+          }
+        },
+        "h": {
+          "type": "heading",
+          "settings": {
+            "heading": "Your friendly, local, online board game store",
+            "heading_size": "h1",
+            "heading_h1": true
+          }
+        },
+        "t": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Owner-operated in Sydney, shipping Australia-wide.</p>",
+            "enlarge_text": false
+          }
+        }
+      },
+      "block_order": [
+        "s",
+        "h",
+        "t"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/hero-bg.jpg",
+        "height_mode": "fixed",
+        "fixed_height_desktop": 420,
+        "fixed_height_mobile": 360,
+        "overlay_position": "justify-start items-end",
+        "overlay_text_align": "text-start",
+        "mob_center_text": false,
+        "mobile_stacked": false,
+        "color_scheme": "white",
+        "full_width": false,
+        "tint_color": "#16213a",
+        "tint_opacity": 0,
+        "prevent_animation": true
+      }
+    },
+    "story": {
+      "type": "media-with-text",
+      "blocks": {
+        "sub": {
+          "type": "subheading",
+          "settings": {
+            "text": "Our story"
+          }
+        },
+        "h": {
+          "type": "heading",
+          "settings": {
+            "heading": "Integrity, great service and a huge range",
+            "heading_size": "h4",
+            "heading_h1": false
+          }
+        },
+        "t": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We're an Australian online board game store based in Sydney. We keep prices fair by running a lean operation and passing the savings on, and we go out of our way to find the hard-to-find games.</p><p>You're not just a customer: we see you as a friend who shares our passion for the hobby.</p><p>Find Dean on BoardGameGeek: <a href=\"https://boardgamegeek.com/user/Caldris\">Caldris</a></p>",
+            "enlarge_text": false
+          }
+        }
+      },
+      "block_order": [
+        "sub",
+        "h",
+        "t"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/story.jpg",
+        "layout": "left",
+        "image_fit": "cover",
+        "media_width": 50,
+        "media_scale": 100,
+        "text_align": "text-start",
+        "color_scheme": "none",
+        "only_content_color_scheme": false
+      }
+    },
+    "dean": {
+      "type": "media-with-text",
+      "blocks": {
+        "sub": {
+          "type": "subheading",
+          "settings": {
+            "text": "Meet Dean"
+          }
+        },
+        "h": {
+          "type": "heading",
+          "settings": {
+            "heading": "The person behind the parcels",
+            "heading_size": "h4",
+            "heading_h1": false
+          }
+        },
+        "t": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Advent Games is run by Dean, a Sydney board gamer who wanted Australian players to get great games at fair prices, without the hunt. You'll find him on BoardGameGeek as Caldris, and on Tuesday nights at the Northside Gamers Group in Chatswood, which is where our free pickups happen.</p><p>What began as a small online shop has grown into a range of more than 11,000 games, from family favourites to heavy euros, wargames and roleplaying books. We still go out of our way to track down the hard-to-find titles, and we open preorders early so you don't miss the big releases.</p><p>We're still small and owner-operated. When you get in touch, Dean replies himself: not a call centre, and not an AI.</p>",
+            "enlarge_text": false
+          }
+        }
+      },
+      "block_order": [
+        "sub",
+        "h",
+        "t"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/dean.jpg",
+        "layout": "right",
+        "image_fit": "cover",
+        "media_width": 50,
+        "media_scale": 100,
+        "text_align": "text-start",
+        "color_scheme": "none",
+        "only_content_color_scheme": false
+      }
+    },
+    "values": {
+      "type": "icons-with-text",
+      "blocks": {
+        "v0": {
+          "type": "item",
+          "settings": {
+            "icon": "chat_bubble",
+            "heading": "Owner-operated",
+            "text": "<p>Questions answered promptly by Dean, not a call centre.</p>",
+            "link": ""
+          }
+        },
+        "v1": {
+          "type": "item",
+          "settings": {
+            "icon": "box",
+            "heading": "Huge range",
+            "text": "<p>11,000+ games, preorders and the hard-to-find titles.</p>",
+            "link": ""
+          }
+        },
+        "v2": {
+          "type": "item",
+          "settings": {
+            "icon": "truck",
+            "heading": "Fast, careful delivery",
+            "text": "<p>Tracked AusPost eParcel, boxed and padded.</p>",
+            "link": ""
+          }
+        },
+        "v3": {
+          "type": "item",
+          "settings": {
+            "icon": "lock",
+            "heading": "Fair prices",
+            "text": "<p>Flat-rate shipping, free on orders over $300.</p>",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "v0",
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "settings": {
+        "heading": "Why buy from Advent",
+        "heading_align": "text-start",
+        "icon_size": 24,
+        "title_type_scale": "medium",
+        "text_type_scale": "medium",
+        "icon_position": "above",
+        "mobile_stack": true,
+        "section_height": "medium",
+        "color_scheme": "none",
+        "full_width": false,
+        "dividers": "none",
+        "prevent_animation": true
+      }
+    },
+    "pickup": {
+      "type": "advent-pickup",
+      "blocks": {
+        "r1": {
+          "type": "row",
+          "settings": {
+            "icon": "calendar",
+            "title": "Tuesday nights",
+            "text": "Orders placed Monday or Tuesday are ready the following week"
+          }
+        },
+        "r2": {
+          "type": "row",
+          "settings": {
+            "icon": "map",
+            "title": "Northside Gamers Group",
+            "text": "Chatswood, NSW"
+          }
+        },
+        "r3": {
+          "type": "row",
+          "settings": {
+            "icon": "mail",
+            "title": "Confirmed by email",
+            "text": "Choose Local pickup at checkout"
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3"
+      ],
+      "settings": {
+        "eyebrow": "Free pickup",
+        "heading": "Pick up in Chatswood",
+        "text": "<p>Skip the shipping. Collect your order free on Tuesday nights at the Northside Gamers Group in Chatswood, a friendly weekly games night. We'll confirm your pickup by email.</p>",
+        "button_label": "Pickup details",
+        "button_link": "/pages/help#pickup"
+      }
+    },
+    "contact": {
+      "type": "advent-contact",
+      "blocks": {
+        "d1": {
+          "type": "detail",
+          "settings": {
+            "icon": "map",
+            "text": "Online store, Sydney NSW",
+            "link": ""
+          }
+        },
+        "d2": {
+          "type": "detail",
+          "settings": {
+            "icon": "mail",
+            "text": "dean@adventgames.com.au",
+            "link": "mailto:dean@adventgames.com.au"
+          }
+        },
+        "d3": {
+          "type": "detail",
+          "settings": {
+            "icon": "chat",
+            "text": "0411 017 162",
+            "link": "tel:0411017162"
+          }
+        },
+        "d4": {
+          "type": "detail",
+          "settings": {
+            "icon": "shield",
+            "text": "ABN 76 649 386 212",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "d1",
+        "d2",
+        "d3",
+        "d4"
+      ],
+      "settings": {
+        "heading": "Get in touch",
+        "text": "<p>Questions, special orders or something you can't find. Dean usually replies within a business day.</p>",
+        "order_placeholder": "#10482",
+        "message_placeholder": "Special orders welcome: tell us what you're looking for.",
+        "button_label": "Send message",
+        "card_heading": "Advent Games",
+        "note_heading": "Can't find a game?",
+        "note_text": "We source games from around the world. Ask us.",
+        "faq_label": "Check our Help & FAQ first",
+        "faq_link": "/pages/help"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "story",
+    "dean",
+    "values",
+    "pickup",
+    "contact"
+  ]
+}

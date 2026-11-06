@@ -1,0 +1,338 @@
+{
+  "sections": {
+    "title": {
+      "type": "rich-text",
+      "blocks": {
+        "h": {
+          "type": "heading",
+          "settings": {
+            "heading": "Help & FAQ",
+            "heading_size": "h2",
+            "heading_h1": true
+          }
+        },
+        "t": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Shipping, pickup, preorders, returns and payments. Can't find your answer? <a href=\"/pages/about#contact\">Contact Dean</a>.</p>",
+            "enlarge_text": false
+          }
+        }
+      },
+      "block_order": [
+        "h",
+        "t"
+      ],
+      "settings": {
+        "text_position": "justify-start",
+        "text_align": "text-start",
+        "mob_center_text": false,
+        "wide": true,
+        "color_scheme": "none",
+        "full_width": false,
+        "prevent_animation": true
+      }
+    },
+    "help": {
+      "type": "advent-help",
+      "blocks": {
+        "t0": {
+          "type": "topic",
+          "settings": {
+            "title": "Shipping",
+            "icon": "truck"
+          }
+        },
+        "q0_0": {
+          "type": "question",
+          "settings": {
+            "question": "How much is shipping?",
+            "answer": "<p>$10 to Sydney Metro, Gosford and Wollongong. $15 to the rest of Australia. <b>Free on orders over $300.</b></p>"
+          }
+        },
+        "q0_1": {
+          "type": "question",
+          "settings": {
+            "question": "When will I receive my order?",
+            "answer": "<p>In-stock games are dispatched in 1-3 business days. Games we order in from our supplier ship in 2-7 business days. Delivery time after that depends on AusPost.</p>"
+          }
+        },
+        "q0_2": {
+          "type": "question",
+          "settings": {
+            "question": "Can I track my parcel?",
+            "answer": "<p>Yes. Every order goes by Australia Post eParcel with tracking. You'll get the tracking link by email when it ships.</p>"
+          }
+        },
+        "q0_3": {
+          "type": "question",
+          "settings": {
+            "question": "Do you ship overseas?",
+            "answer": "<p>We ship within Australia only. For overseas orders, email us for a quote.</p>"
+          }
+        },
+        "q0_4": {
+          "type": "question",
+          "settings": {
+            "question": "What if I'm not home?",
+            "answer": "<p>AusPost will leave a card and hold the parcel at your local post office, or you can deliver to a Parcel Locker. Uncollected parcels returned to us incur a $13.43 return fee plus reshipping.</p>"
+          }
+        },
+        "t1": {
+          "type": "topic",
+          "settings": {
+            "title": "Pickup",
+            "icon": "map"
+          }
+        },
+        "q1_0": {
+          "type": "question",
+          "settings": {
+            "question": "Can I pick up my order?",
+            "answer": "<p>Yes, free. Choose Local pickup at checkout and collect on Tuesday night at the Northside Gamers Group in Chatswood.</p>"
+          }
+        },
+        "q1_1": {
+          "type": "question",
+          "settings": {
+            "question": "When will my pickup be ready?",
+            "answer": "<p>Orders placed on a Monday or Tuesday are ready the following Tuesday. We confirm by email.</p>"
+          }
+        },
+        "t2": {
+          "type": "topic",
+          "settings": {
+            "title": "Preorders & special orders",
+            "icon": "calendar"
+          }
+        },
+        "q2_0": {
+          "type": "question",
+          "settings": {
+            "question": "When is my preorder due?",
+            "answer": "<p>Each preorder shows its expected month. Dates come from the publisher and can move; we update the product page if they do.</p>"
+          }
+        },
+        "q2_1": {
+          "type": "question",
+          "settings": {
+            "question": "When am I charged?",
+            "answer": "<p>At purchase, usually at a discounted preorder price.</p>"
+          }
+        },
+        "q2_2": {
+          "type": "question",
+          "settings": {
+            "question": "Will my in-stock items wait for my preorder?",
+            "answer": "<p>Yes. In-stock items in the same order are held and shipped together when the preorder arrives. If you'd like them sooner, place them as a separate order.</p>"
+          }
+        },
+        "q2_3": {
+          "type": "question",
+          "settings": {
+            "question": "Can I cancel a preorder?",
+            "answer": "<p>Yes, any time until the stock ships from our supplier. Email us and we'll refund you.</p>"
+          }
+        },
+        "q2_4": {
+          "type": "question",
+          "settings": {
+            "question": "Can you order a game you don't stock?",
+            "answer": "<p>Often, yes. We source games from around the world. <a href=\"/pages/about#contact\">Tell us what you're after.</a></p>"
+          }
+        },
+        "t3": {
+          "type": "topic",
+          "settings": {
+            "title": "Orders",
+            "icon": "box"
+          }
+        },
+        "q3_0": {
+          "type": "question",
+          "settings": {
+            "question": "Do I need an account to buy?",
+            "answer": "<p>No. You can check out as a guest. An account lets you see past orders and reorder quickly.</p>"
+          }
+        },
+        "q3_1": {
+          "type": "question",
+          "settings": {
+            "question": "How do I check my order status?",
+            "answer": "<p>Use the link in your order confirmation email, or sign in to your account and open Orders.</p>"
+          }
+        },
+        "q3_2": {
+          "type": "question",
+          "settings": {
+            "question": "Can I add items to an order that hasn't shipped?",
+            "answer": "<p>Yes. Place a new order, choose the Order additions shipping option and note the order number to combine with. If the combined total passes $300, we refund the shipping.</p>"
+          }
+        },
+        "t4": {
+          "type": "topic",
+          "settings": {
+            "title": "Returns & damages",
+            "icon": "shield"
+          }
+        },
+        "q4_0": {
+          "type": "question",
+          "settings": {
+            "question": "My parcel arrived damaged",
+            "answer": "<p>Note the damage when you receive it and email us with photos. We'll replace the item, or give you a credit or refund.</p>"
+          }
+        },
+        "q4_1": {
+          "type": "question",
+          "settings": {
+            "question": "Can I return an unopened game?",
+            "answer": "<p>Yes, for change of mind: let us know in writing within 7 days. The game must be unopened and in its original packaging. Preorders, special orders, sleeves and accessories are excluded. We offer an exchange or store credit.</p>"
+          }
+        },
+        "q4_2": {
+          "type": "question",
+          "settings": {
+            "question": "How do I start a return?",
+            "answer": "<p>Email us for a Return Product Number (RPN) before sending anything back.</p>"
+          }
+        },
+        "t5": {
+          "type": "topic",
+          "settings": {
+            "title": "Payments",
+            "icon": "lock"
+          }
+        },
+        "q5_0": {
+          "type": "question",
+          "settings": {
+            "question": "What payment methods do you accept?",
+            "answer": "<p>Visa, Mastercard, PayPal, Apple Pay and Google Pay. All prices are in AUD.</p>"
+          }
+        },
+        "q5_1": {
+          "type": "question",
+          "settings": {
+            "question": "How does bank transfer work?",
+            "answer": "<p>Choose bank transfer at checkout and use your order number as the reference. We ship once payment arrives. Unpaid orders are cancelled after 3 business days.</p>"
+          }
+        },
+        "t6": {
+          "type": "topic",
+          "settings": {
+            "title": "Our games",
+            "icon": "dice"
+          }
+        },
+        "q6_0": {
+          "type": "question",
+          "settings": {
+            "question": "How is a game's Complexity rating determined?",
+            "answer": "<p>Complexity ratings on product pages come from BoardGameGeek, the hobby's main source of discussion and knowledge. Games are rated out of 5: 1 is very light and easy to learn, 5 is highly complex. Ratings are submitted by players, so they're subjective and change over time, but they're a good guide to how heavy a game will feel.</p>"
+          }
+        },
+        "q6_1": {
+          "type": "question",
+          "settings": {
+            "question": "Which edition is this game?",
+            "answer": "<p>English retail editions unless tagged otherwise. German editions, Kickstarter editions (KS) and Deluxe editions (DELUXE) are marked in the title.</p>"
+          }
+        },
+        "q6_2": {
+          "type": "question",
+          "settings": {
+            "question": "Why are board games expensive in Australia?",
+            "answer": "<p>[Dean to write]</p>"
+          },
+          "disabled": true
+        }
+      },
+      "block_order": [
+        "t0",
+        "q0_0",
+        "q0_1",
+        "q0_2",
+        "q0_3",
+        "q0_4",
+        "t1",
+        "q1_0",
+        "q1_1",
+        "t2",
+        "q2_0",
+        "q2_1",
+        "q2_2",
+        "q2_3",
+        "q2_4",
+        "t3",
+        "q3_0",
+        "q3_1",
+        "q3_2",
+        "t4",
+        "q4_0",
+        "q4_1",
+        "q4_2",
+        "t5",
+        "q5_0",
+        "q5_1",
+        "t6",
+        "q6_0",
+        "q6_1",
+        "q6_2"
+      ],
+      "settings": {
+        "nav_label": "Help topics"
+      }
+    },
+    "cta": {
+      "type": "rich-text",
+      "blocks": {
+        "h": {
+          "type": "heading",
+          "settings": {
+            "heading": "Still stuck?",
+            "heading_size": "h4",
+            "heading_h1": false
+          }
+        },
+        "t": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Dean answers every message himself, usually within a business day.</p>",
+            "enlarge_text": false
+          }
+        },
+        "b": {
+          "type": "button",
+          "settings": {
+            "button_1_label": "Contact Dean",
+            "button_1_link": "/pages/about#contact",
+            "button_1_style": "btn btn--primary",
+            "button_2_label": "dean@adventgames.com.au",
+            "button_2_link": "mailto:dean@adventgames.com.au",
+            "button_2_style": "btn btn--secondary"
+          }
+        }
+      },
+      "block_order": [
+        "h",
+        "t",
+        "b"
+      ],
+      "settings": {
+        "text_position": "justify-start",
+        "text_align": "text-start",
+        "mob_center_text": false,
+        "wide": true,
+        "color_scheme": "none",
+        "full_width": false,
+        "prevent_animation": true
+      }
+    }
+  },
+  "order": [
+    "title",
+    "help",
+    "cta"
+  ]
+}

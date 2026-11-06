@@ -1,0 +1,24 @@
+{%- comment -%}
+  Advent: works out a product's availability state for the product page.
+  Output is one word: in, supplier, preorder, coming or out. Uses advent.availability_state and advent.eta.
+{%- endcomment -%}
+{%- liquid
+  assign state_field = product.metafields.advent.availability_state.value
+  assign result = 'supplier'
+  if product.available == false
+    assign result = 'out'
+  elsif state_field == 'preorder' or product.template_suffix contains 'preorder' or product.tags contains 'preorder'
+    if product.metafields.advent.eta != blank
+      assign result = 'coming'
+    else
+      assign result = 'preorder'
+    endif
+  elsif state_field == 'in_stock'
+    assign result = 'in'
+  elsif state_field == 'at_supplier'
+    assign result = 'supplier'
+  elsif product.selected_or_first_available_variant.inventory_quantity > 0
+    assign result = 'in'
+  endif
+  echo result
+-%}

@@ -1,0 +1,62 @@
+{%- comment -%}
+  Advent: Help & FAQ. Add a Topic block, then Question blocks under it. Topic pills stick under the header and jump to each topic.
+  The first question in each topic starts open.
+{%- endcomment -%}
+{%- assign topics = section.blocks | where: 'type', 'topic' -%}
+<div class="advent-help-sticky">
+  <div class="container">
+    <nav class="advent-help-pills" aria-label="{{ section.settings.nav_label | escape }}">
+      {%- for t in topics -%}
+        <a href="#{{ t.settings.title | handleize }}">{% render 'advent-icon', name: t.settings.icon, size: 16 %}{{ t.settings.title | escape }}</a>
+      {%- endfor -%}
+    </nav>
+  </div>
+</div>
+<div class="section">
+  <div class="container">
+    <div class="advent-help-wrap">
+      {%- assign open_first = false -%}
+      {%- assign in_group = false -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'topic' -%}
+          {%- if in_group -%}</div></div>{%- endif -%}
+          <div class="advent-help-group" id="{{ block.settings.title | handleize }}" {{ block.shopify_attributes }}>
+            <h2 class="advent-help-title">{% render 'advent-icon', name: block.settings.icon, size: 22 %}{{ block.settings.title | escape }}</h2>
+            <div class="advent-acc">
+          {%- assign in_group = true -%}
+          {%- assign open_first = true -%}
+        {%- elsif in_group -%}
+          <details{% if open_first %} open{% endif %} {{ block.shopify_attributes }}>
+            <summary>{{ block.settings.question | escape }}{% render 'advent-icon', name: 'chev', size: 18 %}</summary>
+            <div class="rte">{{ block.settings.answer }}</div>
+          </details>
+          {%- assign open_first = false -%}
+        {%- endif -%}
+      {%- endfor -%}
+      {%- if in_group -%}</div></div>{%- endif -%}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Advent: help topics",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "nav_label", "label": "Topic links label (for screen readers)", "default": "Help topics" }
+  ],
+  "blocks": [
+    { "type": "topic", "name": "Topic", "settings": [
+      { "type": "text", "id": "title", "label": "Title" },
+      { "type": "select", "id": "icon", "label": "Icon", "default": "truck", "options": [
+        { "value": "truck", "label": "Truck" }, { "value": "map", "label": "Pin" }, { "value": "calendar", "label": "Calendar" },
+        { "value": "box", "label": "Box" }, { "value": "shield", "label": "Shield" }, { "value": "lock", "label": "Lock" }, { "value": "dice", "label": "Dice" }
+      ] }
+    ] },
+    { "type": "question", "name": "Question", "settings": [
+      { "type": "text", "id": "question", "label": "Question" },
+      { "type": "richtext", "id": "answer", "label": "Answer" }
+    ] }
+  ],
+  "presets": [{ "name": "Advent: help topics" }]
+}
+{% endschema %}

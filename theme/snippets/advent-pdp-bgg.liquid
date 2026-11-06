@@ -1,0 +1,30 @@
+{%- comment -%}
+  Advent: BGG line under the title: year, rating, ratings count, rank, designers. Hidden for RPGs and accessories, and when empty.
+{%- endcomment -%}
+{%- liquid
+  assign bgg = product.metafields.bgg
+  assign year = bgg.year_published.value
+  assign rating = bgg.rating.value
+  assign has_bgg = false
+  if bgg.id != blank or rating != blank or year != blank
+    assign has_bgg = true
+  endif
+-%}
+{%- if has_bgg -%}
+  <div class="advent-bgg">
+    {%- if year != blank -%}<span>{{ year }}</span>{%- endif -%}
+    {%- if rating != blank -%}
+      {%- assign rating_band = rating | floor -%}
+      {%- if year != blank -%}<i>·</i>{%- endif -%}
+      <span class="advent-rating advent-rating--{{ rating_band }}">{% render 'advent-icon', name: 'star', size: 12 %} {{ rating | round: 1 }}</span>
+      {%- if bgg.num_ratings != blank -%}<span>{{ bgg.num_ratings.value }} {{ 'advent.bgg.ratings' | t }}</span>{%- endif -%}
+      {%- if bgg.rank != blank -%}<i>·</i><span>{{ 'advent.bgg.rank' | t }} #{{ bgg.rank.value }}</span>{%- endif -%}
+    {%- else -%}
+      {%- if year != blank -%}<i>·</i>{%- endif -%}
+      <span>{{ 'advent.bgg.not_rated' | t }}</span>
+    {%- endif -%}
+    {%- if bgg.designers.value != blank -%}
+      <i>·</i><span>{{ 'advent.bgg.designed_by' | t }} {% for d in bgg.designers.value %}{{ d.name }}{% unless forloop.last %}, {% endunless %}{% endfor %}</span>
+    {%- endif -%}
+  </div>
+{%- endif -%}

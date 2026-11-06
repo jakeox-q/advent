@@ -1,20 +1,56 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
       "type": "main-search",
-      "settings": {}
+      "settings": {
+        "show_search_title": true,
+        "show_search_input": true,
+        "heading_align": "text-start",
+        "products_per_page": 48,
+        "card_size": "small",
+        "show_layout_toggle": true,
+        "enable_filtering": true,
+        "filters_open_lg": true,
+        "stick_on_scroll": true,
+        "show_filter_counts": true,
+        "expand_filters": true,
+        "max_filter_options": 7,
+        "enable_sorting": true,
+        "sort_first": false,
+        "show_article_featured_image": true,
+        "show_article_tags": true,
+        "show_article_excerpt": false,
+        "show_article_author": false,
+        "show_article_date": true,
+        "show_page_date": false,
+        "show_page_excerpt": true
+      }
+    },
+    "empty": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% render 'advent-search-empty' %}",
+        "section_height": "default",
+        "full_width": false,
+        "dividers": "none",
+        "prevent_animation": true
+      }
+    },
+    "recent": {
+      "type": "recently-viewed",
+      "settings": {
+        "heading": "Recently viewed",
+        "heading_align": "text-start",
+        "layout": "carousel",
+        "card_size_mobile": "small",
+        "card_size": "medium",
+        "limit": 8
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "empty",
+    "recent"
   ]
 }

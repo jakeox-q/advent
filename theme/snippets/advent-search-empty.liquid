@@ -1,0 +1,11 @@
+{%- comment -%}Advent: tips and buttons shown under Enterprise's empty search state. Wording: locale keys advent.search.*.{%- endcomment -%}
+{%- if search.performed and search.results_count == 0 -%}
+  <div class="advent-search-empty">
+    {% render 'advent-icon', name: 'search', size: 36 %}
+    <p>{{ 'advent.search.tips' | t }}</p>
+    <div class="advent-search-empty__btns">
+      <a class="btn btn--primary" href="{{ routes.all_products_collection_url }}">{{ 'advent.search.browse' | t }}</a>
+      <a class="btn btn--secondary" href="/pages/about#contact">{{ 'advent.search.ask' | t }}</a>
+    </div>
+  </div>
+{%- endif -%}

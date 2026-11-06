@@ -1,0 +1,43 @@
+{%- comment -%}
+  Advent: availability card under the price. Wording: locale keys advent.availability.*.
+  Publisher notice comes from advent.notice and shows on preorder and coming soon only.
+{%- endcomment -%}
+{%- capture state -%}{%- render 'advent-pdp-state', product: product -%}{%- endcapture -%}
+{%- assign state = state | strip -%}
+{%- liquid
+  case state
+    when 'in'
+      assign cls = 'in'
+      assign line = 'advent.availability.in' | t
+      assign sub = 'advent.availability.in_sub' | t
+      assign text = 'advent.availability.in_text' | t
+    when 'supplier'
+      assign cls = 'supplier'
+      assign line = 'advent.availability.supplier' | t
+      assign sub = 'advent.availability.supplier_sub' | t
+      assign text = 'advent.availability.supplier_text' | t
+    when 'preorder'
+      assign cls = 'preorder'
+      assign line = 'advent.availability.preorder' | t
+      assign sub = ''
+      assign text = 'advent.availability.preorder_text' | t
+    when 'coming'
+      assign cls = 'coming'
+      assign line = 'advent.availability.coming' | t
+      assign expected = 'advent.availability.expected' | t
+      assign sub = '· ' | append: expected | append: ' ' | append: product.metafields.advent.eta.value
+      assign text = 'advent.availability.preorder_text' | t
+    else
+      assign cls = 'out'
+      assign line = 'advent.availability.out' | t
+      assign sub = ''
+      assign text = 'advent.availability.out_text' | t
+  endcase
+-%}
+<div class="advent-avail advent-avail--{{ cls }}">
+  <span class="advent-avail__line">{{ line }}{% if sub != blank %} <span>{{ sub }}</span>{% endif %}</span>
+  <p>{{ text }}</p>
+  {%- if product.metafields.advent.notice != blank and state == 'preorder' or product.metafields.advent.notice != blank and state == 'coming' -%}
+    <div class="advent-avail__notice">{{ product.metafields.advent.notice.value | escape }}</div>
+  {%- endif -%}
+</div>

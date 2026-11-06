@@ -1,0 +1,51 @@
+{%- comment -%}
+  Advent: staff note and FAQ, side by side. The note comes from advent.staff_note and hides when empty, leaving the FAQ on its own.
+  The FAQ is shared across all product pages: edit the questions as blocks in the theme editor.
+{%- endcomment -%}
+{%- assign note = product.metafields.advent.staff_note -%}
+<div class="section">
+  <div class="container">
+    <div class="advent-why-faq{% if note == blank %} advent-why-faq--solo{% endif %}">
+      {%- if note != blank -%}
+        <div class="advent-why">
+          {%- if section.settings.logo != blank -%}<span class="advent-why__who">{{ section.settings.logo | image_url: width: 124 | image_tag: width: 62, loading: 'lazy', alt: '' }}</span>{%- endif -%}
+          <div>
+            <p class="subheading">{{ section.settings.note_label | escape }}</p>
+            <blockquote>{{ note.value | escape }}</blockquote>
+            <footer>{{ 'advent.staff_note_byline' | t }}</footer>
+          </div>
+        </div>
+      {%- endif -%}
+      <div class="advent-faq">
+        <h2 class="advent-row-title">{{ section.settings.heading | escape }}</h2>
+        <div class="advent-acc">
+          {%- for block in section.blocks -%}
+            <details {{ block.shopify_attributes }}>
+              <summary>{{ block.settings.question | escape }}{% render 'advent-icon', name: 'chev', size: 18 %}</summary>
+              <div class="rte">{{ block.settings.answer }}</div>
+            </details>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Advent: staff note + FAQ",
+  "tag": "section",
+  "enabled_on": { "templates": ["product"] },
+  "settings": [
+    { "type": "image_picker", "id": "logo", "label": "Note logo" },
+    { "type": "text", "id": "note_label", "label": "Note label", "default": "Why we like it" },
+    { "type": "text", "id": "heading", "label": "FAQ heading", "default": "Questions about buying from Advent" }
+  ],
+  "blocks": [
+    { "type": "question", "name": "Question", "settings": [
+      { "type": "text", "id": "question", "label": "Question" },
+      { "type": "richtext", "id": "answer", "label": "Answer" }
+    ] }
+  ],
+  "presets": [{ "name": "Advent: staff note + FAQ" }]
+}
+{% endschema %}

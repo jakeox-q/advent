@@ -1,0 +1,34 @@
+{%- comment -%}
+  Advent: four-up stats strip. Board games: players, play time, age, complexity. RPGs: system, category, publisher, year.
+  Accessories: sleeve size, pack, finish, made for. Hidden items collapse; the strip hides when empty.
+{%- endcomment -%}
+{%- liquid
+  assign bgg = product.metafields.bgg
+  assign adv = product.metafields.advent
+  assign rpg = product.metafields.rpg
+  assign kind = 'board'
+  if rpg.system != blank or rpg.product_kind != blank
+    assign kind = 'rpg'
+  elsif adv.sleeve_size != blank or adv.related_game_names != blank or adv.pack_quantity != blank
+    assign kind = 'accessory'
+  endif
+-%}
+{%- capture items -%}
+  {%- if kind == 'rpg' -%}
+    {%- if rpg.system.value != blank -%}<div>{% render 'advent-icon', name: 'book', size: 20 %}<span>{{ 'advent.stats.system' | t }}</span><strong>{{ rpg.system.value.name }}</strong></div>{%- endif -%}
+    {%- if rpg.product_kind != blank -%}<div>{% render 'advent-icon', name: 'box', size: 20 %}<span>{{ 'advent.stats.category' | t }}</span><strong>{{ rpg.product_kind.value }}</strong></div>{%- endif -%}
+    {%- if product.vendor != blank -%}<div>{% render 'advent-icon', name: 'user', size: 20 %}<span>{{ 'advent.stats.publisher' | t }}</span><strong>{{ product.vendor }}</strong></div>{%- endif -%}
+    {%- if bgg.year_published != blank -%}<div>{% render 'advent-icon', name: 'calendar', size: 20 %}<span>{{ 'advent.stats.year' | t }}</span><strong>{{ bgg.year_published.value }}</strong></div>{%- endif -%}
+  {%- elsif kind == 'accessory' -%}
+    {%- if adv.sleeve_size != blank -%}<div>{% render 'advent-icon', name: 'box', size: 20 %}<span>{{ 'advent.stats.sleeve_size' | t }}</span><strong>{{ adv.sleeve_size.value }}</strong></div>{%- endif -%}
+    {%- if adv.pack_quantity != blank -%}<div>{% render 'advent-icon', name: 'blocks', size: 20 %}<span>{{ 'advent.stats.pack' | t }}</span><strong>{{ adv.pack_quantity.value }} {{ 'advent.stats.sleeves' | t }}</strong></div>{%- endif -%}
+    {%- if adv.finish != blank -%}<div>{% render 'advent-icon', name: 'shield', size: 20 %}<span>{{ 'advent.stats.finish' | t }}</span><strong>{{ adv.finish.value }}</strong></div>{%- endif -%}
+    {%- if adv.related_game_names != blank -%}<div>{% render 'advent-icon', name: 'puzzle', size: 20 %}<span>{{ 'advent.stats.made_for' | t }}</span><strong>{{ adv.related_game_names.value | join: ', ' }}</strong></div>{%- endif -%}
+  {%- else -%}
+    {%- if bgg.min_players != blank -%}<div>{% render 'advent-icon', name: 'users', size: 20 %}<span>{{ 'advent.stats.players' | t }}</span><strong>{{ bgg.min_players.value }}{% if bgg.max_players != blank and bgg.max_players.value != bgg.min_players.value %}-{{ bgg.max_players.value }}{% endif %}</strong></div>{%- endif -%}
+    {%- if bgg.min_playtime != blank -%}<div>{% render 'advent-icon', name: 'clock', size: 20 %}<span>{{ 'advent.stats.play_time' | t }}</span><strong>{{ bgg.min_playtime.value }}{% if bgg.max_playtime != blank and bgg.max_playtime.value != bgg.min_playtime.value %}-{{ bgg.max_playtime.value }}{% endif %} {{ 'advent.stats.minutes' | t }}</strong></div>{%- endif -%}
+    {%- if bgg.min_age != blank -%}<div>{% render 'advent-icon', name: 'person', size: 20 %}<span>{{ 'advent.stats.age' | t }}</span><strong>{{ bgg.min_age.value }}+</strong></div>{%- endif -%}
+    {%- if bgg.weight != blank -%}<div>{% render 'advent-icon', name: 'mind', size: 20 %}<span>{{ 'advent.stats.complexity' | t }}</span><strong>{{ bgg.weight.value | round: 1 }} / 5</strong></div>{%- endif -%}
+  {%- endif -%}
+{%- endcapture -%}
+{%- if items != blank -%}<div class="advent-statbox">{{ items }}</div>{%- endif -%}

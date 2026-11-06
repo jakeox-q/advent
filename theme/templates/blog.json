@@ -1,20 +1,76 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
       "type": "main-blog",
-      "settings": {}
+      "settings": {
+        "show_blog_title": true,
+        "description": "<p>New releases, honest reviews and store news from Dean. What's landing, what we're playing and what's worth your table time.</p>",
+        "show_share_links": true,
+        "show_twitter": true,
+        "show_facebook": true,
+        "text_align": "text-center",
+        "posts_per_page": 13,
+        "three_columns": true,
+        "show_tag_filter": true,
+        "show_featured_image": true,
+        "image_ratio": "1.6",
+        "show_tags": true,
+        "show_excerpt": false,
+        "show_author": false,
+        "show_date": true,
+        "show_button": false,
+        "button_style": "btn btn--secondary",
+        "show_featured_post": true,
+        "show_featured_excerpt": true,
+        "show_featured_button": true,
+        "color_scheme": "none",
+        "featured_button_style": "btn btn--secondary"
+      }
+    },
+    "help": {
+      "type": "media-with-text",
+      "blocks": {
+        "sub": {
+          "type": "subheading",
+          "settings": {
+            "text": "Need a hand?"
+          }
+        },
+        "h": {
+          "type": "heading",
+          "settings": {
+            "heading": "Not sure what to play next?",
+            "heading_size": "h4",
+            "heading_h1": false
+          }
+        },
+        "t": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Tell Dean who you play with and what you enjoy, and he'll point you to a few games that fit. No call centre, no bots, just a fellow gamer.</p><p><a href=\"/pages/about#contact\">Ask Dean</a></p>",
+            "enlarge_text": false
+          }
+        }
+      },
+      "block_order": [
+        "sub",
+        "h",
+        "t"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/beginners.jpg",
+        "layout": "left",
+        "image_fit": "cover",
+        "media_width": 50,
+        "media_scale": 100,
+        "text_align": "text-start",
+        "color_scheme": "none",
+        "only_content_color_scheme": false
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "help"
   ]
 }

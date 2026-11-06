@@ -1,0 +1,69 @@
+{%- comment -%}Advent: contact form with a details card beside it. Uses Shopify's contact form, so messages go to the store's contact email. Details are blocks.{%- endcomment -%}
+<div class="section" id="contact">
+  <div class="container">
+    <div class="advent-contact">
+      <div>
+        <h2 class="advent-row-title">{{ section.settings.heading | escape }}</h2>
+        <div class="rte advent-muted">{{ section.settings.text }}</div>
+        {%- form 'contact', class: 'advent-contact-form' -%}
+          {%- if form.posted_successfully? -%}
+            <p class="alert mb-8 bg-success-bg text-success-text">{{ 'advent.contact.success' | t }}</p>
+          {%- endif -%}
+          {{ form.errors | default_errors }}
+          <div class="advent-cf-row">
+            <label>{{ 'advent.contact.name' | t }}<input class="input w-full" type="text" name="contact[name]" autocomplete="name" value="{{ form.name }}"></label>
+            <label>{{ 'advent.contact.email' | t }}<input class="input w-full" type="email" name="contact[email]" autocomplete="email" required value="{{ form.email }}"></label>
+          </div>
+          <label><span>{{ 'advent.contact.order' | t }} <span class="advent-muted">{{ 'advent.contact.optional' | t }}</span></span><input class="input w-full" type="text" name="contact[order_number]" placeholder="{{ section.settings.order_placeholder | escape }}"></label>
+          <label>{{ 'advent.contact.message' | t }}<textarea class="input w-full" name="contact[body]" rows="5" required placeholder="{{ section.settings.message_placeholder | escape }}">{{ form.body }}</textarea></label>
+          <button class="btn btn--primary advent-btn-cta" type="submit">{{ section.settings.button_label | escape }}</button>
+        {%- endform -%}
+      </div>
+      <aside class="advent-contact-card">
+        <h3 class="h5">{{ section.settings.card_heading | escape }}</h3>
+        <ul role="list">
+          {%- for block in section.blocks -%}
+            <li {{ block.shopify_attributes }}>
+              {% render 'advent-icon', name: block.settings.icon, size: 18 %}
+              {%- if block.settings.link != blank -%}<a href="{{ block.settings.link }}">{{ block.settings.text | escape }}</a>{%- else -%}<span>{{ block.settings.text | escape }}</span>{%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+        {%- if section.settings.note_heading != blank -%}
+          <div class="advent-contact-note"><strong>{{ section.settings.note_heading | escape }}</strong><p>{{ section.settings.note_text | escape }}</p></div>
+        {%- endif -%}
+        {%- if section.settings.faq_label != blank -%}
+          <a class="advent-contact-faq" href="{{ section.settings.faq_link }}">{{ section.settings.faq_label | escape }} {% render 'advent-icon', name: 'right', size: 14 %}</a>
+        {%- endif -%}
+      </aside>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Advent: contact",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Get in touch" },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "text", "id": "order_placeholder", "label": "Order number placeholder" },
+    { "type": "text", "id": "message_placeholder", "label": "Message placeholder" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Send message" },
+    { "type": "text", "id": "card_heading", "label": "Card heading" },
+    { "type": "text", "id": "note_heading", "label": "Note heading" },
+    { "type": "text", "id": "note_text", "label": "Note text" },
+    { "type": "text", "id": "faq_label", "label": "Help link label" },
+    { "type": "url", "id": "faq_link", "label": "Help link" }
+  ],
+  "blocks": [
+    { "type": "detail", "name": "Detail", "settings": [
+      { "type": "select", "id": "icon", "label": "Icon", "default": "map", "options": [
+        { "value": "map", "label": "Pin" }, { "value": "mail", "label": "Email" }, { "value": "chat", "label": "Chat" }, { "value": "shield", "label": "Shield" }
+      ] },
+      { "type": "text", "id": "text", "label": "Text" },
+      { "type": "url", "id": "link", "label": "Link" }
+    ] }
+  ],
+  "presets": [{ "name": "Advent: contact" }]
+}
+{% endschema %}

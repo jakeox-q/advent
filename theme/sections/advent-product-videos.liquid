@@ -1,0 +1,37 @@
+{%- comment -%}
+  Advent: "Watch before you buy". Only shows when the product has video media (YouTube or Vimeo added to the product).
+  Each video's label comes from its alt text. The channel name is the part after " | " in the alt text, e.g. "How to play | Watch It Played".
+{%- endcomment -%}
+{%- assign videos = product.media | where: 'media_type', 'external_video' -%}
+{%- if videos.size > 0 -%}
+  <div class="section" id="videos">
+    <div class="container">
+      <h2 class="advent-row-title">{{ section.settings.heading | escape }}</h2>
+      <div class="advent-videos">
+        {%- for video in videos limit: section.settings.limit -%}
+          {%- assign label = video.alt | split: ' | ' -%}
+          <a class="advent-video" href="{{ video.external_id | prepend: 'https://www.youtube.com/watch?v=' }}" target="_blank" rel="noopener">
+            <span class="advent-video__thumb">
+              {{ video.preview_image | image_url: width: 720 | image_tag: loading: 'lazy', alt: '' }}
+              <span class="advent-video__play">{% render 'advent-icon', name: 'playf', size: 22 %}</span>
+            </span>
+            {%- if label[0] != blank -%}<strong>{{ label[0] | escape }}</strong>{%- endif -%}
+            {%- if label[1] != blank -%}<span>{{ label[1] | escape }}</span>{%- endif -%}
+          </a>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+{% schema %}
+{
+  "name": "Advent: product videos",
+  "tag": "section",
+  "enabled_on": { "templates": ["product"] },
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Watch before you buy" },
+    { "type": "range", "id": "limit", "label": "Videos to show", "min": 1, "max": 6, "step": 1, "default": 3 }
+  ],
+  "presets": [{ "name": "Advent: product videos" }]
+}
+{% endschema %}

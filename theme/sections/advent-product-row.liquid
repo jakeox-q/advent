@@ -1,0 +1,91 @@
+{%- comment -%}
+  Advent: product row on the product page. Hidden when it finds no products.
+  Source sets where the products come from:
+  - complementary: the product's complementary products list (Search & Discovery)
+  - series: the collection matching the first bgg.families value
+  - system: the collection matching the RPG system name
+  - sleeve: the collection matching "sleeves-" + the sleeve size
+  Headings can use [title], [series], [system] and [size].
+{%- endcomment -%}
+{{ 'product.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign source = section.settings.source
+  assign row_products = blank
+  assign row_url = blank
+  assign series = product.metafields.bgg.families.value | first
+  assign system = product.metafields.rpg.system.value.name
+  assign size = product.metafields.advent.sleeve_size.value
+
+  case source
+    when 'complementary'
+      assign row_products = product.metafields.shopify--discovery--product_recommendation.complementary_products.value
+    when 'series'
+      if series != blank
+        assign handle = series | handleize
+        assign row_products = collections[handle].products
+        assign row_url = collections[handle].url
+      endif
+    when 'system'
+      if system != blank
+        assign handle = system | handleize
+        assign row_products = collections[handle].products
+        assign row_url = collections[handle].url
+      endif
+    when 'sleeve'
+      if size != blank
+        assign handle = 'sleeves-' | append: size | handleize
+        assign row_products = collections[handle].products
+        assign row_url = collections[handle].url
+      endif
+  endcase
+
+  assign shown = 0
+  for p in row_products
+    if p.id != product.id
+      assign shown = shown | plus: 1
+    endif
+  endfor
+-%}
+{%- if shown > 0 -%}
+  {%- assign heading = section.settings.heading | replace: '[title]', product.title | replace: '[series]', series | replace: '[system]', system | replace: '[size]', size -%}
+  {%- assign sub = section.settings.subheading | replace: '[title]', product.title | replace: '[series]', series | replace: '[system]', system | replace: '[size]', size -%}
+  <div class="section{% if section.settings.band %} advent-band{% endif %}">
+    <div class="container">
+      <div class="section__header flex items-end justify-between">
+        <div>
+          <h2 class="advent-row-title">{{ heading | escape }}</h2>
+          {%- if sub != blank -%}<p class="advent-section-sub">{{ sub | escape }}</p>{%- endif -%}
+        </div>
+        {%- if row_url != blank -%}<a class="link" href="{{ row_url }}">{{ 'advent.pdp.view_all' | t }}</a>{%- endif -%}
+      </div>
+      <ul class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-x-theme gap-y-8 small-cards-mobile" role="list">
+        {%- assign rendered = 0 -%}
+        {%- for p in row_products -%}
+          {%- if p.id != product.id and rendered < 4 -%}
+            {%- assign rendered = rendered | plus: 1 -%}
+            <li>{% render 'product-card', product: p %}</li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+  </div>
+{%- endif -%}
+{% schema %}
+{
+  "name": "Advent: product row",
+  "tag": "section",
+  "enabled_on": { "templates": ["product"] },
+  "settings": [
+    { "type": "select", "id": "source", "label": "Products from", "default": "complementary", "options": [
+      { "value": "complementary", "label": "Complementary products" },
+      { "value": "series", "label": "Same series" },
+      { "value": "system", "label": "Same RPG system" },
+      { "value": "sleeve", "label": "Same sleeve size" }
+    ] },
+    { "type": "text", "id": "heading", "label": "Heading", "info": "Can use [title], [series], [system] and [size]" },
+    { "type": "text", "id": "subheading", "label": "Subheading" },
+    { "type": "checkbox", "id": "band", "label": "Grey background", "default": false }
+  ],
+  "presets": [{ "name": "Advent: product row" }]
+}
+{% endschema %}

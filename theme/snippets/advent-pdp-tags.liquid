@@ -1,0 +1,14 @@
+{%- comment -%}Advent: Categories, Mechanics pills (or Genre on RPGs) and the short summary. Each row hides when empty.{%- endcomment -%}
+{%- assign bgg = product.metafields.bgg -%}
+{%- if bgg.categories.value != blank -%}
+  <div class="advent-tagrow"><b>{{ 'advent.tags.categories' | t }}:</b>{% for x in bgg.categories.value %}<a class="advent-pill" href="{{ routes.search_url }}?q={{ x.name | url_encode }}&type=product">{{ x.name }}</a>{% endfor %}</div>
+{%- endif -%}
+{%- if bgg.mechanics.value != blank -%}
+  <div class="advent-tagrow"><b>{{ 'advent.tags.mechanics' | t }}:</b>{% for x in bgg.mechanics.value limit: 5 %}<a class="advent-pill" href="{{ routes.search_url }}?q={{ x.name | url_encode }}&type=product">{{ x.name }}</a>{% endfor %}</div>
+{%- endif -%}
+{%- if product.metafields.rpg.setting != blank -%}
+  <div class="advent-tagrow"><b>{{ 'advent.tags.genre' | t }}:</b><span class="advent-pill">{{ product.metafields.rpg.setting.value }}</span></div>
+{%- endif -%}
+{%- if product.metafields.custom.game_summary != blank -%}
+  <p class="advent-summary">{{ product.metafields.custom.game_summary.value | escape }}</p>
+{%- endif -%}

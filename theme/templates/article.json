@@ -1,27 +1,89 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
       "type": "main-article",
       "settings": {
-        "pagination": "bar-reading"
+        "show_tags": true,
+        "show_author": true,
+        "show_date": true,
+        "featured_image_width": "page",
+        "heading_align": "text-center",
+        "show_share_buttons": true,
+        "show_twitter": true,
+        "show_facebook": true,
+        "show_pinterest": true,
+        "pagination": "standard"
       }
     },
-    "article-comments": {
-      "type": "article-comments",
-      "settings": {}
+    "related": {
+      "type": "featured-blog",
+      "settings": {
+        "title": "Related articles",
+        "heading_align": "text-start",
+        "show_view_all": true,
+        "blog": "news",
+        "layout": "grid",
+        "posts_to_show": 3,
+        "show_featured_image": true,
+        "show_tags": true,
+        "show_excerpt": false,
+        "show_author": false,
+        "show_date": true,
+        "show_button": false,
+        "color_scheme": "none",
+        "image_ratio": "1.6",
+        "button_style": "btn btn--primary"
+      }
+    },
+    "cta": {
+      "type": "rich-text",
+      "blocks": {
+        "h": {
+          "type": "heading",
+          "settings": {
+            "heading": "Questions about an order?",
+            "heading_size": "h4",
+            "heading_h1": false
+          }
+        },
+        "t": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Shipping, pickup, preorders and returns, all in one place.</p>",
+            "enlarge_text": false
+          }
+        },
+        "b": {
+          "type": "button",
+          "settings": {
+            "button_1_label": "Help & FAQ",
+            "button_1_link": "/pages/help",
+            "button_1_style": "btn btn--primary",
+            "button_2_label": "",
+            "button_2_link": "",
+            "button_2_style": "btn btn--secondary"
+          }
+        }
+      },
+      "block_order": [
+        "h",
+        "t",
+        "b"
+      ],
+      "settings": {
+        "text_position": "justify-start",
+        "text_align": "text-start",
+        "mob_center_text": false,
+        "wide": true,
+        "color_scheme": "none",
+        "full_width": false,
+        "prevent_animation": true
+      }
     }
   },
   "order": [
     "main",
-    "article-comments"
+    "related",
+    "cta"
   ]
 }

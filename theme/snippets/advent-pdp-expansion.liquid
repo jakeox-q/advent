@@ -1,0 +1,8 @@
+{%- comment -%}Advent: "Needs [base game]" note on expansions, from bgg.expands. Hidden when not set.{%- endcomment -%}
+{%- assign base = product.metafields.bgg.expands.value -%}
+{%- if base != blank -%}
+  <div class="advent-expnote">
+    {%- if base.featured_image -%}{%- assign base_alt = base.title | escape -%}{{ base.featured_image | image_url: width: 96 | image_tag: width: 48, height: 48, alt: base_alt, loading: 'lazy' }}{%- endif -%}
+    <span>{{ 'advent.expansion.needs' | t }} <a href="{{ base.url }}">{{ base.title | escape }}</a> {{ 'advent.expansion.to_play' | t }} <span class="advent-muted">{{ 'advent.expansion.not_standalone' | t }}</span></span>
+  </div>
+{%- endif -%}

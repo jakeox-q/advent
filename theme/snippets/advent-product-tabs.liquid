@@ -1,0 +1,62 @@
+{%- comment -%}
+  Advent: Description and details tabs under the buy box. Spec rows come from metafields and hide when empty.
+  Second tab is "Game details", "Book details" on RPGs, "Details" on accessories. Tabs are plain radio inputs, no script needed.
+{%- endcomment -%}
+{%- liquid
+  assign bgg = product.metafields.bgg
+  assign adv = product.metafields.advent
+  assign rpg = product.metafields.rpg
+  assign tab2 = 'advent.tabs.game_details' | t
+  assign kind = 'board'
+  if rpg.system != blank or rpg.product_kind != blank
+    assign kind = 'rpg'
+    assign tab2 = 'advent.tabs.book_details' | t
+  elsif adv.sleeve_size != blank or adv.related_game_names != blank or adv.pack_quantity != blank
+    assign kind = 'accessory'
+    assign tab2 = 'advent.tabs.details' | t
+  endif
+  assign barcode = product.selected_or_first_available_variant.barcode
+-%}
+<div class="advent-tabs" id="details">
+  <input type="radio" name="advent-tab" id="advent-tab-1" checked>
+  <input type="radio" name="advent-tab" id="advent-tab-2">
+  <div class="advent-tabs__bar" role="tablist">
+    <label for="advent-tab-1">{{ 'advent.tabs.description' | t }}</label>
+    <label for="advent-tab-2">{{ tab2 }}</label>
+  </div>
+  <div class="advent-tabs__panel advent-tabs__panel--1">
+    <div class="advent-desc rte">{{ product.description }}</div>
+    <details class="advent-more">
+      <summary><span class="more">{{ 'advent.pdp.show_more' | t }}</span><span class="less">{{ 'advent.pdp.show_less' | t }}</span></summary>
+    </details>
+  </div>
+  <div class="advent-tabs__panel advent-tabs__panel--2">
+    <dl class="advent-specs">
+      {%- if bgg.expands.value != blank -%}<div><dt>{{ 'advent.specs.base_game' | t }}</dt><dd><a href="{{ bgg.expands.value.url }}">{{ bgg.expands.value.title | escape }}</a></dd></div>{%- endif -%}
+      {%- if kind == 'rpg' -%}
+        {%- if rpg.system.value != blank -%}<div><dt>{{ 'advent.stats.system' | t }}</dt><dd>{{ rpg.system.value.name }}</dd></div>{%- endif -%}
+        {%- if rpg.product_kind != blank -%}<div><dt>{{ 'advent.stats.category' | t }}</dt><dd>{{ rpg.product_kind.value }}</dd></div>{%- endif -%}
+      {%- endif -%}
+      {%- if kind == 'accessory' -%}
+        {%- if adv.sleeve_size != blank -%}<div><dt>{{ 'advent.stats.sleeve_size' | t }}</dt><dd>{{ adv.sleeve_size.value }}</dd></div>{%- endif -%}
+        {%- if adv.pack_quantity != blank -%}<div><dt>{{ 'advent.stats.pack' | t }}</dt><dd>{{ adv.pack_quantity.value }} {{ 'advent.stats.sleeves' | t }}</dd></div>{%- endif -%}
+        {%- if adv.finish != blank -%}<div><dt>{{ 'advent.stats.finish' | t }}</dt><dd>{{ adv.finish.value }}</dd></div>{%- endif -%}
+        {%- if adv.related_game_names != blank -%}<div><dt>{{ 'advent.stats.made_for' | t }}</dt><dd>{{ adv.related_game_names.value | join: ', ' }}</dd></div>{%- endif -%}
+      {%- endif -%}
+      {%- if bgg.designers.value != blank -%}<div><dt>{{ 'advent.specs.designer' | t }}</dt><dd>{% for x in bgg.designers.value %}{{ x.name }}{% unless forloop.last %}, {% endunless %}{% endfor %}</dd></div>{%- endif -%}
+      {%- if bgg.artists.value != blank -%}<div><dt>{{ 'advent.specs.artist' | t }}</dt><dd>{% for x in bgg.artists.value %}{{ x.name }}{% unless forloop.last %}, {% endunless %}{% endfor %}</dd></div>{%- endif -%}
+      {%- if product.vendor != blank -%}<div><dt>{{ 'advent.stats.publisher' | t }}</dt><dd>{{ product.vendor | link_to_vendor }}</dd></div>{%- endif -%}
+      {%- if bgg.type.value != blank -%}<div><dt>{{ 'advent.specs.game_type' | t }}</dt><dd>{{ bgg.type.value | join: ', ' }}</dd></div>{%- endif -%}
+      {%- if bgg.categories.value != blank -%}<div><dt>{{ 'advent.tags.categories' | t }}</dt><dd>{% for x in bgg.categories.value %}{{ x.name }}{% unless forloop.last %}, {% endunless %}{% endfor %}</dd></div>{%- endif -%}
+      {%- if bgg.mechanics.value != blank -%}<div><dt>{{ 'advent.tags.mechanics' | t }}</dt><dd>{% for x in bgg.mechanics.value %}{{ x.name }}{% unless forloop.last %}, {% endunless %}{% endfor %}</dd></div>{%- endif -%}
+      {%- if bgg.families.value != blank -%}<div><dt>{{ 'advent.specs.series' | t }}</dt><dd>{{ bgg.families.value | join: ', ' }}</dd></div>{%- endif -%}
+      {%- if bgg.min_players != blank -%}<div><dt>{{ 'advent.stats.players' | t }}</dt><dd>{{ bgg.min_players.value }}{% if bgg.max_players != blank and bgg.max_players.value != bgg.min_players.value %}-{{ bgg.max_players.value }}{% endif %}</dd></div>{%- endif -%}
+      {%- if bgg.min_playtime != blank -%}<div><dt>{{ 'advent.stats.play_time' | t }}</dt><dd>{{ bgg.min_playtime.value }}{% if bgg.max_playtime != blank and bgg.max_playtime.value != bgg.min_playtime.value %}-{{ bgg.max_playtime.value }}{% endif %} {{ 'advent.stats.minutes' | t }}</dd></div>{%- endif -%}
+      {%- if bgg.min_age != blank -%}<div><dt>{{ 'advent.stats.age' | t }}</dt><dd>{{ bgg.min_age.value }}+</dd></div>{%- endif -%}
+      {%- if bgg.weight != blank -%}<div><dt>{{ 'advent.stats.complexity' | t }}</dt><dd>{{ bgg.weight.value | round: 1 }} / 5</dd></div>{%- endif -%}
+      {%- if bgg.year_published != blank -%}<div><dt>{{ 'advent.specs.year_published' | t }}</dt><dd>{{ bgg.year_published.value }}</dd></div>{%- endif -%}
+      {%- if bgg.id != blank -%}<div><dt>BoardGameGeek</dt><dd>{% if bgg.rating != blank %}{{ bgg.rating.value | round: 1 }}{% if bgg.num_ratings != blank %} · {{ bgg.num_ratings.value }} {{ 'advent.bgg.ratings' | t }}{% endif %} · {% endif %}<a href="https://boardgamegeek.com/boardgame/{{ bgg.id.value }}" target="_blank" rel="noopener">{{ 'advent.specs.view_on_bgg' | t }}</a></dd></div>{%- endif -%}
+      {%- if barcode != blank -%}<div><dt>{{ 'advent.specs.barcode' | t }}</dt><dd>{{ barcode }}</dd></div>{%- endif -%}
+    </dl>
+  </div>
+</div>
