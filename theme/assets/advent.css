@@ -159,7 +159,8 @@ body { overflow-x: clip; }
     border-radius: 0 var(--ag-radius-md) var(--ag-radius-md) 0;
   }
   [id$="__header"] .header__search .search__submit:hover { background: var(--ag-blue-hover); }
-  [id$="__header"] .header__search .search__submit svg { width: 20px; height: 20px; }
+  [id$="__header"] .header__search .search__submit { padding: 0; }
+  [id$="__header"] .header__search .search__submit svg { flex: none; width: 20px; height: 20px; }
   [id$="__header"] .header__search .search__input { padding-inline-end: 72px; }
 }
 /* Mobile: horizontal logo (34px tall). Enterprise has one logo setting, so the mobile logo is swapped in CSS. */
