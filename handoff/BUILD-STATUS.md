@@ -18,13 +18,12 @@ Preview: https://advent-games-017wrq2h.myshopify.com/?preview_theme_id=160180043
 - Menus: `main-menu` rebuilt from the design (no Brands item), new `header-secondary` and `footer-bgg`
 
 ## Visual QA
-Checked against the design at 1440px and 390px with Playwright (home page, Board Games and Preorders mega menus, cart drawer). Side-by-side screenshots: `handoff/qa/`.
+Checked against the design at 1440px and 390px with Playwright (home page, all mega menus and dropdowns, cart drawer). No sideways scroll at either width. Side-by-side screenshots: `handoff/qa/`.
 
 Remaining differences from Enterprise's native layout:
 - Section subs under headings are missing (no setting, see flags).
 - Product cards: no badges, wishlist heart or players/time/complexity row yet (these come from metafields and are product page work). Many demo products have no images.
 - Carousels show Enterprise's progress line instead of round arrow buttons.
-- Search button is an icon inside the field rather than a blue button.
 - Newsletter submit is an arrow button rather than "Sign up".
 - Hero text panel sits at the bottom of the large tile rather than vertically centred.
 
