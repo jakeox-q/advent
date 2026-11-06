@@ -765,6 +765,43 @@
         "color_scheme": "default",
         "full_width": false
       }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "blocks": {
+        "h": {
+          "type": "heading",
+          "settings": {
+            "heading": "New releases and preorders, first.",
+            "heading_size": "h3"
+          }
+        },
+        "t": {
+          "type": "text",
+          "settings": {
+            "text": "<p>New arrivals, preorders and the odd special, straight to your inbox. No spam, unsubscribe any time.</p>",
+            "enlarge_text": false
+          }
+        },
+        "f": {
+          "type": "form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "h",
+        "t",
+        "f"
+      ],
+      "settings": {
+        "overlay_position": "justify-start",
+        "text_align": "text-start",
+        "color_scheme": "3",
+        "full_width": true,
+        "transparent_content_color": "#16213a",
+        "tint_color": "#000000",
+        "tint_opacity": 0
+      }
     }
   },
   "order": [
@@ -781,6 +818,7 @@
     "campaign",
     "publishers",
     "story",
-    "reviews"
+    "reviews",
+    "newsletter"
   ]
 }
