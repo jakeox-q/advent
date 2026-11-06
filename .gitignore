@@ -24,3 +24,5 @@ theme/snippets/*
 !theme/snippets/advent-staff-note.liquid
 !theme/snippets/advent-card-badges.liquid
 !theme/snippets/advent-card-stats.liquid
+!theme/assets/advent-wishlist.js
+!theme/snippets/advent-wishlist-heart.liquid

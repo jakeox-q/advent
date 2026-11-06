@@ -32,3 +32,4 @@
     {%- if product.available == false -%}<span class="advent-badge advent-badge--soldout">{{ 'advent.badges.sold_out' | t }}</span>{%- endif -%}
   </div>
 {%- endif -%}
+{%- render 'advent-wishlist-heart', product: product -%}
