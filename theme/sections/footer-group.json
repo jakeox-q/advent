@@ -1,0 +1,112 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer Group",
+  "sections": {
+    "newsletter": {
+      "type": "newsletter",
+      "blocks": {
+        "h": {
+          "type": "heading",
+          "settings": {
+            "heading": "New releases and preorders, first.",
+            "heading_size": "h3"
+          }
+        },
+        "t": {
+          "type": "text",
+          "settings": {
+            "text": "<p>New arrivals, preorders and the odd special, straight to your inbox. No spam, unsubscribe any time.</p>",
+            "enlarge_text": false
+          }
+        },
+        "f": {
+          "type": "form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "h",
+        "t",
+        "f"
+      ],
+      "settings": {
+        "overlay_position": "justify-start",
+        "text_align": "text-start",
+        "color_scheme": "3",
+        "full_width": true,
+        "transparent_content_color": "#16213a",
+        "tint_color": "#000000",
+        "tint_opacity": 0
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "brand": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/advent-logo.png",
+            "image_width": 127,
+            "heading": "",
+            "text": "<p><strong>Your friendly, local, online board game store. Sydney based, shipping Australia-wide.</strong></p><p><a href=\"mailto:dean@adventgames.com.au\">dean@adventgames.com.au</a> · <a href=\"tel:0411017162\">0411 017 162</a><br>Free pickup Tuesday nights, Chatswood</p>",
+            "button_label": "",
+            "button_link": "",
+            "enable_follow_on_shop": false,
+            "show_social": false,
+            "text_align": "text-start"
+          }
+        },
+        "shop": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Shop",
+            "menu": "footer-shop"
+          }
+        },
+        "help": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Help",
+            "menu": "footer-help"
+          }
+        },
+        "advent": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Advent Games",
+            "menu": "footer-advent"
+          }
+        }
+      },
+      "block_order": [
+        "brand",
+        "shop",
+        "help",
+        "advent"
+      ],
+      "settings": {
+        "show_back_to_top": false,
+        "show_payment_icons": true,
+        "show_powered_by": false,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "secondary_menu": "footer-bgg",
+        "bg_color": "#63b8e4",
+        "text_color": "#16213a"
+      }
+    }
+  },
+  "order": [
+    "newsletter",
+    "footer"
+  ]
+}

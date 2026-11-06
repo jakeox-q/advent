@@ -1,0 +1,786 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "promo-grid",
+      "blocks": {
+        "big": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/hero-bg.jpg",
+            "link_url": "/blogs/news",
+            "columns": 2,
+            "rows": 2,
+            "line1_text": "New site, same Dean",
+            "line1_text_type_scale": "text-h6",
+            "line2_text": "Welcome to the new look Advent Games!",
+            "line2_text_type_scale": "text-h1",
+            "line3_text": "Same friendly service, a much easier way to find your next game. Filter 11,000+ games by players, play time, complexity, categories, mechanics, designers, and much more!",
+            "line3_text_type_scale": "text-h6",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "promo_circle": false,
+            "background_color": "#e2f2f6",
+            "text_color": "#16213a",
+            "subheading": "",
+            "link_text": "Read the blog post",
+            "text_type_scale": "h6",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "arrived": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/abroad.jpg",
+            "link_url": "/collections/just-arrived",
+            "columns": 1,
+            "rows": 1,
+            "line1_text": "This week",
+            "line1_text_type_scale": "text-h6",
+            "line2_text": "Just arrived",
+            "line2_text_type_scale": "text-h3",
+            "line3_text": "",
+            "line3_text_type_scale": "text-h6",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "promo_circle": false,
+            "background_color": "#f4d44d",
+            "text_color": "#16213a",
+            "subheading": "",
+            "link_text": "See what's new",
+            "text_type_scale": "h6",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "preorders": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/8-dragons.jpg",
+            "link_url": "/collections/preorders",
+            "columns": 1,
+            "rows": 1,
+            "line1_text": "Reserve now",
+            "line1_text_type_scale": "text-h6",
+            "line2_text": "Preorders open",
+            "line2_text_type_scale": "text-h3",
+            "line3_text": "",
+            "line3_text_type_scale": "text-h6",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "promo_circle": false,
+            "background_color": "#a2dded",
+            "text_color": "#16213a",
+            "subheading": "",
+            "link_text": "The big December releases",
+            "text_type_scale": "h6",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "big",
+        "arrived",
+        "preorders"
+      ],
+      "settings": {
+        "title": "",
+        "heading_align": "text-start",
+        "button_label": "",
+        "button_link": "",
+        "gallery_cols_max": 3,
+        "mobile_carousel": false,
+        "gallery_cols_min": "1",
+        "fixed_height_desktop": 100,
+        "fixed_height_mobile": 220,
+        "text_overlay_font": "heading",
+        "color_scheme": "default"
+      }
+    },
+    "hero_sale": {
+      "type": "promo-grid",
+      "disabled": true,
+      "blocks": {
+        "big": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/sale-bg.jpg",
+            "link_url": "/collections/sale",
+            "columns": 2,
+            "rows": 2,
+            "line1_text": "Up to 40% off · 26 Dec to 5 Jan",
+            "line1_text_type_scale": "text-h6",
+            "line2_text": "Boxing Day sale is on",
+            "line2_text_type_scale": "text-h1",
+            "line3_text": "Up to 40% off selected games, expansions and accessories. While stocks last.",
+            "line3_text_type_scale": "text-h6",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "promo_circle": false,
+            "background_color": "#fdeee3",
+            "text_color": "#16213a",
+            "subheading": "",
+            "link_text": "Shop the sale",
+            "text_type_scale": "h6",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "arrived": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/abroad.jpg",
+            "link_url": "/collections/just-arrived",
+            "columns": 1,
+            "rows": 1,
+            "line1_text": "This week",
+            "line1_text_type_scale": "text-h6",
+            "line2_text": "Just arrived",
+            "line2_text_type_scale": "text-h3",
+            "line3_text": "",
+            "line3_text_type_scale": "text-h6",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "promo_circle": false,
+            "background_color": "#f4d44d",
+            "text_color": "#16213a",
+            "subheading": "",
+            "link_text": "See what's new",
+            "text_type_scale": "h6",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "preorders": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/8-dragons.jpg",
+            "link_url": "/collections/preorders",
+            "columns": 1,
+            "rows": 1,
+            "line1_text": "Reserve now",
+            "line1_text_type_scale": "text-h6",
+            "line2_text": "Preorders open",
+            "line2_text_type_scale": "text-h3",
+            "line3_text": "",
+            "line3_text_type_scale": "text-h6",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "promo_circle": false,
+            "background_color": "#a2dded",
+            "text_color": "#16213a",
+            "subheading": "",
+            "link_text": "The big December releases",
+            "text_type_scale": "h6",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "big",
+        "arrived",
+        "preorders"
+      ],
+      "settings": {
+        "title": "",
+        "heading_align": "text-start",
+        "button_label": "",
+        "button_link": "",
+        "gallery_cols_max": 3,
+        "mobile_carousel": false,
+        "gallery_cols_min": "1",
+        "fixed_height_desktop": 100,
+        "fixed_height_mobile": 220,
+        "text_overlay_font": "heading",
+        "color_scheme": "default"
+      }
+    },
+    "types": {
+      "type": "collection-list",
+      "blocks": {
+        "strategy": {
+          "type": "collection",
+          "settings": {
+            "collection": "strategy",
+            "image": ""
+          }
+        },
+        "family": {
+          "type": "collection",
+          "settings": {
+            "collection": "family",
+            "image": ""
+          }
+        },
+        "party": {
+          "type": "collection",
+          "settings": {
+            "collection": "party",
+            "image": ""
+          }
+        },
+        "thematic": {
+          "type": "collection",
+          "settings": {
+            "collection": "thematic",
+            "image": ""
+          }
+        },
+        "wargames": {
+          "type": "collection",
+          "settings": {
+            "collection": "wargames",
+            "image": ""
+          }
+        },
+        "solo-games": {
+          "type": "collection",
+          "settings": {
+            "collection": "solo-games",
+            "image": ""
+          }
+        },
+        "two-player": {
+          "type": "collection",
+          "settings": {
+            "collection": "two-player",
+            "image": ""
+          }
+        },
+        "kids": {
+          "type": "collection",
+          "settings": {
+            "collection": "kids",
+            "image": ""
+          }
+        }
+      },
+      "block_order": [
+        "strategy",
+        "family",
+        "party",
+        "thematic",
+        "wargames",
+        "solo-games",
+        "two-player",
+        "kids"
+      ],
+      "settings": {
+        "title": "Find your next game",
+        "heading_align": "text-start",
+        "button_label": "",
+        "button_link": "",
+        "layout": "grid",
+        "card_size": "large",
+        "use_product_image": false,
+        "circle_image": false,
+        "show_border": false,
+        "color_scheme": "none",
+        "full_width": false
+      }
+    },
+    "just_arrived": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Just arrived",
+        "heading_align": "text-start",
+        "show_view_all": true,
+        "collection": "just-arrived",
+        "layout": "carousel",
+        "card_size_mobile": "small",
+        "card_size": "small",
+        "products_to_show": 10,
+        "show_highlight_products": false,
+        "show_promo_info": false,
+        "image_ratio": "1",
+        "promo_title": "",
+        "content": "",
+        "link_url": "",
+        "button_label": "",
+        "color_scheme": "none",
+        "button_style": "btn btn--secondary"
+      }
+    },
+    "new_preorder": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "New to preorder",
+        "heading_align": "text-start",
+        "show_view_all": true,
+        "collection": "new-to-preorder",
+        "layout": "carousel",
+        "card_size_mobile": "small",
+        "card_size": "small",
+        "products_to_show": 10,
+        "show_highlight_products": false,
+        "show_promo_info": false,
+        "image_ratio": "1",
+        "promo_title": "",
+        "content": "",
+        "link_url": "",
+        "button_label": "",
+        "color_scheme": "1",
+        "button_style": "btn btn--secondary"
+      }
+    },
+    "coming_soon": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Coming soon",
+        "heading_align": "text-start",
+        "show_view_all": true,
+        "collection": "coming-soon",
+        "layout": "carousel",
+        "card_size_mobile": "small",
+        "card_size": "small",
+        "products_to_show": 10,
+        "show_highlight_products": false,
+        "show_promo_info": false,
+        "image_ratio": "1",
+        "promo_title": "",
+        "content": "",
+        "link_url": "",
+        "button_label": "",
+        "color_scheme": "none",
+        "button_style": "btn btn--secondary"
+      }
+    },
+    "best_sellers": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Best sellers",
+        "heading_align": "text-start",
+        "show_view_all": true,
+        "collection": "best-sellers",
+        "layout": "carousel",
+        "card_size_mobile": "small",
+        "card_size": "small",
+        "products_to_show": 10,
+        "show_highlight_products": false,
+        "show_promo_info": false,
+        "image_ratio": "1",
+        "promo_title": "",
+        "content": "",
+        "link_url": "",
+        "button_label": "",
+        "color_scheme": "none",
+        "button_style": "btn btn--secondary"
+      }
+    },
+    "staff": {
+      "type": "product-list",
+      "settings": {
+        "title": "Staff recommendations",
+        "heading_align": "text-start",
+        "view_all_url": "/collections/staff-picks",
+        "product_list": [
+          "the-great-harbor",
+          "three-days-of-gettysburg-deluxe-edition",
+          "d-d-castle-ravenloft-board-game",
+          "d-d-legend-of-drizzt-board-game"
+        ],
+        "layout": "grid",
+        "card_size_mobile": "small",
+        "card_size": "large",
+        "show_highlight_products": false,
+        "show_promo_info": false,
+        "image_ratio": "1",
+        "promo_title": "",
+        "content": "",
+        "link_url": "",
+        "button_label": "",
+        "color_scheme": "1",
+        "button_style": "btn btn--secondary"
+      }
+    },
+    "beginners": {
+      "type": "media-with-text",
+      "blocks": {
+        "sub": {
+          "type": "subheading",
+          "settings": {
+            "text": "Start here"
+          }
+        },
+        "h": {
+          "type": "heading",
+          "settings": {
+            "heading": "New to board games?",
+            "heading_size": "h2",
+            "heading_h1": false
+          }
+        },
+        "t": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Every journey begins with a single step, and these collections will set you on the Board Game path. These games provide a strong base for learning essential board game mechanics, and are great fun for nearly all ages!</p><p><a href=\"/collections/family\">Family games</a> <a href=\"/collections/two-player\">Two-player</a></p>",
+            "enlarge_text": true
+          }
+        },
+        "b": {
+          "type": "button",
+          "settings": {
+            "button_label": "Gateway games",
+            "button_link": "/collections/gateway-games",
+            "button_style": "btn btn--primary"
+          }
+        }
+      },
+      "block_order": [
+        "sub",
+        "h",
+        "t",
+        "b"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/beginners.jpg",
+        "layout": "left",
+        "image_fit": "cover",
+        "media_width": 50,
+        "media_scale": 100,
+        "text_align": "text-start",
+        "color_scheme": "none",
+        "only_content_color_scheme": false
+      }
+    },
+    "giftcards": {
+      "type": "media-with-text",
+      "blocks": {
+        "sub": {
+          "type": "subheading",
+          "settings": {
+            "text": "Gift cards"
+          }
+        },
+        "h": {
+          "type": "heading",
+          "settings": {
+            "heading": "Can't pick for them? Let them pick.",
+            "heading_size": "h2",
+            "heading_h1": false
+          }
+        },
+        "t": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Advent Games gift cards are digital, land in their inbox straight away, and work on every game, expansion and preorder on the site.</p>",
+            "enlarge_text": true
+          }
+        },
+        "b": {
+          "type": "button",
+          "settings": {
+            "button_label": "Buy a gift card",
+            "button_link": "/products/gift-card",
+            "button_style": "btn btn--primary"
+          }
+        }
+      },
+      "block_order": [
+        "sub",
+        "h",
+        "t",
+        "b"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/giftcard-email.jpg",
+        "layout": "right",
+        "image_fit": "cover",
+        "media_width": 50,
+        "media_scale": 100,
+        "text_align": "text-start",
+        "color_scheme": "none",
+        "only_content_color_scheme": false
+      }
+    },
+    "campaign": {
+      "type": "image-banner",
+      "blocks": {
+        "sub": {
+          "type": "subheading",
+          "settings": {
+            "text": "Up to 40% off · 26 Dec to 5 Jan"
+          }
+        },
+        "h": {
+          "type": "heading",
+          "settings": {
+            "heading": "Boxing Day sale starts 26 December",
+            "heading_size": "h2",
+            "heading_h1": false
+          }
+        },
+        "t": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Up to 40% off selected games, expansions and accessories. While stocks last.</p>",
+            "enlarge_text": true
+          }
+        },
+        "b": {
+          "type": "button",
+          "settings": {
+            "button_1_label": "Set a reminder",
+            "button_1_link": "#newsletter",
+            "button_1_style": "btn btn--primary",
+            "button_2_label": "See last year's picks",
+            "button_2_link": "/collections/sale",
+            "button_2_style": "btn btn--secondary"
+          }
+        }
+      },
+      "block_order": [
+        "sub",
+        "h",
+        "t",
+        "b"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/sale-bg.jpg",
+        "url": "",
+        "height_mode": "fixed",
+        "fixed_height_desktop": 400,
+        "fixed_height_mobile": 320,
+        "overlay_position": "justify-start items-center",
+        "overlay_text_align": "text-start",
+        "mob_center_text": false,
+        "mobile_stacked": true,
+        "color_scheme": "white",
+        "full_width": false,
+        "transparent_content_color": "#16213a",
+        "tint_color": "#000000",
+        "tint_opacity": 0,
+        "prevent_animation": true
+      }
+    },
+    "publishers": {
+      "type": "logo-list",
+      "blocks": {
+        "p0": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/pub-gmt.png",
+            "url": "#",
+            "logo_width": 140,
+            "text": "GMT Games"
+          }
+        },
+        "p1": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/pub-stonemaier.png",
+            "url": "#",
+            "logo_width": 140,
+            "text": "Stonemaier Games"
+          }
+        },
+        "p2": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/pub-lookout.png",
+            "url": "#",
+            "logo_width": 140,
+            "text": "Lookout Spiele"
+          }
+        },
+        "p3": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/pub-cge.svg",
+            "url": "#",
+            "logo_width": 140,
+            "text": "Czech Games Edition"
+          }
+        },
+        "p4": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/pub-daysofwonder.png",
+            "url": "#",
+            "logo_width": 140,
+            "text": "Days of Wonder"
+          }
+        },
+        "p5": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/pub-capstone.png",
+            "url": "#",
+            "logo_width": 140,
+            "text": "Capstone Games"
+          }
+        },
+        "p6": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/pub-pegasus.svg",
+            "url": "#",
+            "logo_width": 140,
+            "text": "Pegasus Spiele"
+          }
+        },
+        "p7": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/pub-riogrande.svg",
+            "url": "#",
+            "logo_width": 140,
+            "text": "Rio Grande Games"
+          }
+        }
+      },
+      "block_order": [
+        "p0",
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "p5",
+        "p6",
+        "p7"
+      ],
+      "settings": {
+        "title": "Shop by publisher",
+        "heading_align": "text-start",
+        "button_label": "All brands A-Z",
+        "button_link": "/pages/brands",
+        "layout": "grid",
+        "spacing": 32,
+        "logo_grid_align": "justify-start",
+        "color_scheme": "none",
+        "full_width": false
+      }
+    },
+    "story": {
+      "type": "media-with-text",
+      "blocks": {
+        "sub": {
+          "type": "subheading",
+          "settings": {
+            "text": "About Advent Games"
+          }
+        },
+        "h": {
+          "type": "heading",
+          "settings": {
+            "heading": "Your friendly, local, online board game store",
+            "heading_size": "h2",
+            "heading_h1": false
+          }
+        },
+        "t": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Owner-operated in Sydney since 2012, with a huge range, fair prices and the hard-to-find games other stores don't carry. Ask about a game, a preorder or an order you've already placed and you'll hear back from Dean, not an AI response.</p><p><a href=\"/pages/help\">Pickup &amp; shipping</a></p>",
+            "enlarge_text": true
+          }
+        },
+        "b": {
+          "type": "button",
+          "settings": {
+            "button_label": "Our story",
+            "button_link": "/pages/about",
+            "button_style": "btn btn--primary"
+          }
+        }
+      },
+      "block_order": [
+        "sub",
+        "h",
+        "t",
+        "b"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/story.jpg",
+        "layout": "left",
+        "image_fit": "cover",
+        "media_width": 50,
+        "media_scale": 100,
+        "text_align": "text-start",
+        "color_scheme": "2",
+        "only_content_color_scheme": false
+      }
+    },
+    "reviews": {
+      "type": "testimonials",
+      "blocks": {
+        "r0": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial": "<p>Ordered Monday night, arrived Wednesday. Dean emailed to check I knew the expansion needed the base game. That's service.</p>",
+            "author": "Example reviewer",
+            "author_info": "Google",
+            "show_star_rating": true,
+            "star_rating": 5
+          }
+        },
+        "r1": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial": "<p>Best range of wargames in Australia and the preorder pricing beats everyone else I've found.</p>",
+            "author": "Example reviewer",
+            "author_info": "Google",
+            "show_star_rating": true,
+            "star_rating": 5
+          }
+        },
+        "r2": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial": "<p>Picked up at Chatswood on Tuesday night and got a game recommendation thrown in. Will be back.</p>",
+            "author": "Example reviewer",
+            "author_info": "Google",
+            "show_star_rating": true,
+            "star_rating": 5
+          }
+        }
+      },
+      "block_order": [
+        "r0",
+        "r1",
+        "r2"
+      ],
+      "settings": {
+        "heading": "What our customers say",
+        "show_quotes": false,
+        "testimonial_size": "h6",
+        "text_position": "justify-center",
+        "text_align": "text-start justify-start",
+        "nav_style": "arrows",
+        "transition": "fade",
+        "autoplay": false,
+        "slider_pause": false,
+        "autoplay_speed": 5,
+        "color_scheme": "default",
+        "full_width": false
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "hero_sale",
+    "types",
+    "just_arrived",
+    "new_preorder",
+    "coming_soon",
+    "best_sellers",
+    "staff",
+    "beginners",
+    "giftcards",
+    "campaign",
+    "publishers",
+    "story",
+    "reviews"
+  ]
+}
