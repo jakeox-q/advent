@@ -508,12 +508,7 @@
 }
 
 /* ---------- Cart drawer ---------- */
-.drawer--cart .free-shipping-notice {
-  margin: 12px 16px;
-  padding: 12px 16px;
-  border-radius: var(--ag-radius-md);
-  background: var(--ag-blue-tint);
-}
+/* Free shipping bar: native inset card from colour scheme 2 (blue tint) */
 .drawer--cart .cart-drawer__checkout-buttons .btn--primary {
   --btn-bg-color: var(--ag-cta);
   --btn-bg-hover-color: var(--ag-cta-hover);
