@@ -213,56 +213,56 @@
           "type": "collection",
           "settings": {
             "collection": "strategy",
-            "image": ""
+            "image": "shopify://shop_images/type-icon-strategy.svg"
           }
         },
         "family": {
           "type": "collection",
           "settings": {
             "collection": "family",
-            "image": ""
+            "image": "shopify://shop_images/type-icon-family.svg"
           }
         },
         "party": {
           "type": "collection",
           "settings": {
             "collection": "party",
-            "image": ""
+            "image": "shopify://shop_images/type-icon-party.svg"
           }
         },
         "thematic": {
           "type": "collection",
           "settings": {
             "collection": "thematic",
-            "image": ""
+            "image": "shopify://shop_images/type-icon-thematic.svg"
           }
         },
         "wargames": {
           "type": "collection",
           "settings": {
             "collection": "wargames",
-            "image": ""
+            "image": "shopify://shop_images/type-icon-wargames.svg"
           }
         },
         "solo-games": {
           "type": "collection",
           "settings": {
             "collection": "solo-games",
-            "image": ""
+            "image": "shopify://shop_images/type-icon-solo-games.svg"
           }
         },
         "two-player": {
           "type": "collection",
           "settings": {
             "collection": "two-player",
-            "image": ""
+            "image": "shopify://shop_images/type-icon-two-player.svg"
           }
         },
         "kids": {
           "type": "collection",
           "settings": {
             "collection": "kids",
-            "image": ""
+            "image": "shopify://shop_images/type-icon-kids.svg"
           }
         }
       },
