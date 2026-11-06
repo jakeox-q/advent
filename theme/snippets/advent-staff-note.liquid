@@ -1,0 +1,11 @@
+{%- comment -%}
+  Advent: staff note inside a product card, from the product's advent.staff_note metafield.
+  Rendered by snippets/product-card.liquid. Shown only in the Staff recommendations section (see advent.css).
+  The byline is the locale key advent.staff_note_byline (Online Store > Themes > Edit default theme content).
+{%- endcomment -%}
+{%- if product.metafields.advent.staff_note != blank -%}
+  <div class="advent-staff-note">
+    <p class="advent-staff-note__text">{{ product.metafields.advent.staff_note | escape | newline_to_br }}</p>
+    <p class="advent-staff-note__by">{{ 'advent.staff_note_byline' | t }}</p>
+  </div>
+{%- endif -%}

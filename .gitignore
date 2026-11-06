@@ -19,3 +19,6 @@ theme/sections/*
 !theme/PATCHES.md
 
 !theme/sections/overlay-group.json
+!theme/snippets/
+theme/snippets/*
+!theme/snippets/advent-staff-note.liquid
