@@ -55,7 +55,7 @@
           "type": "text",
           "settings": {
             "image": "shopify://shop_images/advent-logo.png",
-            "image_width": 127,
+            "image_width": 130,
             "heading": "",
             "text": "<p><strong>Your friendly, local, online board game store. Sydney based, shipping Australia-wide.</strong></p><p><a href=\"mailto:dean@adventgames.com.au\">dean@adventgames.com.au</a> · <a href=\"tel:0411017162\">0411 017 162</a><br>Free pickup Tuesday nights, Chatswood</p>",
             "button_label": "",
