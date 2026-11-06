@@ -222,7 +222,7 @@ body { overflow-x: clip; }
   overflow: hidden;
 }
 .card--product .card__quick-add { margin-top: auto; padding: 0 16px 16px; }
-.card--product .card__quick-add .btn, .card--product .card__quick-add product-form, .card--product .card__quick-add .no-js-hidden { width: 100%; }
+.card--product .card__quick-add .btn, .card--product .card__quick-add product-form, .card--product .card__quick-add form, .card--product .card__quick-add .no-js-hidden { width: 100% !important; max-width: none; }
 .card--product .card__quick-add .btn--primary {
   --btn-bg-color: var(--ag-cta);
   --btn-bg-hover-color: var(--ag-cta-hover);
