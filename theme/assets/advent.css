@@ -104,8 +104,19 @@
     text-underline-offset: 8px;
   }
   [id$="__header"] .secondary-nav__item:hover { color: var(--ag-sun); }
-  /* Mega menu panels sit on white, not on the blue row */
-  [id$="__header"] .main-nav__child { color: var(--ag-ink); }
+  /* Mega menu panels sit on white, not on the header colour */
+  [id$="__header"] .main-nav__child { color: var(--ag-ink); background: #fff; }
+  [id$="__header"] .main-nav__child .collection-label { display: none; }
+  [id$="__header"] .mega-nav--sidebar .child-nav__item.is-active,
+  [id$="__header"] .mega-nav--sidebar .main-nav__item.is-active { background: var(--ag-surface-subtle); }
+  /* Promo banners: tinted card, image on the right */
+  [id$="__header"] .main-nav__promos .promo { border-radius: var(--ag-radius-md); overflow: hidden; min-height: 120px; background: var(--ag-sky-tint); }
+  [id$="__header"] .main-nav__promos .promo:nth-child(2) { background: var(--ag-sun-tint); }
+  [id$="__header"] .main-nav__promos .promo:nth-child(3) { background: var(--ag-orange-tint); }
+  [id$="__header"] .main-nav__promos .promo .media { left: auto; right: 0; width: 42%; }
+  [id$="__header"] .main-nav__promos .promo .media::after { display: none; }
+  [id$="__header"] .main-nav__promos .promo .media img { object-fit: contain; object-position: right center; padding: 8px; }
+  [id$="__header"] .main-nav__promos .promo__content { padding: 16px 20px; color: var(--ag-ink); }
 }
 /* Mobile: horizontal logo (34px tall). Enterprise has one logo setting, so the mobile logo is swapped in CSS. */
 @media (max-width: 768px) {
@@ -415,7 +426,7 @@
 }
 [id$="__campaign"] .text-overlay__heading { font-size: 36px; line-height: 42px; }
 [id$="__campaign"] .btn--primary { --btn-bg-color: 47 74 133; --btn-bg-hover-color: 36 57 106; --btn-text-color: 255 255 255; }
-[id$="__campaign"] .btn--secondary { --btn-bg-color: 255 255 255; --btn-text-color: 47 74 133; border-color: var(--ag-blue); }
+[id$="__campaign"] .btn--secondary { background: #fff !important; color: var(--ag-blue) !important; border-color: var(--ag-blue) !important; }
 
 /* ---------- 11. Shop by publisher (Logo list) ---------- */
 [id$="__publishers"] .logo-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
@@ -442,7 +453,7 @@
 }
 [id$="__reviews"] .testimonial { height: 100%; padding: 24px; border: 1px solid var(--ag-border); border-radius: var(--ag-radius-md); background: #fff; }
 [id$="__reviews"] .testimonial__quote, [id$="__reviews"] .testimonial__quote p { font-size: 16px; line-height: 24px; font-family: var(--body-font-family); font-weight: 400; }
-[id$="__reviews"] .testimonial-stars { order: -1; color: var(--ag-sun); }
+[id$="__reviews"] .testimonial-stars, [id$="__reviews"] .rating__stars { color: #f4d44d; }
 [id$="__reviews"] .testimonial__author { margin-top: 12px; font-size: 13px; color: var(--ag-ink-muted); }
 
 /* ---------- Newsletter (footer group) ---------- */
@@ -497,8 +508,7 @@
 }
 
 /* ---------- Cart drawer ---------- */
-.drawer--cart .free-shipping-notice,
-.drawer--cart [class*="free-shipping"] {
+.drawer--cart .free-shipping-notice {
   margin: 12px 16px;
   padding: 12px 16px;
   border-radius: var(--ag-radius-md);
