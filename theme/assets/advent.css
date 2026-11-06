@@ -166,6 +166,7 @@
   overflow: hidden;
 }
 .card--product .card__quick-add { margin-top: auto; padding: 0 16px 16px; }
+.card--product .card__quick-add .btn, .card--product .card__quick-add product-form, .card--product .card__quick-add .no-js-hidden { width: 100%; }
 .card--product .card__quick-add .btn--primary {
   --btn-bg-color: var(--ag-cta);
   --btn-bg-hover-color: var(--ag-cta-hover);
@@ -204,6 +205,8 @@
 [id$="__staff"] .advent-staff-note__by { margin: 8px 0 0; font-size: 12px; font-weight: 600; color: var(--ag-sky-text); }
 
 /* ---------- 1. Hero (Promo grid) ---------- */
+[id$="__hero"] .section,
+[id$="__hero_sale"] .section { margin-top: 24px !important; }
 [id$="__hero"] .gallery,
 [id$="__hero_sale"] .gallery { gap: 24px; }
 [id$="__hero"] .gallery-block,
@@ -332,6 +335,7 @@
   background: none !important; border: 0; border-radius: 0; box-shadow: none;
   color: var(--ag-ink-muted);
   font-size: 13px; line-height: 18px; font-weight: 400; letter-spacing: 0; text-transform: none;
+  white-space: normal; overflow: visible; max-width: none; height: auto; display: block;
   pointer-events: none;
 }
 [id$="__types"] .card__collection .collection-label::after { content: " \203A"; }
@@ -420,14 +424,17 @@
 [id$="__publishers"] .logo-list > * { width: auto !important; margin: 0 !important; }
 [id$="__publishers"] .logo-list__logo {
   display: flex; align-items: center; justify-content: center;
-  height: 88px; padding: 12px;
+  min-height: 88px; height: 100%; padding: 12px;
   border: 1px solid var(--ag-border); border-radius: var(--ag-radius-md); background: #fff;
 }
 [id$="__publishers"] .logo-list__logo:hover { border-color: var(--ag-blue); }
-[id$="__publishers"] .logo-list__logo img { max-height: 56px; width: auto; object-fit: contain; }
+[id$="__publishers"] .logo-list__logo a { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; }
+[id$="__publishers"] .logo-list__logo img { display: block; width: 100% !important; max-width: 140px; height: 56px !important; object-fit: contain; }
 
 /* ---------- 13. Reviews placeholder (Testimonials) ---------- */
 [id$="__reviews"] .section__header, [id$="__reviews"] h2 { text-align: start; }
+[id$="__reviews"] .max-w-text-overlay { max-width: none; width: 100%; }
+[id$="__reviews"] .testimonial { opacity: 1 !important; visibility: visible !important; transform: none !important; }
 @media (min-width: 769px) {
   [id$="__reviews"] .slideshow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; height: auto !important; }
   [id$="__reviews"] .slideshow__slide { position: static !important; opacity: 1 !important; visibility: visible !important; transform: none !important; display: block !important; }
