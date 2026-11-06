@@ -12,12 +12,21 @@ Preview: https://advent-games-017wrq2h.myshopify.com/?preview_theme_id=160180043
 - `assets/advent.css`, `snippets/advent-staff-note.liquid`, and the patches in `theme/PATCHES.md`
 
 ## Store data changed
+- Products: the 50 demo products that were not on the Online Store channel were published to it so the home page sections render (only `the-great-harbor` and `three-days-of-gettysburg-deluxe-edition` were published before). Unpublish from Products > Sales channels if needed.
 - Files: design images, publisher logos, mega menu promo images, type icons and 16:9 type tiles (`build-assets/`)
 - Collections: tile image + `theme.label` sub on the 8 game-type collections; new `coming-soon` collection (6 existing preorder products, published)
 - Menus: `main-menu` rebuilt from the design (no Brands item), new `header-secondary` and `footer-bgg`
 
-## Not yet done
-- Visual QA at 1440px and 390px against the design. Blocked on the storefront password. `advent.css` was written against Enterprise markup without a rendered preview, so expect fixes.
+## Visual QA
+Checked against the design at 1440px and 390px with Playwright (home page, Board Games and Preorders mega menus, cart drawer). Side-by-side screenshots: `handoff/qa/`.
+
+Remaining differences from Enterprise's native layout:
+- Section subs under headings are missing (no setting, see flags).
+- Product cards: no badges, wishlist heart or players/time/complexity row yet (these come from metafields and are product page work). Many demo products have no images.
+- Carousels show Enterprise's progress line instead of round arrow buttons.
+- Search button is an icon inside the field rather than a blue button.
+- Newsletter submit is an arrow button rather than "Sign up".
+- Hero text panel sits at the bottom of the large tile rather than vertically centred.
 
 ## Flags for Jake
 - Featured collection, Product list and Collection list have no subtitle setting, so the one-line section subs are missing.
