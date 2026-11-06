@@ -218,7 +218,7 @@
         "mobile_stack": false,
         "section_height": "xsmall",
         "color_scheme": "none",
-        "full_width": false,
+        "full_width": true,
         "dividers": "border-bottom",
         "prevent_animation": true
       }

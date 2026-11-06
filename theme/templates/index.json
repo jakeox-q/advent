@@ -287,7 +287,7 @@
         "circle_image": false,
         "show_border": false,
         "color_scheme": "none",
-        "full_width": false
+        "full_width": true
       }
     },
     "just_arrived": {
@@ -392,7 +392,7 @@
         ],
         "layout": "grid",
         "card_size_mobile": "small",
-        "card_size": "large",
+        "card_size": "medium",
         "show_highlight_products": false,
         "show_promo_info": false,
         "image_ratio": "1",
@@ -424,24 +424,15 @@
         "t": {
           "type": "text",
           "settings": {
-            "text": "<p>Every journey begins with a single step, and these collections will set you on the Board Game path. These games provide a strong base for learning essential board game mechanics, and are great fun for nearly all ages!</p><p><a href=\"/collections/family\">Family games</a> <a href=\"/collections/two-player\">Two-player</a></p>",
-            "enlarge_text": true
-          }
-        },
-        "b": {
-          "type": "button",
-          "settings": {
-            "button_label": "Gateway games",
-            "button_link": "/collections/gateway-games",
-            "button_style": "btn btn--primary"
+            "text": "<p>Every journey begins with a single step, and these collections will set you on the Board Game path. These games provide a strong base for learning essential board game mechanics, and are great fun for nearly all ages!</p><p><a href=\"/collections/gateway-games\">Gateway games</a> <a href=\"/collections/family\">Family games</a> <a href=\"/collections/two-player\">Two-player</a></p>",
+            "enlarge_text": false
           }
         }
       },
       "block_order": [
         "sub",
         "h",
-        "t",
-        "b"
+        "t"
       ],
       "settings": {
         "image": "shopify://shop_images/beginners.jpg",
@@ -475,7 +466,7 @@
           "type": "text",
           "settings": {
             "text": "<p>Advent Games gift cards are digital, land in their inbox straight away, and work on every game, expansion and preorder on the site.</p>",
-            "enlarge_text": true
+            "enlarge_text": false
           }
         },
         "b": {
@@ -573,7 +564,7 @@
             "image": "shopify://shop_images/pub-gmt.png",
             "url": "#",
             "logo_width": 140,
-            "text": "GMT Games"
+            "text": ""
           }
         },
         "p1": {
@@ -582,7 +573,7 @@
             "image": "shopify://shop_images/pub-stonemaier.png",
             "url": "#",
             "logo_width": 140,
-            "text": "Stonemaier Games"
+            "text": ""
           }
         },
         "p2": {
@@ -591,7 +582,7 @@
             "image": "shopify://shop_images/pub-lookout.png",
             "url": "#",
             "logo_width": 140,
-            "text": "Lookout Spiele"
+            "text": ""
           }
         },
         "p3": {
@@ -600,7 +591,7 @@
             "image": "shopify://shop_images/pub-cge.svg",
             "url": "#",
             "logo_width": 140,
-            "text": "Czech Games Edition"
+            "text": ""
           }
         },
         "p4": {
@@ -609,7 +600,7 @@
             "image": "shopify://shop_images/pub-daysofwonder.png",
             "url": "#",
             "logo_width": 140,
-            "text": "Days of Wonder"
+            "text": ""
           }
         },
         "p5": {
@@ -618,7 +609,7 @@
             "image": "shopify://shop_images/pub-capstone.png",
             "url": "#",
             "logo_width": 140,
-            "text": "Capstone Games"
+            "text": ""
           }
         },
         "p6": {
@@ -627,7 +618,7 @@
             "image": "shopify://shop_images/pub-pegasus.svg",
             "url": "#",
             "logo_width": 140,
-            "text": "Pegasus Spiele"
+            "text": ""
           }
         },
         "p7": {
@@ -636,7 +627,7 @@
             "image": "shopify://shop_images/pub-riogrande.svg",
             "url": "#",
             "logo_width": 140,
-            "text": "Rio Grande Games"
+            "text": ""
           }
         }
       },
@@ -659,7 +650,7 @@
         "spacing": 32,
         "logo_grid_align": "justify-start",
         "color_scheme": "none",
-        "full_width": false
+        "full_width": true
       }
     },
     "story": {
@@ -682,24 +673,15 @@
         "t": {
           "type": "text",
           "settings": {
-            "text": "<p>Owner-operated in Sydney since 2012, with a huge range, fair prices and the hard-to-find games other stores don't carry. Ask about a game, a preorder or an order you've already placed and you'll hear back from Dean, not an AI response.</p><p><a href=\"/pages/help\">Pickup &amp; shipping</a></p>",
-            "enlarge_text": true
-          }
-        },
-        "b": {
-          "type": "button",
-          "settings": {
-            "button_label": "Our story",
-            "button_link": "/pages/about",
-            "button_style": "btn btn--primary"
+            "text": "<p>Owner-operated in Sydney since 2012, with a huge range, fair prices and the hard-to-find games other stores don't carry. Ask about a game, a preorder or an order you've already placed and you'll hear back from Dean, not an AI response.</p><p><a href=\"/pages/about\">Our story</a> <a href=\"/pages/help\">Pickup &amp; shipping</a></p>",
+            "enlarge_text": false
           }
         }
       },
       "block_order": [
         "sub",
         "h",
-        "t",
-        "b"
+        "t"
       ],
       "settings": {
         "image": "shopify://shop_images/story.jpg",
@@ -763,7 +745,7 @@
         "slider_pause": false,
         "autoplay_speed": 5,
         "color_scheme": "default",
-        "full_width": false
+        "full_width": true
       }
     },
     "newsletter": {
