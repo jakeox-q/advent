@@ -1,0 +1,187 @@
+{
+  "type": "header",
+  "name": "Header Group",
+  "sections": {
+    "announcement": {
+      "type": "announcement",
+      "blocks": {
+        "msg": {
+          "type": "announcement",
+          "settings": {
+            "text": "<p><strong>Flat rate shipping</strong> $10 Sydney Metro, Gosford &amp; Wollongong \u00b7 $15 rest of Australia \u00b7 <strong>Free over $300</strong></p>"
+          }
+        }
+      },
+      "block_order": [
+        "msg"
+      ],
+      "settings": {
+        "link1": "/pages/help",
+        "link1_label": "Help & FAQ",
+        "link2": "/account",
+        "link2_label": "Track my order",
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "bg_color": "#e2f2f6",
+        "text_color": "#16213a",
+        "text_type_scale": "small",
+        "read_time": 8
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "preorders": {
+          "type": "columns",
+          "settings": {
+            "title": "Preorders",
+            "collection_images": "none",
+            "show_underline": true,
+            "promo_position": "bottom",
+            "promo_min_height": 120,
+            "promo1_content": "<p><strong>Due this month</strong></p>",
+            "promo1_link_url": "/collections/preorders",
+            "promo2_content": "<p><strong>Kickstarter pledges</strong></p>",
+            "promo2_link_url": "/collections/preorders",
+            "promo3_content": "<p><strong>How preorders work</strong></p>",
+            "promo3_link_url": "/pages/help",
+            "promo_text_color": "#16213a",
+            "promo_tint_color": "#e2f2f6",
+            "promo_tint_opacity": 80
+          }
+        },
+        "board": {
+          "type": "sidebar",
+          "settings": {
+            "title": "Board Games",
+            "collection_images": "large",
+            "collection_use_product_image": true,
+            "collection_circle_image": false,
+            "show_underline": true,
+            "show_collection_images": true,
+            "sidebar_link_use_product_image": true,
+            "show_product_images": true,
+            "aspect_ratio": "1"
+          }
+        },
+        "rpg": {
+          "type": "columns",
+          "settings": {
+            "title": "Roleplaying",
+            "collection_images": "none",
+            "show_underline": true,
+            "promo_position": "bottom"
+          }
+        },
+        "acc": {
+          "type": "columns",
+          "settings": {
+            "title": "Accessories",
+            "collection_images": "none",
+            "show_underline": true,
+            "promo_position": "bottom",
+            "promo_min_height": 120,
+            "promo1_content": "<p><strong>Find the right sleeve</strong></p>",
+            "promo1_link_url": "/collections/accessories",
+            "promo_text_color": "#16213a",
+            "promo_tint_color": "#e2f2f6",
+            "promo_tint_opacity": 80
+          }
+        }
+      },
+      "block_order": [
+        "preorders",
+        "board",
+        "rpg",
+        "acc"
+      ],
+      "settings": {
+        "enable_sticky": true,
+        "mobile_menu_position": "burger-left",
+        "logo_type_scale": "2",
+        "logo": "shopify://shop_images/advent-logo.png",
+        "logo_width": 110,
+        "logo_h1": true,
+        "logo_center": false,
+        "enable_search": true,
+        "minimise_search_mobile": false,
+        "minimise_search_desktop": false,
+        "menu": "main-menu",
+        "menu_center": false,
+        "link_toggle": "mobile",
+        "repeat_links": true,
+        "menu_featured_link": "Sale",
+        "cta_show": false,
+        "bg_color": "#ffffff",
+        "text_color": "#16213a",
+        "accent_color": "#2f4a85"
+      }
+    },
+    "trust": {
+      "type": "icons-with-text",
+      "blocks": {
+        "t1": {
+          "type": "item",
+          "settings": {
+            "icon": "truck",
+            "heading": "Free shipping over $300",
+            "text": "<p>$10 Sydney Metro \u00b7 $15 Australia-wide</p>",
+            "link": "/pages/help"
+          }
+        },
+        "t2": {
+          "type": "item",
+          "settings": {
+            "icon": "map_pin",
+            "heading": "Australia-wide via AusPost",
+            "text": "<p>Tracked, boxed and padded</p>",
+            "link": "/pages/help"
+          }
+        },
+        "t3": {
+          "type": "item",
+          "settings": {
+            "icon": "chat_bubble",
+            "heading": "Friendly, local service",
+            "text": "<p>You'll hear back from Dean</p>",
+            "link": "/pages/about"
+          }
+        },
+        "t4": {
+          "type": "item",
+          "settings": {
+            "icon": "lock",
+            "heading": "Secure checkout",
+            "text": "<p>Card, PayPal or bank transfer</p>",
+            "link": "/pages/help"
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4"
+      ],
+      "settings": {
+        "heading": "",
+        "heading_align": "text-start",
+        "icon_size": 24,
+        "title_type_scale": "small",
+        "text_type_scale": "small",
+        "icon_position": "beside",
+        "mobile_stack": false,
+        "section_height": "xsmall",
+        "color_scheme": "none",
+        "full_width": true,
+        "dividers": "border-bottom",
+        "prevent_animation": true
+      }
+    }
+  },
+  "order": [
+    "announcement",
+    "header",
+    "trust"
+  ]
+}

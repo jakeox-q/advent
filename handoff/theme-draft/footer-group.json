@@ -1,0 +1,61 @@
+{
+  "type": "footer",
+  "name": "Footer Group",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "text": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/advent-logo.png",
+            "image_width": 110,
+            "heading": "",
+            "text": "<p>Your friendly, local, online board game store. Sydney based, shipping Australia-wide.</p><p>dean@adventgames.com.au \u00b7 0411 017 162<br>Free pickup Tuesday nights, Chatswood</p>",
+            "show_social": false,
+            "text_align": "text-start"
+          }
+        },
+        "shop": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Shop",
+            "menu": "footer-shop"
+          }
+        },
+        "help": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Help",
+            "menu": "footer-help"
+          }
+        },
+        "advent": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Advent Games",
+            "menu": "footer-advent"
+          }
+        }
+      },
+      "block_order": [
+        "text",
+        "shop",
+        "help",
+        "advent"
+      ],
+      "settings": {
+        "show_back_to_top": false,
+        "show_payment_icons": true,
+        "show_powered_by": true,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "bg_color": "#f6f8fa",
+        "text_color": "#16213a"
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}
