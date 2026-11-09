@@ -1142,3 +1142,19 @@ body { overflow-x: clip; }
 .article__image { max-width: none; }
 .social-share { justify-content: center; }
 .cc-main-article .social-share { justify-content: flex-start; }
+
+/* ---------- BugHerd round 3 (Dean, 9 Nov) ---------- */
+/* #99 No page dim behind desktop dropdowns and mega menus. The mobile drawer keeps its dim. */
+body:not(:has(#main-menu-content.is-open)) .overlay.overlay--nav { background-color: transparent; }
+/* #101 Filter column: give focus rings and hover states room so the left edge isn't clipped */
+.main-products-grid__filters .disclosure__panel { margin-inline: -6px; padding-inline: 6px; }
+@media (min-width: 1024px) {
+  .main-products-grid__filters .facets.drawer { overflow: visible; }
+}
+/* #100 Price slider: inset the track so the end knobs (and their hover scale) sit fully inside the column */
+.main-products-grid__filters .price-range__sliders { margin-inline: 12px; }
+/* #99 Just Arrived and Sale mega menus: flat link list in one column, promos take the rest */
+@media (min-width: 769px) {
+  [id$="__header"] .mega-nav--no-grandchildren .mega-nav--promos-right { grid-template-columns: minmax(180px, 1fr) minmax(0, 3fr); }
+  [id$="__header"] .mega-nav--no-grandchildren .mega-nav--promos-right .child-nav { grid-template-columns: 1fr; row-gap: 14px; }
+}

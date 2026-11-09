@@ -105,3 +105,13 @@ The design already marks `advent-product-videos` and `advent-note-faq` as custom
 - Bank transfer: the trust strip and Help mention it. Is it staying?
 - Supplier dispatch window: 2-7 business days as designed.
 
+
+# BugHerd backlog: Dean's feedback on the mockup (9 November 2026)
+
+Five Backlog tasks in BugHerd project 546364, all left on the Cloudflare mockup. Checked against the Shopify build and actioned where they apply. Nothing was posted or changed in BugHerd.
+
+- **#99 Menu fade and bigger dropdowns.** Done. The page no longer dims behind desktop dropdowns and mega menus (the mobile menu drawer keeps its dim). Just Arrived and Sale now have mega menu blocks like Preorders and Accessories: links on the left, three image promos on the right. The promo labels reuse Dean's own menu labels (New board games, New RPGs, Back in stock; Weekly sale, Clearance, Dings & dents) with stock product images, and all link to the collection because the menu sub-links are still `#`. Dean can swap any promo for "20% off RRP" style banners in the theme editor (Header > Just Arrived / Sale block > Promo 1 to 3).
+- **#100 Price slider knob clipped on the left.** Done. The same clipping happened in the Shopify build. The slider track is now inset so both knobs, and their hover scale, sit inside the filter column.
+- **#101 Filter column cut off on the left, focus ring clipped.** Done. Filter panels now have a few pixels of room on each side, and the desktop filter column no longer hides overflow, so focus rings show in full.
+- **#102 Filters should scroll with the page.** Already native in Enterprise. The filter column scrolls with the page, pins when its bottom is reached, and scrolls back up when the shopper scrolls up (checked with all filters expanded). Not done: keeping "Applied filters" frozen at the top. That would be custom work, so ask Dean if he still wants it after trying the build.
+- **#98 Facebook reviews mixed with Google reviews.** Not a theme change. It depends on the reviews app. Pick an app that pulls both Google and Facebook reviews into one feed, then drop its block into the Reviews section. Needs Jake's call on the app.

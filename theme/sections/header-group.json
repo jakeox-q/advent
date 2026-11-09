@@ -132,13 +132,81 @@
             "promo3_text_width": 60,
             "promo3_text_alignment": "justify-start items-center"
           }
+        },
+        "arrived": {
+          "type": "columns",
+          "settings": {
+            "title": "Just Arrived",
+            "collection_images": "none",
+            "collection_use_product_image": false,
+            "collection_circle_image": false,
+            "show_underline": false,
+            "promo_position": "right",
+            "promo_min_height": 120,
+            "promo_text_color": "#16213a",
+            "promo_tint_color": "#ffffff",
+            "promo_tint_opacity": 0,
+            "promo1_image": "shopify://shop_images/carcassonne.jpg",
+            "promo1_content": "<p><strong>New board games</strong></p>",
+            "promo1_link_url": "/collections/just-arrived",
+            "promo1_text_size": 16,
+            "promo1_text_width": 60,
+            "promo1_text_alignment": "justify-start items-center",
+            "promo2_image": "shopify://shop_images/alien-core.jpg",
+            "promo2_content": "<p><strong>New RPGs</strong></p>",
+            "promo2_link_url": "/collections/just-arrived",
+            "promo2_text_size": 16,
+            "promo2_text_width": 60,
+            "promo2_text_alignment": "justify-start items-center",
+            "promo3_image": "shopify://shop_images/courage.jpg",
+            "promo3_content": "<p><strong>Back in stock</strong></p>",
+            "promo3_link_url": "/collections/just-arrived",
+            "promo3_text_size": 16,
+            "promo3_text_width": 60,
+            "promo3_text_alignment": "justify-start items-center"
+          }
+        },
+        "sale": {
+          "type": "columns",
+          "settings": {
+            "title": "Sale",
+            "collection_images": "none",
+            "collection_use_product_image": false,
+            "collection_circle_image": false,
+            "show_underline": false,
+            "promo_position": "right",
+            "promo_min_height": 120,
+            "promo_text_color": "#16213a",
+            "promo_tint_color": "#ffffff",
+            "promo_tint_opacity": 0,
+            "promo1_image": "shopify://shop_images/camel-up.jpg",
+            "promo1_content": "<p><strong>Weekly sale</strong></p>",
+            "promo1_link_url": "/collections/sale",
+            "promo1_text_size": 16,
+            "promo1_text_width": 60,
+            "promo1_text_alignment": "justify-start items-center",
+            "promo2_image": "shopify://shop_images/gettysburg.jpg",
+            "promo2_content": "<p><strong>Clearance</strong></p>",
+            "promo2_link_url": "/collections/sale",
+            "promo2_text_size": 16,
+            "promo2_text_width": 60,
+            "promo2_text_alignment": "justify-start items-center",
+            "promo3_image": "shopify://shop_images/akropolis-pantheon.jpg",
+            "promo3_content": "<p><strong>Dings & dents</strong></p>",
+            "promo3_link_url": "/collections/sale",
+            "promo3_text_size": 16,
+            "promo3_text_width": 60,
+            "promo3_text_alignment": "justify-start items-center"
+          }
         }
       },
       "block_order": [
         "preorders",
+        "arrived",
         "board",
         "rpg",
-        "acc"
+        "acc",
+        "sale"
       ],
       "settings": {
         "enable_sticky": true,
