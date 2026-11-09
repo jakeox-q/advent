@@ -47,7 +47,7 @@ def applied(chips):
     if not chips:
         return ""
     cs = "".join(f'<button class="chip" type="button">{c} <span class="x" aria-hidden="true">×</span></button>' for c in chips)
-    return fgroup(f"Applied filters ({len(chips)})", f'<div class="applied">{cs}</div><button class="fclear" type="button">Clear all</button>')
+    return fgroup(f"Applied filters ({len(chips)})", f'<div class="applied">{cs}</div><button class="fclear" type="button">Clear all</button>').replace('<details class="fgroup"', '<details class="fgroup fgroup--applied"', 1)
 
 def filters_panel(groups, n_results):
     return f'''<aside class="filters" aria-label="Filters">
@@ -497,6 +497,20 @@ def page_accessory():
 
 # ------------------------------------------------------------------ page scripts (plain strings, not f-strings)
 PAGE_JS = r'''
+// filters sidebar scrolls with the page: it moves with the page until its bottom is in view, then sticks;
+// scrolling back up, it moves back down until its top is in view (Dean, BugHerd #102). Desktop only.
+(function(){var f=document.querySelector('.filters'); if(!f) return;
+  var mq=window.matchMedia('(min-width: 901px)'), lastY=window.scrollY, top=null;
+  function base(){return (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--sticky-top'))||96)+12;}
+  function upd(){ if(!mq.matches){f.style.top='';return;}
+    var b=base(), h=f.offsetHeight, vh=window.innerHeight, y=window.scrollY, d=y-lastY; lastY=y;
+    if(top===null) top=b;
+    if(h+b+16<=vh){top=b;} else {top=Math.min(b,Math.max(vh-h-16,top-d));}
+    f.style.top=top+'px'; f.style.setProperty('--applied-top',(b-12)+'px'); }
+  window.addEventListener('scroll',upd,{passive:true}); window.addEventListener('resize',upd);
+  f.addEventListener('toggle',upd,true); upd();
+})();
+
 (function(){
   var coll=document.querySelector('.js-coll');
   if(coll){

@@ -15,7 +15,13 @@ PRE_BANNERS = [("Due this month", "Big releases landing soon", "age-of-innovatio
                ("Kickstarter pledges", "Late pledges and retail editions", "aberration", "sun"),
                ("How preorders work", "Pay today, ships on release", "okc-wild-kingdom", "orange")]
 ARRIVED = ["New board games", "New expansions", "New RPGs", "New accessories", "Back in stock", "Everything new"]
+ARRIVED_BANNERS = [("This week's arrivals", "Fresh off the truck, ready to ship", "abroad", "sun"),
+                   ("Back in stock", "Favourites on the shelf again", "harmonies-crescendo", "sky"),
+                   ("New expansions", "More for the games you love", "akropolis-pantheon", "orange")]
 SALE = ["Weekly sale", "Clearance", "Dings &amp; dents", "All sale"]
+SALE_BANNERS = [("20% off RRP", "Selected board games", "camel-up", "orange"),
+                ("25% off RRP", "Selected expansions", "dorfromantik-south-seas", "sun"),
+                ("Clearance", "Last copies, lowest prices", "king-of-tokyo", "sky")]
 BOARD = [
     ("Game type", "mind", [("Strategy", "mind", ""), ("Family", "family", ""), ("Party", "balloon", ""), ("Thematic", "book", ""),
                            ("Wargames", "tank", ""), ("Abstract", "hex", ""), ("Children's", "blocks", ""), ("Card games", "cards", "")]),
@@ -38,7 +44,7 @@ ACC_BANNERS = [("Card sleeves", "Every standard size in stock", "clank-sleeves-d
                ("Organisers", "Tidy boxes, faster setup", "compile-aux-3", "sun"),
                ("Dice", "Sets for every system", "dragon-d6-dice", "orange")]
 
-KIND = {"preorders": "column", "arrived": "dropdown", "board": "sidebar", "rpg": "column", "acc": "column", "sale": "dropdown"}
+KIND = {"preorders": "column", "arrived": "column", "board": "sidebar", "rpg": "column", "acc": "column", "sale": "column"}
 NAV_KEYS = ["preorders", "arrived", "board", "rpg", "acc", "sale"]
 
 # ---------------------------------------------------------------- desktop
@@ -72,10 +78,10 @@ def mega_panels():
     acc = (f'<div class="mega mega--col" data-mega="acc">{tag("Mega menu: Column", "native", "Accessories · grouped by job (protect, upgrade, play) + 3 promo banners")}<div class="inner mm-wrap">'
            f'<div class="mm-cols" style="--n:3">{"".join(_col(h, ls, A) for h, ls in ACC_COLS)}</div>'
            f'<div class="mm-bans">{"".join(_banner(*b, A) for b in ACC_BANNERS)}</div></div></div>')
-    arrived = (f'<div class="mega mega--drop" data-mega="arrived">{tag("Dropdown", "native", "standard dropdown, no mega menu block · no images (Dean)")}'
-               f'<ul>{"".join(f"<li>{lk(t, P)}</li>" for t in ARRIVED)}</ul></div>')
-    sale = (f'<div class="mega mega--drop" data-mega="sale">{tag("Dropdown", "native", "standard dropdown · kept small on purpose")}'
-            f'<ul>{"".join(f"<li>{lk(t)}</li>" for t in SALE)}</ul></div>')
+    arrived = (f'<div class="mega mega--col" data-mega="arrived">{tag("Mega menu: Column", "native", "Just Arrived · 1 link column + 3 promo banners (changed from a plain dropdown, Dean #99)")}<div class="inner mm-wrap">'
+               f'<div class="mm-cols" style="--n:1">{_col("Just arrived", ARRIVED, P)}</div><div class="mm-bans">{"".join(_banner(*b, P) for b in ARRIVED_BANNERS)}</div></div></div>')
+    sale = (f'<div class="mega mega--col" data-mega="sale">{tag("Mega menu: Column", "native", "Sale · 1 link column + promo banners Dean adds or swaps in the theme editor per sale (e.g. 20% off RRP, 25% off RRP) · Dean #99")}<div class="inner mm-wrap">'
+            f'<div class="mm-cols" style="--n:1">{_col("Sale", SALE, C)}</div><div class="mm-bans">{"".join(_banner(*b, C) for b in SALE_BANNERS)}</div></div></div>')
     return pre + arrived + board + rpg + acc + sale
 
 # ---------------------------------------------------------------- mobile drawer
@@ -102,8 +108,8 @@ def _sub(key):
     elif key == "acc":
         body = "".join(_acc(h, _links(ls, A), i == 0) for i, (h, ls) in enumerate(ACC_COLS)) + _mob_bans(ACC_BANNERS, A)
     else:
-        ls = ARRIVED if key == "arrived" else SALE
-        body = '<ul class="mob-links mob-links--flat">' + "".join(f'<li>{lk(t, u)}</li>' for t in ls) + '</ul>'
+        ls, bs = (ARRIVED, ARRIVED_BANNERS) if key == "arrived" else (SALE, SALE_BANNERS)
+        body = '<ul class="mob-links mob-links--flat">' + "".join(f'<li>{lk(t, u)}</li>' for t in ls) + '</ul>' + _mob_bans(bs, u)
     return (f'<div class="mob-panel mob-panel--sub" data-sub="{key}" aria-hidden="true">'
             f'<button type="button" class="mob-back js-mob-back">{I("left",18)} Back</button>'
             f'<div class="mob-sub-h"><h3 class="h4">{lab}</h3><a href="{u}">Go to {lab} {I("right",12)}</a></div>{body}</div>')

@@ -182,12 +182,12 @@ MAIN = f'''<!-- ============ HERO ============ -->
 </div></section>
 
 <!-- ============ GOOGLE REVIEWS ============ -->
-<section class="sec">{tag("Apps · Google Reviews", "custom", "app block (in scope) · 3 latest reviews · Leave a review link to the Google review form")}
+<section class="sec">{tag("Apps · Google + Facebook reviews", "custom", "reviews widget app that pulls Google and Facebook reviews into one feed (e.g. Trustindex or Elfsight, app cost to Dean) · 3 latest reviews · Leave a review link to the Google review form")}
 <div class="inner">
-  {sec_head("What our customers say", "Live from Google. Example reviews shown.", "#", "Leave us a review", eyebrow="Reviews")}
+  {sec_head("What our customers say", "Live from Google and Facebook. Example reviews shown.", "#", "Leave us a review", eyebrow="Reviews")}
   <div class="reviews-wrap"><div class="reviews">
     <blockquote class="review"><div class="stars">{star()*5}</div><p>"Ordered Monday night, arrived Wednesday. Dean emailed to check I knew the expansion needed the base game. That's service."</p><footer>Example reviewer · Google</footer></blockquote>
-    <blockquote class="review"><div class="stars">{star()*5}</div><p>"Best range of wargames in Australia and the preorder pricing beats everyone else I've found."</p><footer>Example reviewer · Google</footer></blockquote>
+    <blockquote class="review"><div class="stars">{star()*5}</div><p>"Best range of wargames in Australia and the preorder pricing beats everyone else I've found."</p><footer>Example reviewer · Facebook</footer></blockquote>
     <blockquote class="review"><div class="stars">{star()*5}</div><p>"Picked up at Chatswood on Tuesday night and got a game recommendation thrown in. Will be back."</p><footer>Example reviewer · Google</footer></blockquote>
   </div><div class="car-nav rev-nav"><button class="car-btn" aria-label="Previous">{I("left",18)}</button><button class="car-btn" aria-label="Next">{I("right",18)}</button></div></div>
 </div></section>'''

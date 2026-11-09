@@ -939,7 +939,6 @@ body.nav-blue .nav li.on > a{color:#fff;border-bottom-color:var(--sun)}
 .mega--drop ul li a{display:block;padding:9px 20px;font-size:15px;color:var(--ink);text-decoration:none}
 .mega--drop ul li a:hover{background:var(--surface-subtle);color:var(--brand-blue)}
 body.mega-open main,body.mega-open footer,body.mega-open .newsletter{transition:filter .2s ease}
-body.mega-open::after{content:"";position:fixed;inset:0;z-index:40;background:rgba(22,33,58,.25);pointer-events:none}
 @media (max-width:1280px){.mm-bans{flex-basis:50%}.mm-ban{min-height:170px}.mm-tiles{grid-template-columns:repeat(3,minmax(0,1fr))}}
 
 /* predictive search */
@@ -1220,3 +1219,10 @@ body.clean .mega .an,body.clean .ps .an,body.clean .mob .an{display:none}
   .wl-grid{grid-template-columns:repeat(2,1fr)}
 }
 .mwt-copy > p + .ag-btn{margin-top:var(--space-5)}
+
+/* filters (BugHerd #100-102): room for focus rings and slider knobs; sidebar scrolls with the page instead of inside itself */
+@media (min-width:901px){
+  .filters{max-height:none;overflow:visible;padding:0 6px 0 6px;margin-left:-6px;transition:none}
+  .fgroup--applied{position:sticky;top:var(--applied-top,0px);z-index:2;background:var(--surface);margin-inline:-6px;padding:12px 6px var(--space-4)}
+}
+.slider{margin:6px 9px 0}
